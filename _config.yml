@@ -1,0 +1,8 @@
+# _config.yml
+baseurl: "/html"  # Serve the site from the /html subdirectory on GitHub Pages
+url: ""           # Leave empty; GitHub Pages will set this automatically
+include:
+  - html          # Include the html/ directory
+  - static        # Include the static/ directory (for animations, images, etc.)
+exclude:
+  - app.py        # Exclude app.py as it's not needed for GitHub Pages
