@@ -51,6 +51,14 @@
             width: 100%;
             height: 150px;
             background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .legacy-media svg {
+            width: 96px; /* Matches text-6xl equivalent for consistency */
+            height: 96px;
+            fill: #14B8A6; /* Matches text-teal-500 */
         }
         .logo-media {
             object-fit: contain;
@@ -182,7 +190,11 @@
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="legacy-card bg-white rounded-lg overflow-hidden">
-                    <i class="fas fa-comment text-6xl text-teal-500 mx-auto mt-6 mb-4 legacy-media flex items-center justify-center"></i>
+                    <div class="legacy-media">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H352c17.7 0 32-14.3 32-32s-14.3-32-32-32H282.7L272 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM192 320h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H192c-8.8 0-16-7.2-16-16s7.2-16 16-16zm-96 0H160c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zM352 320h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H352c-8.8 0-16-7.2-16-16s7.2-16 16-16zM256 64c-8.8 0-16 7.2-16 16V272c0 8.8 7.2 16 16 16s16-7.2 16-16V80c0-8.8-7.2-16-16-16z"/>
+                        </svg>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Voice SMS</h3>
                         <p class="text-gray-600 mb-4">
