@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="hAIppy Fit by Kirusa: Your AI-powered fitness companion. Get personalized workout plans, real-time guidance, and performance insights on your mobile device. Starting at $2/month.">
+    <meta name="keywords" content="AI fitness app, personalized workout plans, real-time pose correction, fitness tracking, mobile fitness trainer">
+    <meta name="author" content="Kirusa">
+    <title>hAIppy Fit - Your AI-Powered Fitness Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #1F2937;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .hero-section {
+            background: linear-gradient(to bottom, #10B981, #F87171);
+            position: relative;
+            overflow: hidden;
+        }
+        .lottie-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .feature-card, .pricing-card, .cta-button {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .feature-card:hover, .pricing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            background-color: #F3F4F6;
+        }
+        .cta-button:hover {
+            background-color: #F87171;
+            transform: translateY(-2px);
+            color: #FFFFFF;
+        }
+        .logo-media {
+            object-fit: contain;
+            width: 200px;
+            height: 60px;
+        }
+        .haippyfit-icon {
+            display: inline-block;
+            font-size: 3rem;
+            color: #10B981;
+        }
+        @media (max-width: 768px) {
+            .logo-media {
+                width: 150px;
+                height: 50px;
+            }
+            .haippyfit-icon {
+                font-size: 2.5rem;
+            }
+        }
+        .pricing-card-header {
+            background: linear-gradient(135deg, #10B981, #F87171);
+            color: white;
+            padding: 1.5rem;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            position: relative;
+        }
+        .pricing-card:hover .pricing-card-header {
+            background: linear-gradient(135deg, #34D399, #F87171);
+        }
+        .pricing-card:hover .underline-effect::after {
+            width: 100%;
+        }
+        .underline-effect::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 3px;
+            background: #F87171;
+            transition: width 0.3s ease;
+            margin-top: 0.5rem;
+        }
+        .pricing-card-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .pricing-card-content ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .pricing-card-content ul li i {
+            margin-right: 0.5rem;
+            color: #10B981;
+        }
+        section:not(.hero-section):not(.bg-lime-600):not(.bg-gray-900) {
+            color: #1F2937;
+        }
+        .bg-lime-600 {
+            background-color: #10B981;
+            color: #FFFFFF;
+        }
+        .bg-gray-100, .bg-white {
+            color: #1F2937;
+        }
+        .bg-gray-100 p, .bg-white p {
+            color: #4B5563;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/html/homepage.html">
+                <img src="/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media">
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="/html/homepage.html#ai-products" class="text-gray-600 hover:text-teal-500 transition">Products</a>
+                <a href="/html/homepage.html#legacy" class="text-gray-600 hover:text-teal-500 transition">Legacy</a>
+                <a href="/html/homepage.html#about" class="text-gray-600 hover:text-teal-500 transition">About</a>
+                <a href="/html/homepage.html#why-kirusa" class="text-gray-600 hover:text-teal-500 transition">Why Kirusa</a>
+                <a href="/html/contact.html" class="text-gray-600 hover:text-teal-500 transition">Contact</a>
+            </div>
+            <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
+                <i class="fas fa-bars text-xl text-gray-600"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden bg-white shadow-md md:hidden">
+            <ul class="flex flex-col items-center py-4">
+                <li class="py-2"><a href="/html/homepage.html#ai-products" class="text-gray-600 hover:text-teal-500">Products</a></li>
+                <li class="py-2"><a href="/html/homepage.html#legacy" class="text-gray-600 hover:text-teal-500">Legacy</a></li>
+                <li class="py-2"><a href="/html/homepage.html#about" class="text-gray-600 hover:text-teal-500">About</a></li>
+                <li class="py-2"><a href="/html/homepage.html#why-kirusa" class="text-gray-600 hover:text-teal-500">Why Kirusa</a></li>
+                <li class="py-2"><a href="/html/contact.html" class="text-gray-600 hover:text-teal-500">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white pt-24 pb-20">
+        <div class="lottie-container">
+            <lottie-player src="/static/animations/haippyfit-hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <i class="fas fa-heartbeat haippyfit-icon mb-6 animate-fade-in"></i>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 animate-fade-in">hAIppy Fit - Your AI Fitness Companion</h1>
+            <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-8 animate-fade-in" style="animation-delay: 0.2s;">
+                Struggling to wake up early and adjust to a gym trainer’s schedule? hAIppy Fit is your personal AI-powered fitness companion that fits right into your pocket.
+            </p>
+            <div class="flex justify-center space-x-4 animate-fade-in" style="animation-delay: 0.4s;">
+                <a href="#pricing" class="bg-lime-600 text-white px-6 py-3 rounded-full cta-button font-semibold">Get Started</a>
+                <a href="#features" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-lime-600 cta-button font-semibold">Explore Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Fitness That Fits Your Life</h2>
+            <p class="text-lg max-w-3xl mx-auto text-center text-gray-600 mb-8">
+                Harnessing the power of advanced on-device AI, hAIppy Fit offers real-time pose estimation and correction on low-cost mobile and tablet devices. No more excuses—get the benefits of a personal trainer, anywhere, anytime.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why hAIppy Fit?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card bg-white p-6 rounded-lg shadow">
+                    <i class="fas fa-dumbbell text-4xl text-lime-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Personalized Fitness, Backed by AI</h3>
+                    <p class="text-gray-600">
+                        hAIppy Fit recommends a customized workout plan tailored to your physical characteristics and medical history. Whether you’re a beginner or a seasoned fitness enthusiast, your journey is fully personalized.
+                    </p>
+                </div>
+                <div class="feature-card bg-white p-6 rounded-lg shadow">
+                    <i class="fas fa-video text-4xl text-lime-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Real-Time Guidance & Feedback</h3>
+                    <p class="text-gray-600">
+                        Follow on-screen instructions while you exercise. Our intelligent AI monitors your form, counts reps, and distinguishes between correct and incorrect movements to help you improve every day.
+                    </p>
+                </div>
+                <div class="feature-card bg-white p-6 rounded-lg shadow">
+                    <i class="fas fa-chart-line text-4xl text-lime-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Summary & Insights</h3>
+                    <p class="text-gray-600">
+                        At the end of each session, receive a detailed summary of your performance—highlighting what you did well and where you can improve. Progress is just a tap away.
+                    </p>
+                </div>
+                <div class="feature-card bg-white p-6 rounded-lg shadow">
+                    <i class="fas fa-share-alt text-4xl text-lime-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Share the Motivation</h3>
+                    <p class="text-gray-600">
+                        You're not on this journey alone. Share your achievements with friends and family to stay motivated and celebrate your progress together.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Choose Your hAIppy Fit Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="pricing-card rounded-lg shadow-lg relative animate-fade-in" style="animation-delay: 0.1s;">
+                    <div class="pricing-card-header">
+                        <h3 class="text-xl font-bold underline-effect">Starter</h3>
+                    </div>
+                    <div class="pricing-card-content">
+                        <p class="text-2xl font-bold text-gray-900 mb-4">$2<span class="text-sm font-normal">/month</span></p>
+                        <ul class="text-gray-600 mb-6">
+                            <li><i class="fas fa-check"></i>Personalized Workout Plans</li>
+                            <li><i class="fas fa-check"></i>Real-Time Pose Correction</li>
+                            <li><i class="fas fa-check"></i>Basic Performance Summaries</li>
+                            <li><i class="fas fa-check"></i>Share Achievements</li>
+                            <li><i class="fas fa-check"></i>Sync with Wearables</li>
+                        </ul>
+                        <a href="#contact" class="block bg-lime-600 text-white px-4 py-2 rounded-full text-center cta-button font-semibold">Get Started</a>
+                    </div>
+                </div>
+                <!-- Premium Plan -->
+                <div class="pricing-card rounded-lg shadow-lg relative animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="pricing-card-header">
+                        <h3 class="text-xl font-bold underline-effect">Premium</h3>
+                    </div>
+                    <div class="pricing-card-content">
+                        <p class="text-2xl font-bold text-gray-900 mb-4">$5<span class="text-sm font-normal">/month</span></p>
+                        <ul class="text-gray-600 mb-6">
+                            <li><i class="fas fa-check"></i>All Starter Features</li>
+                            <li><i class="fas fa-check"></i>Advanced Performance Analytics</li>
+                            <li><i class="fas fa-check"></i>Nutrition Guidance</li>
+                            <li><i class="fas fa-check"></i>Mood Tracking</li>
+                            <li><i class="fas fa-check"></i>Priority Support</li>
+                        </ul>
+                        <a href="#contact" class="block bg-lime-600 text-white px-4 py-2 rounded-full text-center cta-button font-semibold">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#contact" class="bg-lime-600 text-white px-6 py-3 rounded-full cta-button font-semibold">Need a Custom Plan? Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (SEO-aware) -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-8 max-w-3xl mx-auto">
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">What devices does hAIppy Fit support?</h3>
+                    <p class="text-gray-600">
+                        hAIppy Fit works on low-cost mobile and tablet devices, using on-device AI for real-time pose estimation and correction. No fancy equipment needed!
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">How does hAIppy Fit personalize my workouts?</h3>
+                    <p class="text-gray-600">
+                        The app tailors workout plans based on your physical characteristics and medical history, ensuring a fitness journey that’s unique to you.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Can I share my progress with others?</h3>
+                    <p class="text-gray-600">
+                        Yes! hAIppy Fit lets you share your achievements with friends and family to stay motivated and celebrate your progress together.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">What does the real-time guidance include?</h3>
+                    <p class="text-gray-600">
+                        Follow on-screen instructions while exercising. The AI monitors your form, counts reps, and provides feedback on correct vs. incorrect movements to help you improve.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-lime-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Start Your Fitness Journey with hAIppy Fit</h2>
+            <p class="text-lg max-w-3xl mx-auto mb-8">
+                Get personalized workouts, real-time guidance, and performance insights—all on your mobile device. Join thousands of users transforming their fitness routine today.
+            </p>
+            <a href="#pricing" class="bg-coral-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Kirusa</h3>
+                    <p class="text-gray-400">
+                        Innovating at the intersection of AI and connectivity since 2001, serving 100M+ users across 50 countries.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">AI Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/html/corpusio.html" class="text-gray-400 hover:text-teal-500">Corpusio</a></li>
+                        <li><a href="/html/kirusaassist.html" class="text-gray-400 hover:text-teal-500">KirusaAssist</a></li>
+                        <li><a href="/html/libanga.html" class="text-gray-400 hover:text-teal-500">Libanga</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-500">hAIppy Fit</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legacy Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/html/voicesms.html" class="text-gray-400 hover:text-teal-500">Voice SMS</a></li>
+                        <li><a href="/html/instavoice.html" class="text-gray-400 hover:text-teal-500">InstaVoice</a></li>
+                        <li><a href="/html/kirusachannels.html" class="text-gray-400 hover:text-teal-500">Kirusa Channels</a></li>
+                        <li><a href="/html/kirusakonnect.html" class="text-gray-400 hover:text-teal-500">Kirusa Konnect</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/html/contact.html" class="text-gray-400 hover:text-teal-500">Contact Us</a></li>
+                        <li><a href="https://www.linkedin.com/company/kirusa" class="text-gray-400 hover:text-teal-500">LinkedIn</a></li>
+                        <li><a href="https://www.kirusa.com/privacy-policy" class="text-gray-400 hover:text-teal-500">Privacy Policy</a></li>
+                        <li><a href="https://www.kirusa.com/support" class="text-gray-400 hover:text-teal-500">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                © 2025 Kirusa. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
