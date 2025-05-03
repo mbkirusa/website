@@ -40,6 +40,9 @@
         }
         .product-card, .legacy-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            background-color: #FFFFFF;
+            border-radius: 0.5rem;
+            overflow: hidden;
         }
         .product-card:hover, .legacy-card:hover {
             transform: scale(1.05);
@@ -60,15 +63,33 @@
             height: 96px;
             fill: #14B8A6; /* Matches text-teal-500 */
         }
+        .legacy-card-content {
+            min-height: 150px; /* Ensures consistent height for content area */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .legacy-card-content p {
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        .legacy-card-content a {
+            display: inline-block;
+        }
+        @media (min-width: 768px) {
+            .product-media, .legacy-media {
+                height: 200px;
+            }
+            .legacy-card-content {
+                min-height: 180px;
+            }
+        }
         .logo-media {
             object-fit: contain;
             width: 150px;
             height: 50px;
         }
         @media (min-width: 768px) {
-            .product-media, .legacy-media {
-                height: 200px;
-            }
             .logo-media {
                 width: 200px;
                 height: 60px;
@@ -80,6 +101,18 @@
         .cta-button:hover {
             background-color: #F87171;
             transform: translateY(-2px);
+        }
+        /* Dynamic animation for tiles */
+        .legacy-card {
+            opacity: 0;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        .legacy-card:nth-child(1) { animation-delay: 0.1s; }
+        .legacy-card:nth-child(2) { animation-delay: 0.2s; }
+        .legacy-card:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -184,43 +217,53 @@
     <!-- Legacy Products Section -->
     <section id="legacy" class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Our Communication Heritage</h2>
-            <p class="text-lg max-w-3xl mx-auto text-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Our Communication Heritage</h2>
+            <p class="text-lg max-w-3xl mx-auto text-center mb-12 text-gray-600">
                 Since 2001, Kirusa has connected over 100 million monthly users across 50 countries with innovative voice and messaging solutions, partnering with 50+ mobile carriers worldwide.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="legacy-card bg-white rounded-lg overflow-hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="legacy-card">
                     <div class="legacy-media">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H352c17.7 0 32-14.3 32-32s-14.3-32-32-32H282.7L272 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM192 320h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H192c-8.8 0-16-7.2-16-16s7.2-16 16-16zm-96 0H160c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zM352 320h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H352c-8.8 0-16-7.2-16-16s7.2-16 16-16zM256 64c-8.8 0-16 7.2-16 16V272c0 8.8 7.2 16 16 16s16-7.2 16-16V80c0-8.8-7.2-16-16-16z"/>
                         </svg>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Voice SMS</h3>
-                        <p class="text-gray-600 mb-4">
-                            Send voice messages via SMS, ideal for multilingual regions. Simplifies communication for personal and enterprise use, reaching millions daily.
-                        </p>
-                        <a href="/website/voicesms.html" class="text-teal-500 hover:underline">Learn More</a>
+                    <div class="p-6 legacy-card-content">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Voice SMS</h3>
+                            <p class="text-gray-600 text-base leading-relaxed">
+                                Send voice messages via SMS, ideal for multilingual regions. Simplifies communication for personal and enterprise use, reaching millions daily.
+                            </p>
+                        </div>
+                        <a href="/website/voicesms.html" class="text-teal-500 hover:underline font-medium">Learn More</a>
                     </div>
                 </div>
-                <div class="legacy-card bg-white rounded-lg overflow-hidden">
-                    <img src="/website/static/images/InstaVoice-01.svg" alt="InstaVoice call completion logo" class="legacy-media">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">InstaVoice</h3>
-                        <p class="text-gray-600 mb-4">
-                            Cloud-based call completion service offering visual voicemail, missed call alerts, and reachability notifications. Ensures seamless connectivity for millions globally.
-                        </p>
-                        <a href="/website/instavoice.html" class="text-teal-500 hover:underline">Learn More</a>
+                <div class="legacy-card">
+                    <div class="legacy-media">
+                        <img src="/website/static/images/InstaVoice-01.svg" alt="InstaVoice call completion logo" class="legacy-media">
+                    </div>
+                    <div class="p-6 legacy-card-content">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">InstaVoice</h3>
+                            <p class="text-gray-600 text-base leading-relaxed">
+                                Cloud-based call completion service offering visual voicemail, missed call alerts, and reachability notifications. Ensures seamless connectivity for millions globally.
+                            </p>
+                        </div>
+                        <a href="/website/instavoice.html" class="text-teal-500 hover:underline font-medium">Learn More</a>
                     </div>
                 </div>
-                <div class="legacy-card bg-white rounded-lg overflow-hidden">
-                    <img src="/website/static/images/Channels-01.svg" alt="Kirusa Channels celebrity engagement logo" class="legacy-media">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Kirusa Channels</h3>
-                        <p class="text-gray-600 mb-4">
-                            Celebrity-fan engagement platform delivering daily voice and video updates via SMS, RCS, or app. Connects stars with fans worldwide.
-                        </p>
-                        <a href="/website/kirusachannels.html" class="text-teal-500 hover:underline">Learn More</a>
+                <div class="legacy-card">
+                    <div class="legacy-media">
+                        <img src="/website/static/images/Channels-01.svg" alt="Kirusa Channels celebrity engagement logo" class="legacy-media">
+                    </div>
+                    <div class="p-6 legacy-card-content">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Kirusa Channels</h3>
+                            <p class="text-gray-600 text-base leading-relaxed">
+                                Celebrity-fan engagement platform delivering daily voice and video updates via SMS, RCS, or app. Connects stars with fans worldwide.
+                            </p>
+                        </div>
+                        <a href="/website/kirusachannels.html" class="text-teal-500 hover:underline font-medium">Learn More</a>
                     </div>
                 </div>
             </div>
