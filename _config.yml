@@ -2,7 +2,6 @@
 baseurl: ""
 url: ""
 include:
-  - html
   - static
 exclude:
   - app.py
