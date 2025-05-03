@@ -5,3 +5,4 @@ include:
   - static
 exclude:
   - app.py
+  - node_modules
