@@ -7,130 +7,257 @@
     <meta name="keywords" content="contact Kirusa, Kirusa support, enterprise AI solutions, voice messaging, customer engagement">
     <meta name="author" content="Kirusa">
     <title>Contact Us - Kirusa</title>
+    <link rel="icon" type="image/png" href="/website/static/images/kirusa-logo.png">
     <link rel="stylesheet" href="/website/static/css/output.css">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" defer>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: #1F2937;
+            font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F5F5F7;
+            color: #1D1D1F;
+            margin: 0;
+            overflow-x: hidden;
+            font-size: 1rem;
+            font-weight: 400;
+            padding-top: 3.5rem;
+            line-height: 1.8;
         }
         html {
             scroll-behavior: smooth;
         }
-        .hero-section {
-            background: linear-gradient(to bottom, #1E3A8A, #2DD4BF);
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1A2526;
+        }
+        h3 {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-align: center;
+            color: #1A2526;
+        }
+        p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.8;
+            text-align: center;
+            color: #1D1D1F;
+            letter-spacing: 0.01em;
+        }
+        a {
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            color: #0055A4;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #003366;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+        }
+        .nav-link {
             position: relative;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #FFFFFF;
+            margin: 0 clamp(0.5rem, 1vw, 1rem);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #E6E6E6;
+            transform: translateY(-2px);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #FFFFFF;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .dropdown-button {
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-button:hover {
+            color: #E6E6E6;
+            transform: translateY(-2px);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            min-width: 16rem;
+            padding: 0.5rem 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(0.5rem);
+        }
+        .dropdown-content.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown-content a {
+            display: block;
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            margin: 0.25rem 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        #mobile-menu {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        #mobile-menu a {
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        #mobile-menu a:hover {
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        .mobile-dropdown a {
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 400;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin: 0.25rem 0;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-dropdown a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        .menu-icon {
+            color: #FFFFFF;
+            transition: transform 0.3s ease;
+        }
+        .menu-icon:hover {
+            transform: scale(1.1);
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #1E3A8A, #2DD4BF);
+            color: #FFFFFF;
+            padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+        .cta-button:hover {
+            background: linear-gradient(135deg, #2DD4BF, #1E3A8A);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: #FFFFFF;
+            box-shadow: none;
+        }
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1E3A8A 0%, #6B46C1 50%, #2DD4BF 100%);
             overflow: hidden;
         }
-        .lottie-container {
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
+            opacity: 0.3;
             z-index: 0;
         }
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+        .hero-content h1, .hero-content p {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: #FFFFFF;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-1.5rem) rotateX(-5deg) rotateY(-5deg); }
+        }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(1.5rem); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0.5rem rgba(45, 212, 191, 0.3); }
+            50% { box-shadow: 0 0 1.25rem rgba(45, 212, 191, 0.6); }
         }
         @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-20px); }
             to { opacity: 1; transform: translateX(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-        .animate-pulse {
-            animation: pulse 2s infinite ease-in-out;
-        }
-        .animate-slide-in-left {
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #2DD4BF, #F87171);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: background 0.3s ease;
-        }
-        .gradient-text:hover {
-            background: linear-gradient(to right, #F87171, #2DD4BF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .cta-button {
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: #F87171;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(248, 113, 113, 0.3);
-            color: #FFFFFF;
-        }
-        .logo-media {
-            object-fit: contain;
-            width: 200px;
-            height: 60px;
-        }
-        @media (max-width: 768px) {
-            .logo-media {
-                width: 150px;
-                height: 50px;
-            }
-        }
-        .bg-teal-500 {
-            background-color: #2DD4BF;
-            color: #FFFFFF;
-        }
-        .bg-gray-100, .bg-white {
-            color: #1F2937;
-        }
-        .bg-gray-100 p, .bg-white p {
-            color: #4B5563;
-        }
-        .contact-form input, .contact-form textarea {
-            border: 1px solid #D1D5DB;
-            border-radius: 0.375rem;
-            padding: 0.75rem;
-            width: 100%;
-            margin-bottom: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .contact-form input:focus, .contact-form textarea:focus {
-            outline: none;
-            border-color: #2DD4BF;
-            box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.1);
-        }
-        .contact-detail {
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        .contact-detail:hover {
-            transform: translateX(5px);
-            color: #F87171;
-        }
-        .social-icons a {
-            margin-right: 1rem;
-            color: #1F2937;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        .social-icons a:hover {
-            color: #F87171;
-            transform: scale(1.2);
-        }
-        .typewriter {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid #2DD4BF;
-            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
         }
         @keyframes typing {
             from { width: 0; }
@@ -140,101 +267,312 @@
             from, to { border-color: transparent; }
             50% { border-color: #2DD4BF; }
         }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+        .animate-glow {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #2DD4BF;
+            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+        .logo-media {
+            width: clamp(6rem, 12.5vw, 12.5rem);
+            height: clamp(2rem, 4.375vw, 4.375rem);
+            object-fit: contain;
+            filter: brightness(1.5);
+        }
+        .section-parallax {
+            position: relative;
+            overflow: hidden;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%232DD4BF" fill-opacity="0.1" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            transform: translateY(0);
+            transition: transform 0.1s linear;
+        }
+        .intro-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.98);
+            padding: clamp(1.5rem, 3vw, 3rem);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        .contact-form input, .contact-form textarea, .contact-form select {
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            padding: 0.75rem;
+            width: 100%;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+            outline: none;
+            border-color: #2DD4BF;
+            box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.1);
+        }
+        .contact-detail {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .contact-detail:hover {
+            transform: translateX(5px);
+            color: #2DD4BF;
+        }
+        .social-icons a {
+            margin-right: 1rem;
+            color: #1D1D1F;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #2DD4BF;
+            transform: scale(1.2);
+        }
+        footer {
+            background: #212529;
+        }
+        footer h3 {
+            color: #FFFFFF;
+        }
+        footer p, footer ul li, footer .text-gray-400 {
+            color: #F8F9FA;
+        }
+        footer a {
+            color: #F8F9FA;
+        }
+        footer a:hover {
+            color: #D3D4D5;
+        }
+        .contact-methods {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            color: #F8F9FA;
+        }
+        .contact-methods li {
+            margin-bottom: 0.5rem;
+        }
+        .section-spacing {
+            margin-bottom: clamp(4rem, 8vw, 8rem);
+        }
+        .section-padding {
+            padding-top: clamp(4rem, 6vw, 8rem);
+            padding-bottom: clamp(4rem, 6vw, 8rem);
+        }
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: clamp(3rem, 3.5vw, 3.5rem);
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: clamp(2.5rem, 3vw, 3rem);
+            }
+            h3 {
+                font-size: 1.125rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(3rem, 6vw, 6rem);
+            }
+            .section-padding {
+                padding-top: clamp(3rem, 5vw, 6rem);
+                padding-bottom: clamp(3rem, 5vw, 6rem);
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            h3 {
+                font-size: 1rem;
+            }
+            .nav-link {
+                font-size: 1rem;
+                margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
+            }
+            .section-spacing {
+                margin-bottom: clamp(2rem, 4vw, 4rem);
+            }
+            .section-padding {
+                padding-top: clamp(2rem, 4vw, 4rem);
+                padding-bottom: clamp(2rem, 4vw, 4rem);
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+            h2 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            h3 {
+                font-size: 0.95rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(1.5rem, 3vw, 3rem);
+            }
+            .section-padding {
+                padding-top: clamp(1.5rem, 3vw, 3rem);
+                padding-bottom: clamp(1.5rem, 3vw, 3rem);
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <!-- Navigation -->
-    <header class="bg-white shadow-sm fixed top-0 w-full z-50">
-        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <header>
+        <nav class="container mx-auto px-8 py-4 flex justify-between items-center">
             <a href="/website">
-                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media animate-pulse">
+                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media" loading="lazy">
             </a>
             <div class="hidden md:flex space-x-8">
-                <a href="/website/#ai-products" class="text-gray-600 hover:text-teal-500 transition">Products</a>
-                <a href="/website/#legacy" class="text-gray-600 hover:text-teal-500 transition">Legacy</a>
-                <a href="/website/#about" class="text-gray-600 hover:text-teal-500 transition">About</a>
-                <a href="/website/#why-kirusa" class="text-gray-600 hover:text-teal-500 transition">Why Kirusa</a>
-                <a href="/website/contact.html" class="text-gray-600 hover:text-teal-500 transition">Contact</a>
+                <div class="relative">
+                    <button class="dropdown-button flex items-center" onclick="toggleDropdown(event)">
+                        Solutions
+                        <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/website/corpusio.html">Corpusio: AI-Powered Enterprise Knowledge Hub</a>
+                        <a href="/website/kirusaassist.html">KirusaAssist: Your AI-Powered Virtual Companion</a>
+                        <a href="/website/libanga.html">Libanga: Personalized Celebrity Video Messages</a>
+                        <a href="/website/haippyfit.html">hAIppy Fit: AI Fitness & Wellness Coach</a>
+                    </div>
+                </div>
+                <a href="/website/#about" class="nav-link">About</a>
+                <a href="/website/#why-kirusa" class="nav-link">Why Kirusa</a>
+                <a href="/website/contact.html" class="nav-link">Contact</a>
             </div>
             <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
-                <i class="fas fa-bars text-xl text-gray-600"></i>
+                <i class="fas fa-bars text-2xl menu-icon"></i>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden bg-white shadow-md md:hidden">
-            <ul class="flex flex-col items-center py-4">
-                <li class="py-2"><a href="/website/#ai-products" class="text-gray-600 hover:text-teal-500">Products</a></li>
-                <li class="py-2"><a href="/website/#legacy" class="text-gray-600 hover:text-teal-500">Legacy</a></li>
-                <li class="py-2"><a href="/website/#about" class="text-gray-600 hover:text-teal-500">About</a></li>
-                <li class="py-2"><a href="/website/#why-kirusa" class="text-gray-600 hover:text-teal-500">Why Kirusa</a></li>
-                <li class="py-2"><a href="/website/contact.html" class="text-gray-600 hover:text-teal-500">Contact</a></li>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <ul class="flex flex-col items-center py-8 space-y-6">
+                <li>
+                    <a href="#solutions" class="nav-link" onclick="toggleMobileDropdown(event)">Solutions</a>
+                    <ul class="mobile-dropdown pl-4 mt-3 space-y-3 hidden">
+                        <li><a href="/website/corpusio.html">Corpusio: AI-Powered Enterprise Knowledge Hub</a></li>
+                        <li><a href="/website/kirusaassist.html">KirusaAssist: Your AI-Powered Virtual Companion</a></li>
+                        <li><a href="/website/libanga.html">Libanga: Personalized Celebrity Video Messages</a></li>
+                        <li><a href="/website/haippyfit.html">hAIppy Fit: AI Fitness & Wellness Coach</a></li>
+                    </ul>
+                </li>
+                <li><a href="/website/#about" class="nav-link">About</a></li>
+                <li><a href="/website/#why-kirusa" class="nav-link">Why Kirusa</a></li>
+                <li><a href="/website/contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white pt-24 pb-20">
-        <div class="lottie-container">
+    <section class="hero-section text-white section-padding section-spacing">
+        <div class="hero-bg">
             <lottie-player src="/website/static/animations/contact-hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
         </div>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h1 class="typewriter text-4xl sm:text-5xl md:text-6xl font-bold mb-6 gradient-text">Get in Touch with Kirusa</h1>
-            <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-8 animate-fade-in" style="animation-delay: 0.2s;">
-                Have a question or need assistance? <span class="text-teal-300 font-semibold">Reach out to us</span> via phone, email, or the form below. We’re here to help!
+        <div class="hero-content">
+            <h1 class="typewriter mb-8 animate-fade-in" style="animation-delay: 0s;">
+                Get in Touch with Kirusa
+            </h1>
+            <p class="mb-12 animate-fade-in max-w-3xl mx-auto" style="animation-delay: 0.3s;">
+                Have a question or need assistance? <span style="color: #2DD4BF; font-weight: 600;">Reach out to us</span> via phone, email, or the form below. We’re here to help!
             </p>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
+    <section id="contact" class="section-padding bg-white section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Contact Form -->
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-8 gradient-text animate-slide-in-left">Send Us a Message</h2>
-                    <form class="contact-form">
-                        <input type="text" placeholder="Name" required>
-                        <input type="email" placeholder="Email" required>
-                        <input type="tel" placeholder="Phone Number">
-                        <input type="text" placeholder="Company Name">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
-                        <button type="submit" class="bg-teal-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Submit</button>
+                    <h2 class="mb-8 animate-slide-in-left">Send Us a Message</h2>
+                    <form id="contact-form" class="contact-form">
+                        <input type="text" id="name" placeholder="Name" required>
+                        <input type="email" id="email" placeholder="Email" required>
+                        <input type="tel" id="phone" placeholder="Phone Number">
+                        <input type="text" id="company" placeholder="Company Name">
+                        <select id="product" required>
+                            <option value="" disabled selected>Select Product</option>
+                            <option value="Corpusio">Corpusio</option>
+                            <option value="KirusaAssist">KirusaAssist</option>
+                            <option value="Libanga">Libanga</option>
+                            <option value="hAIppy Fit">hAIppy Fit</option>
+                            <option value="Voice SMS">Voice SMS</option>
+                            <option value="InstaVoice">InstaVoice</option>
+                            <option value="Kirusa Channels">Kirusa Channels</option>
+                        </select>
+                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="cta-button font-semibold">Submit</button>
                     </form>
                 </div>
                 <!-- Contact Details -->
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-8 gradient-text animate-slide-in-left">Contact Details</h2>
+                    <h2 class="mb-8 animate-slide-in-left">Contact Details</h2>
                     <div class="space-y-6">
                         <div class="contact-detail">
-                            <h3 class="text-xl font-semibold mb-2 text-teal-600">United States</h3>
-                            <p class="text-gray-600">+1-908-464-5566</p>
-                            <p class="text-gray-600">1530 U.S. 1, North Brunswick Township, NJ 08902</p>
+                            <h3 class="text-xl font-semibold mb-2" style="color: #1E3A8A;">United States</h3>
+                            <p>85 Swenson Circle, Berkeley Heights, New Jersey, USA-07922</p>
                         </div>
                         <div class="contact-detail">
-                            <h3 class="text-xl font-semibold mb-2 text-teal-600">India</h3>
-                            <p class="text-gray-600">+91-80-40560700</p>
-                            <p class="text-gray-600">Brigade Tech Park, Block C, 5th Floor, 134/2, Infantry Road, Bengaluru, Karnataka 560001</p>
+                            <h3 class="text-xl font-semibold mb-2" style="color: #1E3A8A;">Rwanda</h3>
+                            <p>UmuJyi wa Kigali, Gasabo, Remera, PO Box: 7208, Kigali</p>
                         </div>
                         <div class="contact-detail">
-                            <h3 class="text-xl font-semibold mb-2 text-teal-600">Nigeria</h3>
-                            <p class="text-gray-600">+234-1-277-2939</p>
-                            <p class="text-gray-600">Plot 1679 Olakunle Bakare Close, Off Sanusi Fafunwa Street, Victoria Island, Lagos</p>
+                            <h3 class="text-xl font-semibold mb-2" style="color: #1E3A8A;">DRC</h3>
+                            <p>Crown Tower, 3098, 30th June Boulevard, 15th Floor, Suite 1505, Kinshasa - Gombe, Democratic Republic of Congo</p>
                         </div>
                         <div class="contact-detail">
-                            <h3 class="text-xl font-semibold mb-2 text-teal-600">Ghana</h3>
-                            <p class="text-gray-600">+233-302-210-701</p>
-                            <p class="text-gray-600">No. 12 Boundary Road, East Legon, Accra</p>
+                            <h3 class="text-xl font-semibold mb-2" style="color: #1E3A8A;">Cote D'Ivoire</h3>
+                            <p>25 BP, 182 ABJ 25</p>
                         </div>
                         <div class="contact-detail">
-                            <h3 class="text-xl font-semibold mb-2 text-teal-600">Email Us</h3>
-                            <p class="text-gray-600"><a href="mailto:info@kirusa.com" class="hover:text-teal-500">info@kirusa.com</a></p>
-                            <p class="text-gray-600"><a href="mailto:support@kirusa.com" class="hover:text-teal-500">support@kirusa.com</a></p>
+                            <h3 class="text-xl font-semibold mb-2" style="color: #1E3A8A;">Malawi</h3>
+                            <p>PO Box 3038, Blantyre, Malawi</p>
+                        </div>
+                        <div class="contact-detail">
+                            <h3 class="text-xl font-semibold mb-2" style="color: #1E3A8A;">Ghana</h3>
+                            <p>Meridian Heights Building, Community One (1), Tema, Ghana</p>
+                        </div>
+                        <div class="contact-detail">
+                            <h3 class="text-xl font-semibold mb-2" style="color: #1E3A8A;">Email Us</h3>
+                            <p><a href="mailto:info@kirusa.com" style="color: #0055A4;">info@kirusa.com</a></p>
+                            <p><a href="mailto:support@kirusa.com" style="color: #0055A4;">support@kirusa.com</a></p>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Social Media Links -->
             <div class="text-center mt-12">
-                <h3 class="text-2xl font-semibold mb-4 gradient-text animate-slide-in-left">Follow Us</h3>
+                <h3 class="mb-4 animate-slide-in-left">Follow Us</h3>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/Kirusa" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://twitter.com/Kirusa" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -246,79 +584,131 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4 gradient-text">Kirusa</h3>
-                    <p class="text-gray-400">
-                        Innovating at the intersection of AI and connectivity since 2001, serving 100M+ users across 50 countries.
+                    <h3 class="mb-6">Kirusa</h3>
+                    <p>
+                        Reborn in 2025 as an AI innovator, building on 20+ years of connectivity for 100 million users in 50 countries.
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4 gradient-text">Solutions</h3>
-                    <ul class="space-y-2">
-                        <li><a href="https://www.kirusa.com/voice-sms" class="text-gray-400 hover:text-teal-500">Voice SMS</a></li>
-                        <li><a href="https://www.kirusa.com/instavoice" class="text-gray-400 hover:text-teal-500">InstaVoice</a></li>
-                        <li><a href="https://www.kirusa.com/infotainment" class="text-gray-400 hover:text-teal-500">Infotainment</a></li>
-                        <li><a href="https://www.kirusa.com/kirusa-dialer" class="text-gray-400 hover:text-teal-500">Kirusa Dialer</a></li>
+                    <h3 class="mb-6">AI Products</h3>
+                    <ul class="space-y-4">
+                        <li><a href="/website/corpusio.html">Corpusio</a></li>
+                        <li><a href="/website/kirusaassist.html">KirusaAssist</a></li>
+                        <li><a href="/website/libanga.html">Libanga</a></li>
+                        <li><a href="/website/haippyfit.html">hAIppy Fit</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4 gradient-text">Products</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/website/corpusio.html" class="text-gray-400 hover:text-teal-500">Corpusio</a></li>
-                        <li><a href="/website/kirusaassist.html" class="text-gray-400 hover:text-teal-500">KirusaAssist</a></li>
-                        <li><a href="/website/libanga.html" class="text-gray-400 hover:text-teal-500">Libanga</a></li>
-                        <li><a href="/website/haippyfit.html" class="text-gray-400 hover:text-teal-500">hAIppy Fit</a></li>
-                        <li><a href="/website/voicesms.html" class="text-gray-400 hover:text-teal-500">Voice SMS</a></li>
-                        <li><a href="/website/instavoice.html" class="text-gray-400 hover:text-teal-500">InstaVoice</a></li>
-                        <li><a href="/website/kirusachannels.html" class="text-gray-400 hover:text-teal-500">Kirusa Channels</a></li>
+                    <h3 class="mb-6">Legacy Products</h3>
+                    <ul class="space-y-4">
+                        <li><a href="/website/voicesms.html">Voice SMS</a></li>
+                        <li><a href="/website/instavoice.html">InstaVoice</a></li>
+                        <li><a href="/website/kirusachannels.html">Kirusa Channels</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4 gradient-text">Resources</h3>
-                    <ul class="space-y-2">
-                        <li><a href="https://www.kirusa.com/blog" class="text-gray-400 hover:text-teal-500">Blog</a></li>
-                        <li><a href="https://www.kirusa.com/media-kit" class="text-gray-400 hover:text-teal-500">Media Kit</a></li>
-                        <li><a href="https://www.kirusa.com/brochures" class="text-gray-400 hover:text-teal-500">Brochures</a></li>
-                        <li><a href="https://www.kirusa.com/patents" class="text-gray-400 hover:text-teal-500">Patents</a></li>
+                    <h3 class="mb-6">Connect</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            Contact Us Through
+                            <ul class="contact-methods">
+                                <li>Write to us at <a href="mailto:info@kirusa.com">info@kirusa.com</a></li>
+                                <li>For support, email <a href="mailto:support@kirusa.com">support@kirusa.com</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://www.linkedin.com/company/kirusa">LinkedIn</a></li>
+                        <li><a href="https://www.kirusa.com/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="https://www.kirusa.com/support">Support</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4 gradient-text">Company</h3>
-                    <ul class="space-y-2">
-                        <li><a href="https://www.kirusa.com/company" class="text-gray-400 hover:text-teal-500">Company</a></li>
-                        <li><a href="https://www.kirusa.com/leadership-partners" class="text-gray-400 hover:text-teal-500">Leadership & Partners</a></li>
-                        <li><a href="https://www.kirusa.com/press-releases" class="text-gray-400 hover:text-teal-500">Press Releases</a></li>
-                        <li><a href="https://www.kirusa.com/in-the-news" class="text-gray-400 hover:text-teal-500">In the News</a></li>
-                        <li><a href="https://www.kirusa.com/events" class="text-gray-400 hover:text-teal-500">Events</a></li>
-                        <li><a href="https://www.kirusa.com/life-at-kirusa" class="text-gray-400 hover:text-teal-500">Life at Kirusa</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 gradient-text">Get in Touch</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/website/contact.html" class="text-gray-400 hover:text-teal-500">Contact Us</a></li>
-                        <li><a href="https://www.linkedin.com/company/kirusa" class="text-gray-400 hover:text-teal-500">LinkedIn</a></li>
-                        <li><a href="https://www.kirusa.com/privacy-policy" class="text-gray-400 hover:text-teal-500">Privacy Policy</a></li>
-                        <li><a href="https://www.kirusa.com/support" class="text-gray-400 hover:text-teal-500">Support</a></li>
-                        <li><a href="https://www.kirusa.com/job-openings" class="text-gray-400 hover:text-teal-500">Job Openings</a></li>
+                    <h3 class="mb-6">Locations</h3>
+                    <ul class="space-y-4">
+                        <li>USA: 85 Swenson Circle, Berkeley Heights, NJ, USA-07922</li>
+                        <li>Rwanda: UmuJyi wa Kigali, Gasabo, Remera, PO Box: 7208, Kigali</li>
+                        <li>DRC: Crown Tower, 3098, 30th June Boulevard, Kinshasa</li>
+                        <li>Cote D'Ivoire: 25 BP, 182 ABJ 25</li>
+                        <li>Malawi: PO Box 3038, Blantyre, Malawi</li>
+                        <li>Ghana: Meridian Heights Building, Tema, Ghana</li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-8 text-center text-gray-400">
+            <div class="mt-12 text-center">
                 © 2025 Kirusa. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript for Dropdown, Parallax, and Form Submission -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            const mobileDropdown = menu.querySelector('.mobile-dropdown');
+            if (mobileDropdown) {
+                mobileDropdown.classList.remove('show');
+            }
         }
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdownContent = event.currentTarget.nextElementSibling;
+            const isOpen = dropdownContent.classList.contains('show');
+            document.querySelectorAll('.dropdown-content').forEach(d => {
+                if (d !== dropdownContent) d.classList.remove('show');
+            });
+            dropdownContent.classList.toggle('show', !isOpen);
+        }
+
+        function toggleMobileDropdown(event) {
+            event.stopPropagation();
+            const mobileDropdown = event.currentTarget.nextElementSibling;
+            const isOpen = mobileDropdown.classList.contains('show');
+            mobileDropdown.classList.toggle('show', !isOpen);
+            mobileDropdown.classList.toggle('hidden', isOpen);
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.parentElement.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const parallaxElements = document.querySelectorAll('.parallax-bg');
+            parallaxElements.forEach(element => {
+                const speed = 0.3;
+                const yPos = -(window.pageYOffset * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                product: document.getElementById('product').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+            let submissions = JSON.parse(localStorage.getItem('contactSubmissions')) || [];
+            submissions.push(formData);
+            localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+            alert('Your message has been submitted successfully!');
+            document.getElementById('contact-form').reset();
+        });
     </script>
 </body>
 </html>
