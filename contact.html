@@ -694,6 +694,13 @@
 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
+            
+            // Generate a reference number (timestamp + random 4 digits)
+            const timestamp = Date.now();
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const referenceNumber = `KIR-${timestamp}-${randomNum}`;
+
+            // Collect form data
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
@@ -701,12 +708,22 @@
                 company: document.getElementById('company').value,
                 product: document.getElementById('product').value,
                 message: document.getElementById('message').value,
+                referenceNumber: referenceNumber,
                 timestamp: new Date().toISOString()
             };
+
+            // Save to local storage
             let submissions = JSON.parse(localStorage.getItem('contactSubmissions')) || [];
             submissions.push(formData);
             localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
-            alert('Your message has been submitted successfully!');
+
+            // Simulate email confirmation
+            const emailMessage = `Dear ${formData.name},\n\nThank you for reaching out to Kirusa. Your inquiry has been received, and we will get back to you soon.\n\n**Reference Number:** ${referenceNumber}\n**Product:** ${formData.product}\n**Message:** ${formData.message}\n\nBest regards,\nKirusa Support Team\nsupport@kirusa.com`;
+
+            // Display confirmation to user
+            alert(`Your message has been submitted successfully!\n\nA confirmation email has been sent to ${formData.email} from support@kirusa.com with the following details:\n\n${emailMessage}`);
+
+            // Reset the form
             document.getElementById('contact-form').reset();
         });
     </script>
