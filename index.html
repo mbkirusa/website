@@ -7,6 +7,7 @@
     <meta name="keywords" content="AI solutions, enterprise knowledge hub, AI meeting assistant, personalized celebrity videos, AI fitness app, document discovery, voice SMS">
     <meta name="author" content="Kirusa">
     <title>Kirusa - AI for Every Endeavor</title>
+    <link rel="icon" type="image/png" href="/website/static/images/kirusa-logo.png">
     <link rel="stylesheet" href="/website/static/css/output.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -146,11 +147,12 @@
             box-shadow: 0 6px 12px rgba(107, 70, 193, 0.4);
         }
         .text-gradient {
-            background: linear-gradient(to right, #A5F3FC, #D8B4FE);
+            background: linear-gradient(to right, #22D3EE, #8B5CF6);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
         .nav-link {
             position: relative;
@@ -173,6 +175,8 @@
         }
         .dropdown-content a {
             padding: 0.75rem 1.5rem;
+            display: block;
+            color: #1D1D1F;
         }
         .dropdown-content a:hover {
             background: #F5F5F7;
@@ -193,6 +197,9 @@
             transform: translateY(0);
             transition: transform 0.1s linear;
         }
+        #why-kirusa .text-gray-600 {
+            color: #1F2937;
+        }
     </style>
 </head>
 <body>
@@ -203,7 +210,6 @@
                 <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media">
             </a>
             <div class="hidden md:flex space-x-12">
-                <a href="#products" class="text-gray-800 hover:text-gradient font-medium transition nav-link">Products</a>
                 <a href="#legacy" class="text-gray-800 hover:text-gradient font-medium transition nav-link">Legacy</a>
                 <div class="relative group">
                     <button class="text-gray-800 hover:text-gradient font-medium transition nav-link flex items-center">
@@ -211,9 +217,11 @@
                         <i class="fas fa-chevron-down ml-2"></i>
                     </button>
                     <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 dropdown-content">
-                        <a href="#enterprise" class="block text-gray-800">Enterprise</a>
-                        <a href="#wellness" class="block text-gray-800">Wellness</a>
-                        <a href="#entertainment" class="block text-gray-800">Entertainment</a>
+                        <a href="#products" class="block">AI Products</a>
+                        <a href="#legacy" class="block">Legacy Products</a>
+                        <a href="#enterprise" class="block">Enterprise</a>
+                        <a href="#wellness" class="block">Wellness</a>
+                        <a href="#entertainment" class="block">Entertainment</a>
                     </div>
                 </div>
                 <a href="#about" class="text-gray-800 hover:text-gradient font-medium transition nav-link">About</a>
@@ -226,11 +234,12 @@
         </nav>
         <div id="mobile-menu" class="hidden bg-white shadow-lg md:hidden">
             <ul class="flex flex-col items-center py-8 space-y-6">
-                <li><a href="#products" class="text-gray-800 hover:text-gradient font-medium">Products</a></li>
                 <li><a href="#legacy" class="text-gray-800 hover:text-gradient font-medium">Legacy</a></li>
                 <li>
                     <a href="#enterprise" class="text-gray-800 hover:text-gradient font-medium">Solutions</a>
                     <ul class="pl-4 mt-3 space-y-3">
+                        <li><a href="#products" class="text-gray-600 hover:text-gradient">AI Products</a></li>
+                        <li><a href="#legacy" class="text-gray-600 hover:text-gradient">Legacy Products</a></li>
                         <li><a href="#enterprise" class="text-gray-600 hover:text-gradient">Enterprise</a></li>
                         <li><a href="#wellness" class="text-gray-600 hover:text-gradient">Wellness</a></li>
                         <li><a href="#entertainment" class="text-gray-600 hover:text-gradient">Entertainment</a></li>
@@ -263,7 +272,7 @@
     </section>
 
     <!-- Introduction Section -->
-    <section class="py-32 bg-white section-parallax">
+    <section class="py-40 bg-white section-parallax mb-16">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <p class="text-xl max-w-3xl mx-auto text-center text-gray-600 mb-12 leading-relaxed" style="font-weight: 300;">
@@ -273,7 +282,7 @@
     </section>
 
     <!-- AI Products Section -->
-    <section id="products" class="py-32 bg-gray-100 section-parallax">
+    <section id="products" class="py-40 bg-gray-100 section-parallax mb-16">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="text-5xl font-bold text-center mb-20 text-gradient">Our AI Solutions</h2>
@@ -335,7 +344,7 @@
     </section>
 
     <!-- Legacy Products Section -->
-    <section id="legacy" class="py-32 bg-white section-parallax">
+    <section id="legacy" class="py-40 bg-white section-parallax mb-16">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="text-5xl font-bold text-center mb-20 text-gradient">Our Connectivity Roots</h2>
@@ -389,7 +398,7 @@
     </section>
 
     <!-- About Kirusa Section -->
-    <section id="about" class="py-32 bg-gray-100 section-parallax">
+    <section id="about" class="py-40 bg-gray-100 section-parallax mb-16">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="text-5xl font-bold text-center mb-20 text-gradient">About Kirusa</h2>
@@ -417,7 +426,7 @@
     </section>
 
     <!-- Why Kirusa Section -->
-    <section id="why-kirusa" class="py-32 bg-white section-parallax">
+    <section id="why-kirusa" class="py-40 bg-white section-parallax mb-16">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="text-5xl font-bold text-center mb-20 text-gradient">Why Kirusa?</h2>
@@ -448,7 +457,7 @@
     </section>
 
     <!-- Call-to-Action Banner -->
-    <section class="py-32 bg-gradient-to-r from-6B46C1 to-2DD4BF text-white section-parallax">
+    <section class="py-40 bg-gradient-to-r from-6B46C1 to-2DD4BF text-white section-parallax mb-16">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 text-center relative">
             <h2 class="text-5xl font-bold mb-12">Ready to See Kirusa’s AI in Action?</h2>
@@ -460,7 +469,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
+    <footer class="bg-gray-900 text-white py-16 mt-16">
         <div class="container mx-auto px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
