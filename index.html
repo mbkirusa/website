@@ -68,7 +68,6 @@
         a:hover {
             color: #003366;
         }
-        /* Header Styling */
         header {
             background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
@@ -244,7 +243,6 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             color: #FFFFFF;
         }
-        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
             50% { transform: translateY(-1.5rem) rotateX(-5deg) rotateY(-5deg); }
@@ -324,7 +322,6 @@
             object-fit: contain;
             filter: brightness(1.5);
         }
-        /* Updated Product Card Text Styling */
         .product-text-container {
             position: relative;
             max-height: 200px;
@@ -374,11 +371,12 @@
         .product-card a:hover::after {
             width: 100%;
         }
-        /* Scrollbar Styling for Product Text */
         .product-text-container::-webkit-scrollbar {
             width: 6px;
         }
-        .product-text-container::-webkit-scrollbar-track {
+        .product-text
+
+-container::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.05);
             border-radius: 3px;
         }
@@ -475,6 +473,54 @@
             line-height: 1.6;
             margin: 0;
             color: #1D1D1F;
+        }
+        .life-kirusa-section {
+            background: #F5F5F7;
+        }
+        .life-kirusa-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.98);
+            padding: clamp(1.5rem, 3vw, 3rem);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        .life-kirusa-container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10rem;
+            height: 0.25rem;
+            background: #1A2526;
+            border-radius: 0.125rem;
+        }
+        .leader-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 2rem;
+        }
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        }
+        .leader-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1A2526;
+            margin-bottom: 0.5rem;
+        }
+        .leader-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+            color: #1D1D1F;
+            text-align: left;
         }
         footer {
             background: #212529;
@@ -608,7 +654,7 @@
                     <div class="dropdown-content">
                         <a href="/website/corpusio.html">Corpusio: AI-Powered Enterprise Knowledge Hub</a>
                         <a href="/website/kirusaassist.html">KirusaAssist: Your AI-Powered Virtual Companion</a>
-                        <a href="/website/libanga.html">Libanga: Your Favorite Stars, On-Demand</a>
+                        <a href="/website/libanga.html">Libanga: Personalized Celebrity Video Messages</a>
                         <a href="/website/haippyfit.html">hAIppy Fit: AI Fitness & Wellness Coach</a>
                     </div>
                 </div>
@@ -627,7 +673,7 @@
                     <ul class="mobile-dropdown pl-4 mt-3 space-y-3 hidden">
                         <li><a href="/website/corpusio.html">Corpusio: AI-Powered Enterprise Knowledge Hub</a></li>
                         <li><a href="/website/kirusaassist.html">KirusaAssist: Your AI-Powered Virtual Companion</a></li>
-                        <li><a href="/website/libanga.html">Libanga: Your Favorite Stars, On-Demand</a></li>
+                        <li><a href="/website/libanga.html">Libanga: Personalized Celebrity Video Messages</a></li>
                         <li><a href="/website/haippyfit.html">hAIppy Fit: AI Fitness & Wellness Coach</a></li>
                     </ul>
                 </li>
@@ -697,7 +743,7 @@
                     <div class="product-text-container">
                         <h3 class="mb-4">KirusaAssist: Your AI-Powered Virtual Companion</h3>
                         <p class="product-description">
-                            <span class="highlight">Elevate your meetings with AI.</span> KirusaAssist captures insights, coordinates teams, and delivers role-based answers in real time. It joins calls, takes notes, syncs updates across meetings, and integrates with Corpusio for secure knowledge access. Ask questions during meetings, and get answers via text-to-speech—seamlessly and privately, tailored to your role.
+                            <span class="highlight">Elevate your meetings with AI.</span> KirusaAssist captures insights, coordinates teams, and delivers role-based answers in real time. It joins calls on Zoom, Teams, and more, takes notes, syncs updates across meetings, and integrates with Corpusio for secure knowledge access. Ask questions during meetings via text or audio, get answers via text-to-speech, and automate follow-ups—seamlessly and privately, tailored to your role.
                         </p>
                         <a href="/website/kirusaassist.html" class="hover:underline">Learn More →</a>
                     </div>
@@ -708,9 +754,9 @@
                         <img driveId="1X6b2pF5l0u1qWqC5s5rW5rY5rW5rW5r" src="/website/static/images/Libanga.png" alt="Libanga personalized celebrity video logo" loading="lazy">
                     </div>
                     <div class="product-text-container">
-                        <h3 class="mb-4">Libanga: Your Favorite Stars, On-Demand</h3>
+                        <h3 class="mb-4">Libanga: Personalized Celebrity Video Messages</h3>
                         <p class="product-description">
-                            <span class="highlight">Celebrity moments, personalized for you.</span> Libanga, powered by Kirusa, connects you with stars for custom video messages. Perfect for any occasion, delight your loved ones with a heartfelt greeting from their favorite celebrity.
+                            <span class="highlight">Connect with your favorite stars.</span> Libanga lets you request custom video greetings for any occasion, delivered via WhatsApp and SMS. Schedule a personalized message with the recipient’s name from musicians, actors, and more. On the special day, share the joy with a heartfelt celebrity greeting. It’s more than a message—it’s a moment of connection.
                         </p>
                         <a href="/website/libanga.html" class="hover:underline">Learn More →</a>
                     </div>
@@ -723,7 +769,7 @@
                     <div class="product-text-container">
                         <h3 class="mb-4">hAIppy Fit: AI Fitness & Wellness Coach</h3>
                         <p class="product-description">
-                            <span class="highlight">Your personal path to wellness.</span> hAIppy Fit crafts tailored workout plans, mindfulness exercises, and mood tracking for holistic health. Stay motivated with daily guidance and adaptive routines designed to fit your lifestyle, helping you achieve fitness goals with ease.
+                            <span class="highlight">Your personal path to wellness.</span> hAIppy Fit crafts tailored workout plans, mindfulness exercises, and weekly nutrition plans for holistic health. With real-time pose correction, no equipment needed, it adapts to your lifestyle. Stay motivated with daily guidance, helping you achieve fitness goals with ease.
                         </p>
                         <a href="/website/haippyfit.html" class="hover:underline">Learn More →</a>
                     </div>
@@ -805,6 +851,38 @@
                     </p>
                     <p class="mt-3">
                         Operating in 18 countries, our commitment to trust, innovation, and excellence shapes a future where technology seamlessly elevates human potential.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Life at Kirusa Section -->
+    <section id="life-kirusa" class="section-padding life-kirusa-section section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <div class="life-kirusa-container">
+                <h2 class="mb-8 animate-fade-in">Life at Kirusa</h2>
+                <p class="max-w-3xl mx-auto text-center animate-fade-in" style="animation-delay: 0.2s;">
+                    At Kirusa, we thrive in a dynamic, global tech-first environment that fosters innovation and creativity. Our diverse, close-knit team balances fun and hard work, creating a space where learning never stops. Guided by seasoned experts with numerous patents and accolades, Kirusa is a place where your ideas can flourish.
+                </p>
+                <h3 class="mb-6 mt-12 animate-fade-in" style="animation-delay: 0.4s;">Our Leaders</h3>
+                <div class="leader-card animate-fade-in" style="animation-delay: 0.6s;">
+                    <h4>Dr. Inderpal Singh Mumick</h4>
+                    <p>
+                        Founder, Chairman, and CEO of Kirusa, Dr. Inderpal Singh Mumick is a visionary entrepreneur with over 20 years in telecom innovation. Under his leadership, Kirusa has pioneered transformative technologies like Voice SMS and InstaVoice, impacting over 100 million monthly users across Africa, Asia, and Latin America. Previously, he co-founded Savera Systems, leading it as CEO and CTO to innovate web-based billing solutions, and worked at AT&T Laboratories on pioneering billing projects. Dr. Mumick holds 32 issued patents, with 10 pending, and has authored 40 technical papers in leading journals.
+                    </p>
+                </div>
+                <div class="leader-card animate-fade-in" style="animation-delay: 0.8s;">
+                    <h4>Dr. Raja N. Moorthy</h4>
+                    <p>
+                        Chief Operating Officer at Kirusa, Dr. Raja N. Moorthy brings over 40 years of telecom expertise. With 18 years at Kirusa, he has overseen India operations, technical management, and R&D, previously serving as Vice President of Engineering in NJ, USA. He has led innovative software development, including at Savera Inc. and Zyglobe, and established NIT Trichy’s OCTAGON computer center in the 1990s. Dr. Moorthy, also a Senior Consultant to Gupshup and Adjunct Professor at Dayanand Sagar University, holds a Ph.D. from IIT Delhi and 5 patents in AI, IoT, and mobile applications.
+                    </p>
+                </div>
+                <div class="leader-card animate-fade-in" style="animation-delay: 1s;">
+                    <h4>Baldeep Dua</h4>
+                    <p>
+                        Chief Financial Officer at Kirusa, Baldeep Dua drives financial strategy with over 20 years of expertise. She oversees capital raising, mergers and acquisitions, strategic planning, profitability enhancement, and private placements, ensuring Kirusa’s financial growth and stability with her extensive experience across diverse roles.
                     </p>
                 </div>
             </div>
