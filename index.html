@@ -288,6 +288,14 @@
             margin-bottom: 2rem;
             text-align: center;
         }
+        /* New spacing and padding utilities */
+        .section-spacing {
+            margin-bottom: clamp(4rem, 8vw, 8rem); /* Scales between 4rem and 8rem based on viewport */
+        }
+        .section-padding {
+            padding-top: clamp(4rem, 6vw, 8rem);
+            padding-bottom: clamp(4rem, 6vw, 8rem);
+        }
         /* Responsive Adjustments */
         @media (max-width: 1024px) {
             .hero-content h1 {
@@ -301,6 +309,13 @@
             }
             h3 {
                 font-size: 1.125rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(3rem, 6vw, 6rem);
+            }
+            .section-padding {
+                padding-top: clamp(3rem, 5vw, 6rem);
+                padding-bottom: clamp(3rem, 5vw, 6rem);
             }
         }
         @media (max-width: 768px) {
@@ -326,6 +341,13 @@
             .cta-content p {
                 font-size: 1rem;
             }
+            .section-spacing {
+                margin-bottom: clamp(2rem, 4vw, 4rem);
+            }
+            .section-padding {
+                padding-top: clamp(2rem, 4vw, 4rem);
+                padding-bottom: clamp(2rem, 4vw, 4rem);
+            }
         }
         @media (max-width: 480px) {
             .hero-content h1 {
@@ -345,6 +367,13 @@
             }
             .cta-content p {
                 font-size: 1rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(1.5rem, 3vw, 3rem);
+            }
+            .section-padding {
+                padding-top: clamp(1.5rem, 3vw, 3rem);
+                padding-bottom: clamp(1.5rem, 3vw, 3rem);
             }
         }
     </style>
@@ -396,7 +425,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white py-32 mb-64">
+    <section class="hero-section text-white section-padding section-spacing">
         <div class="hero-bg">
             <lottie-player src="/website/static/animations/hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
         </div>
@@ -415,7 +444,7 @@
     </section>
 
     <!-- Introduction Section -->
-    <section class="py-32 bg-white section-parallax mb-64">
+    <section class="section-padding bg-white section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <div class="intro-container">
@@ -428,7 +457,7 @@
     </section>
 
     <!-- AI Products Section -->
-    <section id="products" class="py-32 bg-gray-100 section-parallax mb-64">
+    <section id="products" class="section-padding bg-gray-100 section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20 text-gradient">Our AI Solutions</h2>
@@ -490,7 +519,7 @@
     </section>
 
     <!-- Legacy Products Section -->
-    <section id="legacy" class="py-32 bg-white section-parallax mb-64">
+    <section id="legacy" class="section-padding bg-white section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20 text-gradient">Our Connectivity Roots</h2>
@@ -544,7 +573,7 @@
     </section>
 
     <!-- About Kirusa Section -->
-    <section id="about" class="py-32 bg-gray-100 section-parallax mb-64">
+    <section id="about" class="section-padding bg-gray-100 section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20 text-gradient">About Kirusa</h2>
@@ -572,7 +601,7 @@
     </section>
 
     <!-- Why Kirusa Section -->
-    <section id="why-kirusa" class="py-32 bg-white section-parallax mb-64">
+    <section id="why-kirusa" class="section-padding bg-white section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20 text-gradient">Why Kirusa?</h2>
@@ -603,7 +632,7 @@
     </section>
 
     <!-- Call-to-Action Banner -->
-    <section class="py-32 bg-gradient-to-r from-6B46C1 to-2DD4BF text-white section-parallax cta-section mb-64">
+    <section class="section-padding bg-gradient-to-r from-6B46C1 to-2DD4BF text-white section-parallax cta-section section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 text-center relative cta-content">
             <h2 class="mb-16">Ready to See Kirusa’s AI in Action?</h2>
@@ -615,7 +644,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16 mt-64">
+    <footer class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
