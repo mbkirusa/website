@@ -3,73 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KirusaAssist by Kirusa: Your AI meeting companion. Get real-time transcription, intelligent summaries, and action items for Zoom, Teams, or in-person meetings. Integrates with Slack and CRM.">
-    <meta name="keywords" content="AI meeting assistant, real-time transcription, meeting summaries, action items, Slack integration, CRM integration">
+    <meta name="description" content="KirusaAssist by Kirusa: Your AI-powered virtual companion for meetings. Capture insights, coordinate teams, and get instant, role-based answers with seamless Corpusio integration.">
+    <meta name="keywords" content="AI meeting assistant, real-time meeting notes, Zoom AI integration, cross-meeting coordination">
     <meta name="author" content="Kirusa">
-    <title>KirusaAssist - Your AI Meeting Companion</title>
+    <title>KirusaAssist - Your AI-Powered Virtual Companion</title>
+    <link rel="icon" type="image/png" href="/website/static/images/kirusa-logo.png">
     <link rel="stylesheet" href="/website/static/css/output.css">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" defer>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: #1F2937;
+            font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F5F5F7;
+            color: #1D1D1F;
+            margin: 0;
+            overflow-x: hidden;
+            font-size: 1rem;
+            font-weight: 400;
+            padding-top: 3.5rem;
+            line-height: 1.8;
         }
         html {
             scroll-behavior: smooth;
         }
-        .hero-section {
-            background: linear-gradient(to bottom, #1E3A8A, #2DD4BF);
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1A2526;
+        }
+        h3 {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-align: center;
+            color: #1A2526;
+        }
+        p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.8;
+            text-align: center;
+            color: #1D1D1F;
+            letter-spacing: 0.01em;
+        }
+        a {
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            color: #0055A4;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #003366;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+        }
+        .nav-link {
             position: relative;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #FFFFFF;
+            margin: 0 clamp(0.5rem, 1vw, 1rem);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #E6E6E6;
+            transform: translateY(-2px);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #FFFFFF;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .dropdown-button {
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-button:hover {
+            color: #E6E6E6;
+            transform: translateY(-2px);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            min-width: 16rem;
+            padding: 0.5rem 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(0.5rem);
+        }
+        .dropdown-content.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown-content a {
+            display: block;
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            margin: 0.25rem 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        #mobile-menu {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        #mobile-menu a {
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        #mobile-menu a:hover {
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        .mobile-dropdown a {
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 400;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin: 0.25rem 0;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-dropdown a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        .menu-icon {
+            color: #FFFFFF;
+            transition: transform 0.3s ease;
+        }
+        .menu-icon:hover {
+            transform: scale(1.1);
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #1E3A8A, #2DD4BF);
+            color: #FFFFFF;
+            padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+        .cta-button:hover {
+            background: linear-gradient(135deg, #2DD4BF, #1E3A8A);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: #FFFFFF;
+            box-shadow: none;
+        }
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1E3A8A 0%, #6B46C1 50%, #2DD4BF 100%);
             overflow: hidden;
         }
-        .lottie-container {
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
+            opacity: 0.3;
             z-index: 0;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-content {
+            text-align: center;
+            z-index: 1;
         }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-        .feature-card, .pricing-card, .cta-button {
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-        }
-        .feature-card:hover, .pricing-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-            background-color: #F3F4F6;
-        }
-        .cta-button:hover {
-            background-color: #F87171;
-            transform: translateY(-2px);
+        .hero-content h1, .hero-content p {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             color: #FFFFFF;
         }
-        .logo-media {
-            object-fit: contain;
-            width: 200px;
-            height: 60px;
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-1.5rem) rotateX(-5deg) rotateY(-5deg); }
         }
-        .kirusaassist-icon {
-            display: inline-block;
-            font-size: 3rem;
-            color: #2DD4BF;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(1.5rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0.5rem rgba(45, 212, 191, 0.3); }
+            50% { box-shadow: 0 0 1.25rem rgba(45, 212, 191, 0.6); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+        .animate-glow {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(14rem, 18vw, 18rem), 1fr));
+            gap: clamp(1rem, 2vw, 2rem);
+            padding: clamp(1rem, 2vw, 2rem) 0;
+        }
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
+            transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
+            margin: 0.5rem 0;
+        }
+        .product-card:hover {
+            transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+        .product-media {
+            width: 100%;
+            height: clamp(8rem, 10vw, 10rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: clamp(0.5rem, 1vw, 1rem);
+        }
+        .product-media img {
+            max-width: 80%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .product-media i {
+            font-size: clamp(2rem, 2.5vw, 2.5rem);
+            color: #1E3A8A;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-media img,
+        .product-card:hover .product-media i {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .logo-media {
+            width: clamp(6rem, 12.5vw, 12.5rem);
+            height: clamp(2rem, 4.375vw, 4.375rem);
+            object-fit: contain;
+            filter: brightness(1.5);
+        }
+        .kirusaassist-logo {
+            object-fit: contain;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
         }
         @media (max-width: 768px) {
-            .logo-media {
-                width: 150px;
-                height: 50px;
+            .kirusaassist-logo {
+                max-width: 250px;
             }
-            .kirusaassist-icon {
-                font-size: 2.5rem;
-            }
+        }
+        .product-text-container {
+            position: relative;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 1.5rem;
+            border-radius: 0 0 1.5rem 1.5rem;
+        }
+        .product-text-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2rem;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
+            pointer-events: none;
+        }
+        .product-description {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #1D1D1F;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .product-description .highlight {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1A2526;
+        }
+        .product-card a {
+            display: inline-block;
+            position: relative;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .product-card a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: #0055A4;
+            transition: width 0.3s ease;
+        }
+        .product-card a:hover::after {
+            width: 100%;
+        }
+        .product-text-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .product-text-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+        }
+        .product-text-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+        .product-text-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .section-parallax {
+            position: relative;
+            overflow: hidden;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%232DD4BF" fill-opacity="0.1" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            transform: translateY(0);
+            transition: transform 0.1s linear;
+        }
+        .intro-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.98);
+            padding: clamp(1.5rem, 3vw, 3rem);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        .intro-container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10rem;
+            height: 0.25rem;
+            background: #1A2526;
+            border-radius: 0.125rem;
+        }
+        .cta-section {
+            position: relative;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-content h2, .cta-content p {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: #FFFFFF;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(14rem, 18vw, 18rem), 1fr));
+            gap: clamp(1rem, 2vw, 2rem);
+            padding: clamp(1rem, 2vw, 2rem) 0;
+        }
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
+            transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
+            margin: 0.5rem 0;
+        }
+        .pricing-card:hover {
+            transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
         .pricing-card-header {
             background: linear-gradient(135deg, #1E3A8A, #2DD4BF);
@@ -94,6 +487,17 @@
             transition: width 0.3s ease;
             margin-top: 0.5rem;
         }
+        .recommended-badge {
+            position: absolute;
+            top: -1rem;
+            right: 1rem;
+            background-color: #FBBF24;
+            color: #1E3A8A;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
         .pricing-card-content {
             padding: 1.5rem;
             background-color: white;
@@ -109,188 +513,445 @@
             margin-right: 0.5rem;
             color: #2DD4BF;
         }
-        section:not(.hero-section):not(.bg-teal-500):not(.bg-gray-900) {
-            color: #1F2937;
+        footer {
+            background: #212529;
         }
-        .bg-teal-500 {
-            background-color: #2DD4BF;
+        footer h3 {
             color: #FFFFFF;
         }
-        .bg-gray-100, .bg-white {
-            color: #1F2937;
+        footer p, footer ul li, footer .text-gray-400 {
+            color: #F8F9FA;
         }
-        .bg-gray-100 p, .bg-white p {
-            color: #4B5563;
+        footer a {
+            color: #F8F9FA;
+        }
+        footer a:hover {
+            color: #D3D4D5;
+        }
+        .contact-methods {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            color: #F8F9FA;
+        }
+        .contact-methods li {
+            margin-bottom: 0.5rem;
+        }
+        .section-spacing {
+            margin-bottom: clamp(4rem, 8vw, 8rem);
+        }
+        .section-padding {
+            padding-top: clamp(4rem, 6vw, 8rem);
+            padding-bottom: clamp(4rem, 6vw, 8rem);
+        }
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: clamp(3rem, 3.5vw, 3.5rem);
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: clamp(2.5rem, 3vw, 3rem);
+            }
+            h3 {
+                font-size: 1.125rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(3rem, 6vw, 6rem);
+            }
+            .section-padding {
+                padding-top: clamp(3rem, 5vw, 6rem);
+                padding-bottom: clamp(3rem, 5vw, 6rem);
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            h3 {
+                font-size: 1rem;
+            }
+            .nav-link {
+                font-size: 1rem;
+                margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
+            }
+            .cta-content h2 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            .cta-content p {
+                font-size: 1rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(2rem, 4vw, 4rem);
+            }
+            .section-padding {
+                padding-top: clamp(2rem, 4vw, 4rem);
+                padding-bottom: clamp(2rem, 4vw, 4rem);
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+            h2 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            h3 {
+                font-size: 0.95rem;
+            }
+            .cta-content h2 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            .cta-content p {
+                font-size: 0.9rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(1.5rem, 3vw, 3rem);
+            }
+            .section-padding {
+                padding-top: clamp(1.5rem, 3vw, 3rem);
+                padding-bottom: clamp(1.5rem, 3vw, 3rem);
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <!-- Navigation -->
-    <header class="bg-white shadow-sm fixed top-0 w-full z-50">
-        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <header>
+        <nav class="container mx-auto px-8 py-4 flex justify-between items-center">
             <a href="/website">
-                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media">
+                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media" loading="lazy">
             </a>
             <div class="hidden md:flex space-x-8">
-                <a href="/website/#ai-products" class="text-gray-600 hover:text-teal-500 transition">Products</a>
-                <a href="/website/#legacy" class="text-gray-600 hover:text-teal-500 transition">Legacy</a>
-                <a href="/website/#about" class="text-gray-600 hover:text-teal-500 transition">About</a>
-                <a href="/website/#why-kirusa" class="text-gray-600 hover:text-teal-500 transition">Why Kirusa</a>
-                <a href="/website/contact.html" class="text-gray-600 hover:text-teal-500 transition">Contact</a>
+                <div class="relative">
+                    <button class="dropdown-button flex items-center" onclick="toggleDropdown(event)">
+                        Solutions
+                        <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/website/corpusio.html">Corpusio: AI-Powered Enterprise Knowledge Hub</a>
+                        <a href="/website/kirusaassist.html">KirusaAssist: Your AI-Powered Virtual Companion</a>
+                        <a href="/website/libanga.html">Libanga: Personalized Celebrity Video Messages</a>
+                        <a href="/website/haippyfit.html">hAIppy Fit: AI Fitness & Wellness Coach</a>
+                    </div>
+                </div>
+                <a href="/website/#about" class="nav-link">About</a>
+                <a href="/website/#why-kirusa" class="nav-link">Why Kirusa</a>
+                <a href="/website/contact.html" class="nav-link">Contact</a>
             </div>
             <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
-                <i class="fas fa-bars text-xl text-gray-600"></i>
+                <i class="fas fa-bars text-2xl menu-icon"></i>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden bg-white shadow-md md:hidden">
-            <ul class="flex flex-col items-center py-4">
-                <li class="py-2"><a href="/website/#ai-products" class="text-gray-600 hover:text-teal-500">Products</a></li>
-                <li class="py-2"><a href="/website/#legacy" class="text-gray-600 hover:text-teal-500">Legacy</a></li>
-                <li class="py-2"><a href="/website/#about" class="text-gray-600 hover:text-teal-500">About</a></li>
-                <li class="py-2"><a href="/website/#why-kirusa" class="text-gray-600 hover:text-teal-500">Why Kirusa</a></li>
-                <li class="py-2"><a href="/website/contact.html" class="text-gray-600 hover:text-teal-500">Contact</a></li>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <ul class="flex flex-col items-center py-8 space-y-6">
+                <li>
+                    <a href="#solutions" class="nav-link" onclick="toggleMobileDropdown(event)">Solutions</a>
+                    <ul class="mobile-dropdown pl-4 mt-3 space-y-3 hidden">
+                        <li><a href="/website/corpusio.html">Corpusio: AI-Powered Enterprise Knowledge Hub</a></li>
+                        <li><a href="/website/kirusaassist.html">KirusaAssist: Your AI-Powered Virtual Companion</a></li>
+                        <li><a href="/website/libanga.html">Libanga: Personalized Celebrity Video Messages</a></li>
+                        <li><a href="/website/haippyfit.html">hAIppy Fit: AI Fitness & Wellness Coach</a></li>
+                    </ul>
+                </li>
+                <li><a href="/website/#about" class="nav-link">About</a></li>
+                <li><a href="/website/#why-kirusa" class="nav-link">Why Kirusa</a></li>
+                <li><a href="/website/contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white pt-24 pb-20">
-        <div class="lottie-container">
+    <section class="hero-section text-white section-padding section-spacing">
+        <div class="hero-bg">
             <lottie-player src="/website/static/animations/kirusaassist-hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
         </div>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <img src="/website/static/images/kirusassist.png" alt="Corpusio AI document discovery logo" loading="lazy">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 animate-fade-in">KirusaAssist - Your AI Meeting Companion</h1>
-            <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-8 animate-fade-in" style="animation-delay: 0.2s;">
-                Transform your meetings with KirusaAssist—real-time transcription, intelligent summaries, and action items for Zoom, Teams, or in-person meetings.
+        <div class="hero-content">
+            <img src="/website/static/images/kirusaassist.png" alt="KirusaAssist Logo" class="kirusaassist-logo mx-auto mb-6 animate-fade-in">
+            <h1 class="mb-8 animate-fade-in" style="animation-delay: 0s;">
+                KirusaAssist – Your AI-Powered Virtual Companion
+            </h1>
+            <p class="mb-12 animate-fade-in max-w-3xl mx-auto" style="animation-delay: 0.3s;">
+                Capture insights, coordinate teams, and get instant, role-based answers with an AI that joins your calls and syncs seamlessly with Corpusio.
             </p>
-            <div class="flex justify-center space-x-4 animate-fade-in" style="animation-delay: 0.4s;">
-                <a href="#pricing" class="bg-teal-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Get Started</a>
-                <a href="#features" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-teal-500 cta-button font-semibold">Explore Features</a>
+            <div class="flex justify-center space-x-8 animate-fade-in" style="animation-delay: 0.6s;">
+                <a href="#pricing" class="cta-button animate-glow">Start Free Trial</a>
+                <a href="/website/contact.html" class="cta-button secondary">Request a Demo</a>
             </div>
         </div>
     </section>
 
     <!-- Overview Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Make Meetings Smarter with KirusaAssist</h2>
-            <p class="text-lg max-w-3xl mx-auto text-center text-gray-600 mb-8">
-                KirusaAssist joins your Zoom, Teams, or in-person meetings, providing real-time transcription, intelligent summaries, and action items. Seamlessly integrates with Slack and CRM, saving hours for sales and product teams.
-            </p>
+    <section class="section-padding bg-white section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <div class="intro-container">
+                <h2 class="mb-8 animate-fade-in">Make Meetings Smarter</h2>
+                <p class="max-w-3xl mx-auto text-center animate-fade-in" style="animation-delay: 0.2s;">
+                    Meetings should spark ideas, not bog you down with note-taking. KirusaAssist is an AI-powered virtual assistant that joins your calls, captures real-time notes, and syncs updates across simultaneous meetings. Integrated with Corpusio, it delivers instant, role-restricted answers from your enterprise knowledge. Ask KirusaAssist a question during meetings—via text or audio—and it provides answers through text and audio, while displaying the response in the chat, ensuring only authorized data is accessed through a secure authentication process. Transform meetings into productive, secure, and insight-driven sessions.
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why KirusaAssist?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-microphone text-4xl text-teal-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Real-Time Transcription</h3>
-                    <p class="text-gray-600">
-                        Capture every word with accurate, real-time transcription for Zoom, Teams, or in-person meetings, ensuring nothing gets missed.
+    <section id="features" class="section-padding bg-gray-100 section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Key Features & Benefits</h2>
+            <div class="product-grid">
+                <div class="product-card animate-float">
+                    <div class="product-media">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Role-Based Access Control (RBAC)</h3>
+                        <p class="product-description">
+                            Restricts meeting insights and Corpusio answers to users’ assigned roles, verified via secure authentication. Ensures privacy by limiting access to authorized information, securely storing all data.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.2s;">
+                    <div class="product-media">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Real-Time Summarization</h3>
+                        <p class="product-description">
+                            Transcribes meetings with high accuracy and generates summaries with decisions, action items, and quotes. Customizable for formal minutes or casual notes, respecting role-based restrictions.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.4s;">
+                    <div class="product-media">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Cross-Meeting Coordination</h3>
+                        <p class="product-description">
+                            Joins multiple meetings, syncing updates and ensuring team alignment. Shares insights limited to authorized users, reducing follow-up time.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.6s;">
+                    <div class="product-media">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Context-Aware Q&A</h3>
+                        <p class="product-description">
+                            Answers queries during meetings (e.g., “What’s our Q3 revenue?”) using Corpusio’s knowledge hub, delivering precise, cited responses in chat and via text-to-speech, restricted to role-based permissions.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.8s;">
+                    <div class="product-media">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Automated Follow-Ups</h3>
+                        <p class="product-description">
+                            Extracts action items (e.g., “Send report by Friday”) and drafts emails with summaries and tasks, ensuring accountability for authorized users.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 1s;">
+                    <div class="product-media">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Seamless Integration</h3>
+                        <p class="product-description">
+                            Joins Zoom, Teams, Google Meet, and Webex as an AI participant. Integrates with Slack, Salesforce, and Corpusio for a unified, secure workflow.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 1.2s;">
+                    <div class="product-media">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Intelligent Search & Insights</h3>
+                        <p class="product-description">
+                            Search past meetings (e.g., “Project Orion deadline”) and analyze participation or sentiment, with access restricted to authorized roles, transforming meetings into a secure knowledge base.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Case Section -->
+    <section class="section-padding bg-white section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Real-World Impact</h2>
+            <div class="product-card animate-float">
+                <div class="product-text-container">
+                    <h3 class="mb-4">Team Productivity Boost</h3>
+                    <p class="product-description">
+                        Product Team at XYZ Corp.: Integrated KirusaAssist into Scrum ceremonies. It transcribed blockers in stand-ups and summarized sprint planning decisions. Developers, authenticated via role-based access, asked, “What’s our sprint goal?” triggering text and audio answers and chat responses from Corpusio’s authorized data, reducing meeting times by 20% and improving task completion. A developer said, “KirusaAssist is like a teammate who never forgets—and keeps our data secure!”
                     </p>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-file-alt text-4xl text-teal-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Intelligent Summaries</h3>
-                    <p class="text-gray-600">
-                        Get concise, AI-generated summaries of your meetings, highlighting key points and decisions for quick review.
-                    </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Edge Section -->
+    <section class="section-padding bg-gray-100 section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Why KirusaAssist Stands Out</h2>
+            <div class="product-grid">
+                <div class="product-card animate-float">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Comprehensive Understanding</h3>
+                        <p class="product-description">
+                            Unlike basic transcription tools, KirusaAssist delivers actionable summaries and tasks, with role-based access for global teams.
+                        </p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-tasks text-4xl text-teal-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Action Item Assignment</h3>
-                    <p class="text-gray-600">
-                        Automatically identify and assign action items to team members, streamlining follow-ups and boosting productivity.
-                    </p>
+                <div class="product-card animate-float" style="animation-delay: 0.2s;">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Multi-Platform Support</h3>
+                        <p class="product-description">
+                            Supports Zoom, Teams, and in-person meetings via mobile app, with real-time translation in 5+ languages, secured by role-based authentication.
+                        </p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-plug text-4xl text-teal-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Seamless Integrations</h3>
-                    <p class="text-gray-600">
-                        Integrate with Slack, CRM, and other tools to pipe meeting insights directly into your workflows, saving hours.
-                    </p>
+                <div class="product-card animate-float" style="animation-delay: 0.4s;">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Privacy First</h3>
+                        <p class="product-description">
+                            End-to-end encryption, GDPR/SOC 2 compliance, and on-premise options. Role-based authentication and auto-redaction of sensitive data (e.g., credit card numbers) ensure compliance for industries like legal or healthcare.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Choose Your KirusaAssist Plan</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <section id="pricing" class="section-padding bg-white section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Choose Your KirusaAssist Plan</h2>
+            <div class="pricing-grid">
                 <!-- Starter Plan -->
-                <div class="pricing-card rounded-lg shadow-lg relative animate-fade-in" style="animation-delay: 0.1s;">
+                <div class="pricing-card animate-fade-in" style="animation-delay: 0.1s;">
                     <div class="pricing-card-header">
                         <h3 class="text-xl font-bold underline-effect">Starter</h3>
                     </div>
                     <div class="pricing-card-content">
-                        <p class="text-2xl font-bold text-gray-900 mb-4">$10<span class="text-sm font-normal">/month</span></p>
+                        <p class="text-2xl font-bold text-gray-900 mb-4">Free</p>
                         <ul class="text-gray-600 mb-6">
-                            <li><i class="fas fa-check"></i>Real-Time Transcription</li>
-                            <li><i class="fas fa-check"></i>Basic Meeting Summaries</li>
-                            <li><i class="fas fa-check"></i>Action Item Detection</li>
-                            <li><i class="fas fa-check"></i>Slack Integration</li>
-                            <li><i class="fas fa-check"></i>Up to 5 Users</li>
+                            <li><i class="fas fa-check"></i>3 meetings/month</li>
+                            <li><i class="fas fa-check"></i>Basic transcription</li>
+                            <li><i class="fas fa-check"></i>Summaries</li>
+                            <li><i class="fas fa-check"></i>Role-based access</li>
                         </ul>
-                        <a href="#contact" class="block bg-teal-500 text-white px-4 py-2 rounded-full text-center cta-button font-semibold">Get Started</a>
+                        <a href="/website/contact.html" class="block cta-button text-center font-semibold">Get Started</a>
                     </div>
                 </div>
-                <!-- Premium Plan -->
-                <div class="pricing-card rounded-lg shadow-lg relative animate-fade-in" style="animation-delay: 0.2s;">
+                <!-- Pro Plan -->
+                <div class="pricing-card animate-fade-in" style="animation-delay: 0.2s;">
                     <div class="pricing-card-header">
-                        <h3 class="text-xl font-bold underline-effect">Premium</h3>
+                        <h3 class="text-xl font-bold underline-effect">Pro</h3>
+                        <span class="recommended-badge">Recommended</span>
                     </div>
                     <div class="pricing-card-content">
-                        <p class="text-2xl font-bold text-gray-900 mb-4">$25<span class="text-sm font-normal">/month</span></p>
+                        <p class="text-2xl font-bold text-gray-900 mb-4">$49<span class="text-sm font-normal">/month</span></p>
                         <ul class="text-gray-600 mb-6">
-                            <li><i class="fas fa-check"></i>All Starter Features</li>
-                            <li><i class="fas fa-check"></i>Advanced Summaries with Insights</li>
-                            <li><i class="fas fa-check"></i>CRM Integration</li>
-                            <li><i class="fas fa-check"></i>Unlimited Users</li>
-                            <li><i class="fas fa-check"></i>Priority Support</li>
+                            <li><i class="fas fa-check"></i>Unlimited meetings</li>
+                            <li><i class="fas fa-check"></i>Multilingual support</li>
+                            <li><i class="fas fa-check"></i>Advanced analytics</li>
+                            <li><i class="fas fa-check"></i>Role-based access</li>
                         </ul>
-                        <a href="#contact" class="block bg-teal-500 text-white px-4 py-2 rounded-full text-center cta-button font-semibold">Get Started</a>
+                        <a href="/website/contact.html" class="block cta-button text-center font-semibold">Get Started</a>
+                    </div>
+                </div>
+                <!-- Business Plan -->
+                <div class="pricing-card animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="pricing-card-header">
+                        <h3 class="text-xl font-bold underline-effect">Business</h3>
+                    </div>
+                    <div class="pricing-card-content">
+                        <p class="text-2xl font-bold text-gray-900 mb-4">$149<span class="text-sm font-normal">/month</span></p>
+                        <ul class="text-gray-600 mb-6">
+                            <li><i class="fas fa-check"></i>Real-time Q&A</li>
+                            <li><i class="fas fa-check"></i>Slack/CRM integrations</li>
+                            <li><i class="fas fa-check"></i>Role-based access</li>
+                        </ul>
+                        <a href="/website/contact.html" class="block cta-button text-center font-semibold">Contact Sales</a>
+                    </div>
+                </div>
+                <!-- Enterprise Plan -->
+                <div class="pricing-card animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="pricing-card-header">
+                        <h3 class="text-xl font-bold underline-effect">Enterprise</h3>
+                    </div>
+                    <div class="pricing-card-content">
+                        <p class="text-2xl font-bold text-gray-900 mb-4">Custom</p>
+                        <ul class="text-gray-600 mb-6">
+                            <li><i class="fas fa-check"></i>On-premise options</li>
+                            <li><i class="fas fa-check"></i>Dedicated support</li>
+                            <li><i class="fas fa-check"></i>Compliance-ready</li>
+                            <li><i class="fas fa-check"></i>Role-based access</li>
+                        </ul>
+                        <a href="/website/contact.html" class="block cta-button text-center font-semibold">Contact Sales</a>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-8">
-                <a href="#contact" class="bg-teal-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Need a Custom Plan? Contact Us</a>
+                <a href="/website/contact.html" class="cta-button animate-glow">Need a Custom Solution? Contact Sales</a>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section (SEO-aware) -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-            <div class="space-y-8 max-w-3xl mx-auto">
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">What platforms does KirusaAssist support?</h3>
+    <section class="section-padding bg-gray-100 section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Frequently Asked Questions</h2>
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <div class="animate-fade-in">
+                    <h3 class="text-xl font-semibold mb-2">How does KirusaAssist ensure privacy during meetings?</h3>
                     <p class="text-gray-600">
-                        KirusaAssist supports Zoom, Microsoft Teams, and in-person meetings, providing real-time transcription and summaries across platforms.
+                        KirusaAssist uses Role-Based Access Control (RBAC) with secure authentication to restrict meeting insights and answers to authorized roles, ensuring data privacy.
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">How does KirusaAssist assign action items?</h3>
+                <div class="animate-fade-in" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-semibold mb-2">Does KirusaAssist work with Zoom and Microsoft Teams?</h3>
                     <p class="text-gray-600">
-                        The AI identifies tasks mentioned during the meeting and automatically assigns them to team members based on context, streamlining follow-ups.
+                        Yes, it joins Zoom, Teams, Google Meet, and Webex as an AI participant, posting notes and answers in chat or reading them aloud via text-to-speech, restricted to authorized users.
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">Can KirusaAssist integrate with my tools?</h3>
+                <div class="animate-fade-in" style="animation-delay: 0.4s;">
+                    <h3 class="text-xl font-semibold mb-2">How does KirusaAssist handle questions during meetings?</h3>
                     <p class="text-gray-600">
-                        Yes, KirusaAssist integrates with Slack, CRM systems, and other tools to pipe meeting insights directly into your workflows.
+                        Ask a question, and KirusaAssist queries Corpusio’s authorized data, displaying answers in chat and reading them aloud via text-to-speech, ensuring role-based privacy.
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">Is my meeting data secure with KirusaAssist?</h3>
+                <div class="animate-fade-in" style="animation-delay: 0.6s;">
+                    <h3 class="text-xl font-semibold mb-2">Is there a free version of KirusaAssist?</h3>
                     <p class="text-gray-600">
-                        Absolutely. KirusaAssist ensures data security with end-to-end encryption and compliance with GDPR and SOC 2 standards.
+                        Yes, the Starter plan offers 3 meetings/month with basic transcription and summaries, secured by role-based access. Pro plans add unlimited meetings and analytics.
+                    </p>
+                </div>
+                <div class="animate-fade-in" style="animation-delay: 0.8s;">
+                    <h3 class="text-xl font-semibold mb-2">What is the authentication process for accessing meeting data?</h3>
+                    <p class="text-gray-600">
+                        Users undergo a secure authentication process to verify their role, ensuring only authorized individuals can access meeting insights and Corpusio answers.
                     </p>
                 </div>
             </div>
@@ -298,65 +959,125 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-teal-500 text-white shadow-lg">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Transform Your Meetings with KirusaAssist</h2>
-            <p class="text-lg max-w-3xl mx-auto mb-8">
-                Streamline your meetings with real-time transcription, summaries, and action items. Join thousands of teams boosting productivity with KirusaAssist.
+    <section class="section-padding bg-gradient-to-r from-1E3A8A to-2DD4BF text-white section-parallax cta-section section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 text-center relative cta-content">
+            <h2 class="mb-16">Make Meetings Smarter</h2>
+            <p class="max-w-3xl mx-auto mb-16">
+                Try KirusaAssist free for 14 days and experience productive, secure collaboration with role-based, text-to-speech answers and seamless Corpusio integration. No credit card needed—start now or schedule an enterprise demo.
             </p>
-            <a href="#pricing" class="bg-coral-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Get Started Now</a>
+            <a href="#pricing" class="cta-button animate-glow">Get Started Now</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Kirusa</h3>
-                    <p class="text-gray-400">
-                        Innovating at the intersection of AI and connectivity since 2001, serving 100M+ users across 50 countries.
+                    <h3 class="mb-6">Kirusa</h3>
+                    <p>
+                        Reborn in 2025 as an AI innovator, building on 20+ years of connectivity for 100 million users in 50 countries.
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">AI Products</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/website/corpusio.html" class="text-gray-400 hover:text-teal-500">Corpusio</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-teal-500">KirusaAssist</a></li>
-                        <li><a href="/website/libanga.html" class="text-gray-400 hover:text-teal-500">Libanga</a></li>
-                        <li><a href="/website/haippyfit.html" class="text-gray-400 hover:text-teal-500">hAIppy Fit</a></li>
+                    <h3 class="mb-6">AI Products</h3>
+                    <ul class="space-y-4">
+                        <li><a href="/website/corpusio.html">Corpusio</a></li>
+                        <li><a href="/website/kirusaassist.html">KirusaAssist</a></li>
+                        <li><a href="/website/libanga.html">Libanga</a></li>
+                        <li><a href="/website/haippyfit.html">hAIppy Fit</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Legacy Products</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/website/voicesms.html" class="text-gray-400 hover:text-teal-500">Voice SMS</a></li>
-                        <li><a href="/website/instavoice.html" class="text-gray-400 hover:text-teal-500">InstaVoice</a></li>
-                        <li><a href="/website/kirusachannels.html" class="text-gray-400 hover:text-teal-500">Kirusa Channels</a></li>
+                    <h3 class="mb-6">Legacy Products</h3>
+                    <ul class="space-y-4">
+                        <li><a href="/website/voicesms.html">Voice SMS</a></li>
+                        <li><a href="/website/instavoice.html">InstaVoice</a></li>
+                        <li><a href="/website/kirusachannels.html">Kirusa Channels</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/website/contact.html" class="text-gray-400 hover:text-teal-500">Contact Us</a></li>
-                        <li><a href="https://www.linkedin.com/company/kirusa" class="text-gray-400 hover:text-teal-500">LinkedIn</a></li>
-                        <li><a href="https://www.kirusa.com/privacy-policy" class="text-gray-400 hover:text-teal-500">Privacy Policy</a></li>
-                        <li><a href="https://www.kirusa.com/support" class="text-gray-400 hover:text-teal-500">Support</a></li>
+                    <h3 class="mb-6">Connect</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            Contact Us Through
+                            <ul class="contact-methods">
+                                <li>Write to us at <a href="mailto:info@kirusa.com">info@kirusa.com</a></li>
+                                <li>For support, email <a href="mailto:support@kirusa.com">support@kirusa.com</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://www.linkedin.com/company/kirusa">LinkedIn</a></li>
+                        <li><a href="https://www.kirusa.com/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="https://www.kirusa.com/support">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mb-6">Locations</h3>
+                    <ul class="space-y-4">
+                        <li>USA: 85 Swenson Circle, Berkeley Heights, NJ, USA-07922</li>
+                        <li>Rwanda: UmuJyi wa Kigali, Gasabo, Remera, PO Box: 7208, Kigali</li>
+                        <li>DRC: Crown Tower, 3098, 30th June Boulevard, Kinshasa</li>
+                        <li>Cote D'Ivoire: 25 BP, 182 ABJ 25</li>
+                        <li>Malawi: PO Box 3038, Blantyre, Malawi</li>
+                        <li>Ghana: Meridian Heights Building, Tema, Ghana</li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-8 text-center text-gray-400">
+            <div class="mt-12 text-center">
                 © 2025 Kirusa. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript for Dropdown and Parallax -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            const mobileDropdown = menu.querySelector('.mobile-dropdown');
+            if (mobileDropdown) {
+                mobileDropdown.classList.remove('show');
+            }
         }
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdownContent = event.currentTarget.nextElementSibling;
+            const isOpen = dropdownContent.classList.contains('show');
+            document.querySelectorAll('.dropdown-content').forEach(d => {
+                if (d !== dropdownContent) d.classList.remove('show');
+            });
+            dropdownContent.classList.toggle('show', !isOpen);
+        }
+
+        function toggleMobileDropdown(event) {
+            event.stopPropagation();
+            const mobileDropdown = event.currentTarget.nextElementSibling;
+            const isOpen = mobileDropdown.classList.contains('show');
+            mobileDropdown.classList.toggle('show', !isOpen);
+            mobileDropdown.classList.toggle('hidden', isOpen);
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.parentElement.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const parallaxElements = document.querySelectorAll('.parallax-bg');
+            parallaxElements.forEach(element => {
+                const speed = 0.3;
+                const yPos = -(window.pageYOffset * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
     </script>
 </body>
 </html>

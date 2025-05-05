@@ -1,191 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kirusa brings cutting-edge AI to work, life, and play – from enterprise knowledge discovery to smarter meetings, capturing life’s moments, and reaching fitness goals, alongside over 20 years of expertise in voice and messaging solutions.">
-    <meta name="keywords" content="AI solutions, enterprise knowledge hub, AI meeting assistant, personalized celebrity videos, AI fitness app, document discovery, voice SMS">
-    <meta name="author" content="Kirusa">
-    <title>Kirusa - AI for Every Endeavor</title>
-    <link rel="icon" type="image/png" href="/website/static/images/kirusa-logo.png">
-    <link rel="stylesheet" href="/website/static/css/output.css">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" defer>
+    {% block extra_head %}
     <style>
-        body {
-            font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #F5F5F7;
-            color: #1D1D1F;
-            margin: 0;
-            overflow-x: hidden;
-            font-size: 1rem;
-            font-weight: 400;
-            padding-top: 3.5rem;
-            line-height: 1.8;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 5rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            text-align: center;
-            color: #FFFFFF;
-        }
-        h2 {
-            font-size: clamp(2rem, 4vw, 3.75rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #1A2526;
-        }
-        h3 {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            text-align: center;
-            color: #1A2526;
-        }
-        p {
-            font-size: 1.1rem;
-            font-weight: 400;
-            line-height: 1.8;
-            text-align: center;
-            color: #1D1D1F;
-            letter-spacing: 0.01em;
-        }
-        a {
-            font-size: 1rem;
-            font-weight: 500;
-            text-align: center;
-            text-decoration: none;
-            color: #0055A4;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #003366;
-        }
-        header {
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 50;
-        }
-        .nav-link {
-            position: relative;
-            font-weight: 500;
-            font-size: 1rem;
-            color: #FFFFFF;
-            margin: 0 clamp(0.5rem, 1vw, 1rem);
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .nav-link:hover {
-            color: #E6E6E6;
-            transform: translateY(-2px);
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: #FFFFFF;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .dropdown-button {
-            color: #FFFFFF;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .dropdown-button:hover {
-            color: #E6E6E6;
-            transform: translateY(-2px);
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-            min-width: 16rem;
-            padding: 0.5rem 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            opacity: 0;
-            transform: translateY(0.5rem);
-        }
-        .dropdown-content.show {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .dropdown-content a {
-            display: block;
-            color: #FFFFFF;
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            margin: 0.25rem 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-        }
-        .dropdown-content a:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #E6E6E6;
-            transform: translateX(5px);
-        }
-        #mobile-menu {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        #mobile-menu a {
-            color: #FFFFFF;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        #mobile-menu a:hover {
-            color: #E6E6E6;
-            transform: translateX(5px);
-        }
-        .mobile-dropdown a {
-            color: #FFFFFF;
-            font-size: 0.95rem;
-            font-weight: 400;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            margin: 0.25rem 0;
-            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-        }
-        .mobile-dropdown a:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #E6E6E6;
-            transform: translateX(5px);
-        }
-        .menu-icon {
-            color: #FFFFFF;
-            transition: transform 0.3s ease;
-        }
-        .menu-icon:hover {
-            transform: scale(1.1);
-        }
         .cta-button {
             background: linear-gradient(135deg, #007aff, #00c6ff);
             color: #FFFFFF;
@@ -538,30 +355,6 @@
             color: #1D1D1F;
             text-align: left;
         }
-        footer {
-            background: #212529;
-        }
-        footer h3 {
-            color: #FFFFFF;
-        }
-        footer p, footer ul li, footer .text-gray-400 {
-            color: #F8F9FA;
-        }
-        footer a {
-            color: #F8F9FA;
-        }
-        footer a:hover {
-            color: #D3D4D5;
-        }
-        .contact-methods {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            margin-top: 0.5rem;
-            color: #F8F9FA;
-        }
-        .contact-methods li {
-            margin-bottom: 0.5rem;
-        }
         .section-spacing {
             margin-bottom: clamp(4rem, 8vw, 8rem);
         }
@@ -602,10 +395,6 @@
             }
             h3 {
                 font-size: 1rem;
-            }
-            .nav-link {
-                font-size: 1rem;
-                margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
             }
             .cta-content h2 {
                 font-size: clamp(2rem, 2.5vw, 2.5rem);
@@ -653,6 +442,7 @@
             }
         }
     </style>
+    {% endblock %}
 </head>
 <body>
     <!-- Navigation -->
@@ -663,7 +453,7 @@
             </a>
             <div class="hidden md:flex space-x-8">
                 <div class="relative">
-                    <button class="dropdown-button flex items-center" onclick="toggleDropdown(event)">
+                    <button class="dropdownertations-button flex items-center" onclick="toggleDropdown(event)">
                         Solutions
                         <i class="fas fa-chevron-down ml-2 text-sm"></i>
                     </button>
@@ -754,7 +544,7 @@
                 <!-- KirusaAssist -->
                 <div class="product-card animate-float" style="animation-delay: 0.2s;">
                     <div class="product-media">
-                        <img src="/website/static/images/kirusassist.png" alt="Corpusio AI document discovery logo" loading="lazy">
+                        <img src="/website/static/images/kirusassist.png" alt="KirusaAssist AI virtual companion logo" loading="lazy">
                     </div>
                     <div class="product-text-container">
                         <h3 class="mb-4">KirusaAssist: Your AI-Powered Virtual Companion</h3>
@@ -767,7 +557,7 @@
                 <!-- Libanga -->
                 <div class="product-card animate-float" style="animation-delay: 0.4s;">
                     <div class="product-media">
-                        <img driveId="1X6b2pF5l0u1qWqC5s5rW5rY5rW5rW5r" src="/website/static/images/Libanga.png" alt="Libanga personalized celebrity video logo" loading="lazy">
+                        <img src="/website/static/images/Libanga.png" alt="Libanga personalized celebrity video logo" loading="lazy">
                     </div>
                     <div class="product-text-container">
                         <h3 class="mb-4">Libanga: Personalized Celebrity Video Messages</h3>
@@ -780,7 +570,7 @@
                 <!-- hAIppy Fit -->
                 <div class="product-card animate-float" style="animation-delay: 0.6s;">
                     <div class="product-media">
-                        <img driveId="1X6b2pF5l0u1qWqC5s5rW5rY5rW5rW5r" src="/website/static/images/happyfit.png" alt="hAIppy Fit Fitness logo" loading="lazy">
+                        <img src="/website/static/images/happyfit.png" alt="hAIppy Fit Fitness logo" loading="lazy">
                     </div>
                     <div class="product-text-container">
                         <h3 class="mb-4">hAIppy Fit: AI Fitness & Wellness Coach</h3>
