@@ -3,59 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Libanga by Kirusa: Book personalized celebrity video shoutouts for any occasion. Connect with global stars, create unforgettable moments, and engage with a vibrant fan community. Starting at $20.">
-    <meta name="keywords" content="personalized celebrity videos, book celebrity shoutouts, fan engagement platform, AI-driven celebrity recommendations, celebrity greetings">
+    <meta name="description" content="Libanga by Kirusa: Book personalized celebrity video shoutouts for any occasion. Connect with global stars to create custom video greetings delivered via WhatsApp and SMS.">
+    <meta name="keywords" content="personalized celebrity video messages, celebrity shoutout video">
     <meta name="author" content="Kirusa">
-    <title>Libanga - Personalized Celebrity Shoutouts</title>
+    <title>Libanga - Personalized Celebrity Video Messages</title>
+    <link rel="icon" type="image/png" href="/website/static/images/kirusa-logo.png">
     <link rel="stylesheet" href="/website/static/css/output.css">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" defer>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: #1F2937;
+            font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F5F5F7;
+            color: #1D1D1F;
+            margin: 0;
+            overflow-x: hidden;
+            font-size: 1rem;
+            font-weight: 400;
+            padding-top: 3.5rem;
+            line-height: 1.8;
         }
         html {
             scroll-behavior: smooth;
         }
-        .hero-section {
-            background: linear-gradient(to bottom, #F87171, #FBBF24);
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1A2526;
+        }
+        h3 {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-align: center;
+            color: #1A2526;
+        }
+        p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.8;
+            text-align: center;
+            color: #1D1D1F;
+            letter-spacing: 0.01em;
+        }
+        a {
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            color: #0055A4;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #003366;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+        }
+        .nav-link {
             position: relative;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #FFFFFF;
+            margin: 0 clamp(0.5rem, 1vw, 1rem);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #E6E6E6;
+            transform: translateY(-2px);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #FFFFFF;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .dropdown-button {
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-button:hover {
+            color: #E6E6E6;
+            transform: translateY(-2px);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            min-width: 16rem;
+            padding: 0.5rem 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(0.5rem);
+        }
+        .dropdown-content.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown-content a {
+            display: block;
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            margin: 0.25rem 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        #mobile-menu {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        #mobile-menu a {
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        #mobile-menu a:hover {
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        .mobile-dropdown a {
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 400;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin: 0.25rem 0;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-dropdown a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #E6E6E6;
+            transform: translateX(5px);
+        }
+        .menu-icon {
+            color: #FFFFFF;
+            transition: transform 0.3s ease;
+        }
+        .menu-icon:hover {
+            transform: scale(1.1);
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #F87171, #FBBF24);
+            color: #FFFFFF;
+            padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+        .cta-button:hover {
+            background: linear-gradient(135deg, #FBBF24, #F87171);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: #FFFFFF;
+            box-shadow: none;
+        }
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #F87171 0%, #FBBF24 100%);
             overflow: hidden;
         }
-        .lottie-container {
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
+            opacity: 0.3;
             z-index: 0;
         }
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+        .hero-content h1, .hero-content p {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: #FFFFFF;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-1.5rem) rotateX(-5deg) rotateY(-5deg); }
+        }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(1.5rem); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0.5rem rgba(251, 191, 36, 0.3); }
+            50% { box-shadow: 0 0 1.25rem rgba(251, 191, 36, 0.6); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
         .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
         }
-        .feature-card, .step-card, .cta-button {
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        .animate-glow {
+            animation: glowPulse 3s ease-in-out infinite;
         }
-        .feature-card:hover, .step-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-            background-color: #F3F4F6;
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(14rem, 18vw, 18rem), 1fr));
+            gap: clamp(1rem, 2vw, 2rem);
+            padding: clamp(1rem, 2vw, 2rem) 0;
         }
-        .cta-button:hover {
-            background-color: #FBBF24;
-            transform: translateY(-2px);
-            color: #1F2937;
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
+            transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
+            margin: 0.5rem 0;
+        }
+        .product-card:hover {
+            transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+        .product-media {
+            width: 100%;
+            height: clamp(8rem, 10vw, 10rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: clamp(0.5rem, 1vw, 1rem);
+        }
+        .product-media img {
+            max-width: 80%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .product-media i {
+            font-size: clamp(2rem, 2.5vw, 2.5rem);
+            color: #F87171;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-media img,
+        .product-card:hover .product-media i {
+            transform: scale(1.1) rotate(5deg);
         }
         .logo-media {
+            width: clamp(6rem, 12.5vw, 12.5rem);
+            height: clamp(2rem, 4.375vw, 4.375rem);
             object-fit: contain;
-            width: 200px;
-            height: 60px;
+            filter: brightness(1.5);
         }
         .libanga-logo {
             object-fit: contain;
@@ -64,249 +321,579 @@
             height: auto;
         }
         @media (max-width: 768px) {
-            .logo-media {
-                width: 150px;
-                height: 50px;
-            }
             .libanga-logo {
                 max-width: 250px;
             }
         }
+        .product-text-container {
+            position: relative;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 1.5rem;
+            border-radius: 0 0 1.5rem 1.5rem;
+        }
+        .product-text-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2rem;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
+            pointer-events: none;
+        }
+        .product-description {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #1D1D1F;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .product-description .highlight {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1A2526;
+        }
+        .product-card a {
+            display: inline-block;
+            position: relative;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .product-card a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: #0055A4;
+            transition: width 0.3s ease;
+        }
+        .product-card a:hover::after {
+            width: 100%;
+        }
+        .product-text-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .product-text-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+        }
+        .product-text-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+        .product-text-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .section-parallax {
+            position: relative;
+            overflow: hidden;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FBBF24" fill-opacity="0.1" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            transform: translateY(0);
+            transition: transform 0.1s linear;
+        }
+        .intro-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.98);
+            padding: clamp(1.5rem, 3vw, 3rem);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        .intro-container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10rem;
+            height: 0.25rem;
+            background: #1A2526;
+            border-radius: 0.125rem;
+        }
+        .cta-section {
+            position: relative;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-content h2, .cta-content p {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: #FFFFFF;
+        }
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
+            transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
+            margin: 0.5rem 0;
+        }
+        .step-card:hover {
+            transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
         .step-card-header {
             background: linear-gradient(135deg, #F87171, #FBBF24);
             color: white;
-            padding: 1rem;
+            padding: 1.5rem;
             border-top-left-radius: 0.5rem;
             border-top-right-radius: 0.5rem;
+            position: relative;
         }
         .step-card:hover .step-card-header {
             background: linear-gradient(135deg, #F87171, #FFD54F);
         }
-        section:not(.hero-section):not(.bg-coral-500):not(.bg-gray-900) {
-            color: #1F2937;
+        footer {
+            background: #212529;
         }
-        .bg-coral-500 {
-            background-color: #F87171;
+        footer h3 {
             color: #FFFFFF;
         }
-        .bg-gray-100, .bg-white {
-            color: #1F2937;
+        footer p, footer ul li, footer .text-gray-400 {
+            color: #F8F9FA;
         }
-        .bg-gray-100 p, .bg-white p {
-            color: #4B5563;
+        footer a {
+            color: #F8F9FA;
+        }
+        footer a:hover {
+            color: #D3D4D5;
+        }
+        .contact-methods {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            color: #F8F9FA;
+        }
+        .contact-methods li {
+            margin-bottom: 0.5rem;
+        }
+        .section-spacing {
+            margin-bottom: clamp(4rem, 8vw, 8rem);
+        }
+        .section-padding {
+            padding-top: clamp(4rem, 6vw, 8rem);
+            padding-bottom: clamp(4rem, 6vw, 8rem);
+        }
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: clamp(3rem, 3.5vw, 3.5rem);
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: clamp(2.5rem, 3vw, 3rem);
+            }
+            h3 {
+                font-size: 1.125rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(3rem, 6vw, 6rem);
+            }
+            .section-padding {
+                padding-top: clamp(3rem, 5vw, 6rem);
+                padding-bottom: clamp(3rem, 5vw, 6rem);
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            h3 {
+                font-size: 1rem;
+            }
+            .nav-link {
+                font-size: 1rem;
+                margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
+            }
+            .cta-content h2 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            .cta-content p {
+                font-size: 1rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(2rem, 4vw, 4rem);
+            }
+            .section-padding {
+                padding-top: clamp(2rem, 4vw, 4rem);
+                padding-bottom: clamp(2rem, 4vw, 4rem);
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+            h2 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            h3 {
+                font-size: 0.95rem;
+            }
+            .cta-content h2 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            .cta-content p {
+                font-size: 0.9rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(1.5rem, 3vw, 3rem);
+            }
+            .section-padding {
+                padding-top: clamp(1.5rem, 3vw, 3rem);
+                padding-bottom: clamp(1.5rem, 3vw, 3rem);
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <!-- Navigation -->
-    <header class="bg-white shadow-sm fixed top-0 w-full z-50">
-        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <header>
+        <nav class="container mx-auto px-8 py-4 flex justify-between items-center">
             <a href="/website">
-                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media">
+                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media" loading="lazy">
             </a>
             <div class="hidden md:flex space-x-8">
-                <a href="/website/#ai-products" class="text-gray-600 hover:text-teal-500 transition">Products</a>
-                <a href="/website/#legacy" class="text-gray-600 hover:text-teal-500 transition">Legacy</a>
-                <a href="/website/#about" class="text-gray-600 hover:text-teal-500 transition">About</a>
-                <a href="/website/#why-kirusa" class="text-gray-600 hover:text-teal-500 transition">Why Kirusa</a>
-                <a href="/website/contact.html" class="text-gray-600 hover:text-teal-500 transition">Contact</a>
+                <div class="relative">
+                    <button class="dropdown-button flex items-center" onclick="toggleDropdown(event)">
+                        Solutions
+                        <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/website/corpusio.html">Corpusio: AI-Powered Enterprise Knowledge Hub</a>
+                        <a href="/website/kirusaassist.html">KirusaAssist: Your AI-Powered Virtual Companion</a>
+                        <a href="/website/libanga.html">Libanga: Personalized Celebrity Video Messages</a>
+                        <a href="/website/haippyfit.html">hAIppy Fit: AI Fitness & Wellness Coach</a>
+                    </div>
+                </div>
+                <a href="/website/#about" class="nav-link">About</a>
+                <a href="/website/#why-kirusa" class="nav-link">Why Kirusa</a>
+                <a href="/website/contact.html" class="nav-link">Contact</a>
             </div>
             <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
-                <i class="fas fa-bars text-xl text-gray-600"></i>
+                <i class="fas fa-bars text-2xl menu-icon"></i>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden bg-white shadow-md md:hidden">
-            <ul class="flex flex-col items-center py-4">
-                <li class="py-2"><a href="/website/#ai-products" class="text-gray-600 hover:text-teal-500">Products</a></li>
-                <li class="py-2"><a href="/website/#legacy" class="text-gray-600 hover:text-teal-500">Legacy</a></li>
-                <li class="py-2"><a href="/website/#about" class="text-gray-600 hover:text-teal-500">About</a></li>
-                <li class="py-2"><a href="/website/#why-kirusa" class="text-gray-600 hover:text-teal-500">Why Kirusa</a></li>
-                <li class="py-2"><a href="/website/contact.html" class="text-gray-600 hover:text-teal-500">Contact</a></li>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <ul class="flex flex-col items-center py-8 space-y-6">
+                <li>
+                    <a href="#solutions" class="nav-link" onclick="toggleMobileDropdown(event)">Solutions</a>
+                    <ul class="mobile-dropdown pl-4 mt-3 space-y-3 hidden">
+                        <li><a href="/website/corpusio.html">Corpusio: AI-Powered Enterprise Knowledge Hub</a></li>
+                        <li><a href="/website/kirusaassist.html">KirusaAssist: Your AI-Powered Virtual Companion</a></li>
+                        <li><a href="/website/libanga.html">Libanga: Personalized Celebrity Video Messages</a></li>
+                        <li><a href="/website/haippyfit.html">hAIppy Fit: AI Fitness & Wellness Coach</a></li>
+                    </ul>
+                </li>
+                <li><a href="/website/#about" class="nav-link">About</a></li>
+                <li><a href="/website/#why-kirusa" class="nav-link">Why Kirusa</a></li>
+                <li><a href="/website/contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white pt-24 pb-20">
-        <div class="lottie-container">
+    <section class="hero-section text-white section-padding section-spacing">
+        <div class="hero-bg">
             <lottie-player src="/website/static/animations/libanga-hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
         </div>
-        <div class="container mx-auto px-4 text-center relative z-10">
+        <div class="hero-content">
             <img src="/website/static/images/Libanga.png" alt="Libanga Logo" class="libanga-logo mx-auto mb-6 animate-fade-in">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 animate-fade-in">Personalized Celebrity Shoutouts</h1>
-            <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-8 animate-fade-in" style="animation-delay: 0.2s;">
-                Connect with global stars to create unforgettable video messages for any occasion, starting at just $20.
+            <h1 class="mb-8 animate-fade-in" style="animation-delay: 0s;">
+                Libanga – Personalized Celebrity Video Messages
+            </h1>
+            <p class="mb-12 animate-fade-in max-w-3xl mx-auto" style="animation-delay: 0.3s;">
+                Connect with your favorite stars to create custom video greetings for any occasion, delivered seamlessly via WhatsApp and SMS.
             </p>
-            <div class="flex justify-center space-x-4 animate-fade-in" style="animation-delay: 0.4s;">
-                <a href="#booking-process" class="bg-coral-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Book a Celebrity</a>
-                <a href="#features" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-coral-500 cta-button font-semibold">Explore Features</a>
+            <div class="flex justify-center space-x-8 animate-fade-in" style="animation-delay: 0.6s;">
+                <a href="#how-it-works" class="cta-button animate-glow">Start Your Request on Our Website</a>
+                <a href="#how-it-works" class="cta-button secondary">How Libanga Works</a>
             </div>
         </div>
     </section>
 
     <!-- Overview Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Make Every Moment Special with Libanga</h2>
-            <p class="text-lg max-w-3xl mx-auto text-center text-gray-600 mb-8">
-                Libanga connects fans with their favorite celebrities for personalized video shoutouts. Whether it’s a birthday, anniversary, or a motivational pep talk, our platform makes it easy to book, customize, and share unforgettable moments. Powered by AI-driven recommendations, Libanga offers a diverse roster of global talent, seamless transactions, and a vibrant community to engage with.
-            </p>
+    <section class="section-padding bg-white section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <div class="intro-container">
+                <h2 class="mb-8 animate-fade-in">Your Favorite Stars, On-Demand</h2>
+                <p class="max-w-3xl mx-auto text-center animate-fade-in" style="animation-delay: 0.2s;">
+                    Ever wanted a personalized video message from your favorite celebrity? Libanga makes it happen! We connect you with musicians, actors, athletes, and influencers worldwide, allowing you to request custom video greetings for birthdays, anniversaries, pep talks, or any special moment. Request your video through our website, pay securely, and on the special day, both you and the recipient will receive a personalized greeting—complete with the recipient’s name—via WhatsApp and SMS. Share the joy directly via WhatsApp or SMS. It’s more than a message—it’s a moment of connection.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- User Journey (Features) Section -->
-    <section id="features" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Your Libanga Experience</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-sign-in-alt text-4xl text-coral-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Secure Login</h3>
-                    <p class="text-gray-600">
-                        Log in securely with a 4-digit OTP sent to your mobile (default: 1234). Resend OTP if needed for a hassle-free start.
-                    </p>
+    <!-- Key Features Section -->
+    <section id="features" class="section-padding bg-gray-100 section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Key Features & Benefits</h2>
+            <div class="product-grid">
+                <div class="product-card animate-float">
+                    <div class="product-media">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Website-Based Booking</h3>
+                        <p class="product-description">
+                            Request personalized video greetings through our website—no app needed. After checkout, your video will be delivered via WhatsApp or SMS on the chosen date.
+                        </p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-feed text-4xl text-coral-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Engaging Feeds</h3>
-                    <p class="text-gray-600">
-                        Explore infinite-scroll feeds, like, comment, and repost. Search users or celebrities, view trending content, and create rich blog posts with text, images, audio, or video.
-                    </p>
+                <div class="product-card animate-float" style="animation-delay: 0.2s;">
+                    <div class="product-media">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Fast Delivery on Your Chosen Date</h3>
+                        <p class="product-description">
+                            Schedule your custom celebrity greeting for a specific date, ensuring it arrives right on time for the occasion.
+                        </p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-user text-4xl text-coral-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Personalized Profile</h3>
-                    <p class="text-gray-600">
-                        View and edit your profile, including posts, followers, and following lists. Update your name, bio, and profile picture to showcase your journey.
-                    </p>
+                <div class="product-card animate-float" style="animation-delay: 0.4s;">
+                    <div class="product-media">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Personalized Experience</h3>
+                        <p class="product-description">
+                            Include the recipient’s name and choose the type of wish (e.g., birthday, anniversary, congratulations) to create a truly special video message tailored for them.
+                        </p>
+                    </div>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-star text-4xl text-coral-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Celebrity Connections</h3>
-                    <p class="text-gray-600">
-                        Follow celebrities to see personalized feeds. View their public profiles, blogs, and book a video shoutout with ease.
-                    </p>
+                <div class="product-card animate-float" style="animation-delay: 0.6s;">
+                    <div class="product-media">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Secure & Transparent Payments</h3>
+                        <p class="product-description">
+                            Hassle-free payments through a checkout process on our website with transparent pricing starting at $20, ensuring a smooth transaction.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.8s;">
+                    <div class="product-media">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Global Celebrity Access</h3>
+                        <p class="product-description">
+                            Connect with stars from Hollywood to Nollywood, supporting multiple languages for a diverse selection.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 1s;">
+                    <div class="product-media">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Share the Joy</h3>
+                        <p class="product-description">
+                            On the special day, both you and the recipient receive the personalized celebrity greeting via WhatsApp or SMS to celebrate together.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Celebrity Booking Process Section -->
-    <section id="booking-process" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Book a Celebrity Greeting in 4 Easy Steps</h2>
+    <!-- Use Case Section -->
+    <section class="section-padding bg-white section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Make Moments Unforgettable</h2>
+            <div class="product-grid">
+                <div class="product-card animate-float">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Birthday Surprise</h3>
+                        <p class="product-description">
+                            “I requested a video via SMS for my dad’s 60th, and his soccer hero sent a greeting with his name! He was speechless!” – Jane D.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.2s;">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Team Motivation</h3>
+                        <p class="product-description">
+                            “A WhatsApp request for a greeting from an entrepreneur boosted our sales team’s morale!” – Raj, Sales Manager.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.4s;">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Fan Moment</h3>
+                        <p class="product-description">
+                            “My favorite singer mentioned my story in a Libanga video I got via WhatsApp. I shared it with friends—it’s a treasure!” – Alex P.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Edge Section -->
+    <section class="section-padding bg-gray-100 section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Why Choose Libanga?</h2>
+            <div class="product-grid">
+                <div class="product-card animate-float">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">WhatsApp & SMS Convenience</h3>
+                        <p class="product-description">
+                            Unlike app-based platforms, Libanga delivers greetings via WhatsApp and SMS, making it quick and accessible for everyone to share special moments.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.2s;">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Fast & Reliable Delivery</h3>
+                        <p class="product-description">
+                            Your personalized video is delivered on the date you choose, with a 100% fulfillment guarantee.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-card animate-float" style="animation-delay: 0.4s;">
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Global Reach, Local Touch</h3>
+                        <p class="product-description">
+                            Access a diverse roster of celebrities while enjoying a seamless WhatsApp and SMS experience in multiple languages.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For the Stars Section -->
+    <section class="section-padding bg-white section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 text-center relative">
+            <h2 class="mb-8 animate-fade-in">For the Stars</h2>
+            <p class="max-w-3xl mx-auto text-center animate-fade-in" style="animation-delay: 0.2s;">
+                Are you a celebrity or influencer? Join Libanga to create personalized video greetings and connect with fans via WhatsApp and SMS. Set your price, receive requests, and upload greetings effortlessly.
+            </p>
+            <a href="/website/contact.html" class="cta-button animate-glow mt-8">Learn More About Becoming Libanga Talent</a>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section-padding bg-gray-100 section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">How It Works</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="step-card rounded-lg shadow">
+                <div class="step-card animate-fade-in" style="animation-delay: 0.1s;">
                     <div class="step-card-header">
                         <h3 class="text-lg font-bold">1. Choose a Celebrity</h3>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-600">
-                            Search and select from a diverse roster of global stars. View their profiles, blogs, and availability for bookings.
+                            Visit our website to browse a list of celebrities and select your favorite star to send a greeting.
                         </p>
                     </div>
                 </div>
-                <div class="step-card rounded-lg shadow">
+                <div class="step-card animate-fade-in" style="animation-delay: 0.2s;">
                     <div class="step-card-header">
-                        <h3 class="text-lg font-bold">2. Select a Slot</h3>
+                        <h3 class="text-lg font-bold">2. Specify the Wish Details</h3>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-600">
-                            Pick a convenient slot and delivery timing based on the celebrity’s lead time availability. Confirm your selection before proceeding.
+                            Tell us who the wish is for, who it’s from, and the type of wish—whether it’s a birthday, anniversary, congratulations, or another special message.
                         </p>
                     </div>
                 </div>
-                <div class="step-card rounded-lg shadow">
+                <div class="step-card animate-fade-in" style="animation-delay: 0.3s;">
                     <div class="step-card-header">
-                        <h3 class="text-lg font-bold">3. Confirm & Pay</h3>
+                        <h3 class="text-lg font-bold">3. Schedule Delivery</h3>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-600">
-                            Review your booking details, including the message, recipient, and delivery platform. Complete the payment securely to schedule your greeting.
+                            Select the date you want the greeting to be delivered to ensure it arrives on the special day.
                         </p>
                     </div>
                 </div>
-                <div class="step-card rounded-lg shadow">
+                <div class="step-card animate-fade-in" style="animation-delay: 0.4s;">
                     <div class="step-card-header">
-                        <h3 class="text-lg font-bold">4. Receive Your Greeting</h3>
+                        <h3 class="text-lg font-bold">4. Checkout & Pay</h3>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-600">
-                            Once the celebrity uploads the greeting, receive your personalized video. Share it with loved ones or on social media to celebrate the moment!
+                            Proceed to checkout on our website, make a secure payment, and on the chosen date, both you and the recipient will receive the customized video greeting via WhatsApp and SMS.
                         </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Admin Features Section -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Powerful Tools for Admins</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-calendar-alt text-4xl text-coral-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Booking Management</h3>
-                    <p class="text-gray-600">
-                        Track and manage all bookings with date range filters. Visualize weekly bookings with progress bars and monthly trends with bar charts for data-driven insights.
-                    </p>
-                </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-users text-4xl text-coral-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Celebrity Management</h3>
-                    <p class="text-gray-600">
-                        Add, edit, and view celebrity profiles, including individual revenue details. Manage availability, booking slots, and ensure smooth operations for talent.
-                    </p>
-                </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow">
-                    <i class="fas fa-credit-card text-4xl text-coral-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Transaction History</h3>
-                    <p class="text-gray-600">
-                        Monitor payments, refunds, and settlements across the platform. View detailed transaction history for each booking to ensure smooth financial operations.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trust and Community Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">Join a Vibrant Fan Community</h2>
-            <p class="text-lg max-w-3xl mx-auto text-gray-600 mb-4">
-                Libanga isn’t just about bookings—it’s a platform to connect with a global fan community. Like, comment, and repost content, explore category-based feeds (Sports, Entertainment, Music), and engage with trending posts. Your data is secure with us, ensuring a safe and enjoyable experience for all users.
-            </p>
         </div>
     </section>
 
     <!-- FAQ Section (SEO-aware) -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-            <div class="space-y-8 max-w-3xl mx-auto">
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">How do I book a celebrity shoutout on Libanga?</h3>
+    <section class="section-padding bg-white section-parallax section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 relative">
+            <h2 class="mb-20">Frequently Asked Questions</h2>
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <div class="animate-fade-in">
+                    <h3 class="text-xl font-semibold mb-2">How do I request a celebrity video on Libanga?</h3>
                     <p class="text-gray-600">
-                        Simply search for a celebrity, select an available slot, confirm your booking details, and complete the payment. You’ll receive the personalized video once the celebrity uploads it.
+                        Visit our website, choose a celebrity, specify the wish details and delivery date, then complete the secure payment at checkout. The video is delivered via WhatsApp or SMS on the special day.
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">What types of content can I create on Libanga?</h3>
+                <div class="animate-fade-in" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-semibold mb-2">What if the celebrity doesn’t deliver on time?</h3>
                     <p class="text-gray-600">
-                        Express yourself with rich blog posts—upload images, videos, audio, or write text. You can also capture content live from your camera or mic for instant sharing.
+                        You’re refunded and can request another star with a discount, backed by our 100% fulfillment guarantee.
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">How does Libanga compare to Cameo?</h3>
+                <div class="animate-fade-in" style="animation-delay: 0.4s;">
+                    <h3 class="text-xl font-semibold mb-2">Can I personalize the video with a name?</h3>
                     <p class="text-gray-600">
-                        Libanga offers a diverse roster of global talent and AI-driven recommendations for a personalized experience. Unlike Cameo, we also provide a vibrant community platform with feeds, blogs, and category-based content exploration.
+                        Yes, include the recipient’s name, the sender’s name, and the type of wish when placing your request on our website.
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">Is my data secure on Libanga?</h3>
+                <div class="animate-fade-in" style="animation-delay: 0.6s;">
+                    <h3 class="text-xl font-semibold mb-2">How do I share the video with others?</h3>
                     <p class="text-gray-600">
-                        Yes, Libanga prioritizes user security with secure OTP login, encrypted transactions, and compliance with privacy standards. Your data remains safe while you enjoy the platform.
+                        On the scheduled date, both you and the recipient receive the video via WhatsApp or SMS, ready to share and celebrate.
                     </p>
                 </div>
             </div>
@@ -314,65 +901,125 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-coral-500 text-white shadow-lg">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Create Unforgettable Moments with Libanga</h2>
-            <p class="text-lg max-w-3xl mx-auto mb-8">
-                Book a celebrity shoutout today and make any occasion special. Join thousands of fans celebrating life’s moments with Libanga.
+    <section class="section-padding bg-gradient-to-r from-f87171 to-fbbf24 text-white section-parallax cta-section section-spacing">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-8 text-center relative cta-content">
+            <h2 class="mb-16">Create Unforgettable Moments with Libanga</h2>
+            <p class="max-w-3xl mx-auto mb-16">
+                Make someone’s day unforgettable! Start your request on our website with Libanga now and share a personalized celebrity greeting that lasts a lifetime. It’s not just a message—it’s a moment of connection.
             </p>
-            <a href="#booking-process" class="bg-gold-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Book Now</a>
+            <a href="#how-it-works" class="cta-button animate-glow">Get Started Now</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Kirusa</h3>
-                    <p class="text-gray-400">
-                        Innovating at the intersection of AI and connectivity since 2001, serving 100M+ users across 50 countries.
+                    <h3 class="mb-6">Kirusa</h3>
+                    <p>
+                        Reborn in 2025 as an AI innovator, building on 20+ years of connectivity for 100 million users in 50 countries.
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">AI Products</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/website/corpusio.html" class="text-gray-400 hover:text-teal-500">Corpusio</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-teal-500">KirusaAssist</a></li>
-                        <li><a href="/website/libanga.html" class="text-gray-400 hover:text-teal-500">Libanga</a></li>
-                        <li><a href="/website/haippyfit.html" class="text-gray-400 hover:text-teal-500">hAIppy Fit</a></li>
+                    <h3 class="mb-6">AI Products</h3>
+                    <ul class="space-y-4">
+                        <li><a href="/website/corpusio.html">Corpusio</a></li>
+                        <li><a href="/website/kirusaassist.html">KirusaAssist</a></li>
+                        <li><a href="/website/libanga.html">Libanga</a></li>
+                        <li><a href="/website/haippyfit.html">hAIppy Fit</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Legacy Products</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/website/voicesms.html" class="text-gray-400 hover:text-teal-500">Voice SMS</a></li>
-                        <li><a href="/website/instavoice.html" class="text-gray-400 hover:text-teal-500">InstaVoice</a></li>
-                        <li><a href="/website/kirusachannels.html" class="text-gray-400 hover:text-teal-500">Kirusa Channels</a></li>
+                    <h3 class="mb-6">Legacy Products</h3>
+                    <ul class="space-y-4">
+                        <li><a href="/website/voicesms.html">Voice SMS</a></li>
+                        <li><a href="/website/instavoice.html">InstaVoice</a></li>
+                        <li><a href="/website/kirusachannels.html">Kirusa Channels</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/website/contact.html" class="text-gray-400 hover:text-teal-500">Contact Us</a></li>
-                        <li><a href="https://www.linkedin.com/company/kirusa" class="text-gray-400 hover:text-teal-500">LinkedIn</a></li>
-                        <li><a href="https://www.kirusa.com/privacy-policy" class="text-gray-400 hover:text-teal-500">Privacy Policy</a></li>
-                        <li><a href="https://www.kirusa.com/support" class="text-gray-400 hover:text-teal-500">Support</a></li>
+                    <h3 class="mb-6">Connect</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            Contact Us Through
+                            <ul class="contact-methods">
+                                <li>Write to us at <a href="mailto:info@kirusa.com">info@kirusa.com</a></li>
+                                <li>For support, email <a href="mailto:support@kirusa.com">support@kirusa.com</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://www.linkedin.com/company/kirusa">LinkedIn</a></li>
+                        <li><a href="https://www.kirusa.com/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="https://www.kirusa.com/support">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mb-6">Locations</h3>
+                    <ul class="space-y-4">
+                        <li>USA: 85 Swenson Circle, Berkeley Heights, NJ, USA-07922</li>
+                        <li>Rwanda: UmuJyi wa Kigali, Gasabo, Remera, PO Box: 7208, Kigali</li>
+                        <li>DRC: Crown Tower, 3098, 30th June Boulevard, Kinshasa</li>
+                        <li>Cote D'Ivoire: 25 BP, 182 ABJ 25</li>
+                        <li>Malawi: PO Box 3038, Blantyre, Malawi</li>
+                        <li>Ghana: Meridian Heights Building, Tema, Ghana</li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-8 text-center text-gray-400">
+            <div class="mt-12 text-center">
                 © 2025 Kirusa. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript for Dropdown and Parallax -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            const mobileDropdown = menu.querySelector('.mobile-dropdown');
+            if (mobileDropdown) {
+                mobileDropdown.classList.remove('show');
+            }
         }
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdownContent = event.currentTarget.nextElementSibling;
+            const isOpen = dropdownContent.classList.contains('show');
+            document.querySelectorAll('.dropdown-content').forEach(d => {
+                if (d !== dropdownContent) d.classList.remove('show');
+            });
+            dropdownContent.classList.toggle('show', !isOpen);
+        }
+
+        function toggleMobileDropdown(event) {
+            event.stopPropagation();
+            const mobileDropdown = event.currentTarget.nextElementSibling;
+            const isOpen = mobileDropdown.classList.contains('show');
+            mobileDropdown.classList.toggle('show', !isOpen);
+            mobileDropdown.classList.toggle('hidden', isOpen);
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.parentElement.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const parallaxElements = document.querySelectorAll('.parallax-bg');
+            parallaxElements.forEach(element => {
+                const speed = 0.3;
+                const yPos = -(window.pageYOffset * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
     </script>
 </body>
 </html>
