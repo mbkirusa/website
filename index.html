@@ -9,8 +9,8 @@
     <title>Kirusa - AI for Every Endeavor</title>
     <link rel="icon" type="image/png" href="/website/static/images/kirusa-logo.png">
     <link rel="stylesheet" href="/website/static/css/output.css">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" defer>
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
@@ -70,9 +70,9 @@
         }
         .product-grid, .legacy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(14rem, 18vw, 18rem), 1fr));
+            gap: clamp(1rem, 2vw, 2rem);
+            padding: clamp(1rem, 2vw, 2rem) 0;
         }
         .product-card, .legacy-card {
             background: rgba(255, 255, 255, 0.9);
@@ -90,12 +90,12 @@
         }
         .product-media, .legacy-media {
             width: 100%;
-            height: 10rem;
+            height: clamp(8rem, 10vw, 10rem);
             display: flex;
             align-items: center;
             justify-content: center;
             background: transparent;
-            padding: 1rem;
+            padding: clamp(0.5rem, 1vw, 1rem);
         }
         .product-media img, .legacy-media img {
             max-width: 80%;
@@ -104,13 +104,13 @@
             transition: transform 0.5s ease;
         }
         .product-media i, .legacy-media i {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 2.5vw, 2.5rem);
             color: #6B46C1;
             transition: transform 0.5s ease;
         }
         .legacy-media svg {
-            width: 6rem;
-            height: 6rem;
+            width: clamp(4rem, 6vw, 6rem);
+            height: clamp(4rem, 6vw, 6rem);
             fill: #6B46C1;
             transition: transform 0.5s ease;
         }
@@ -121,17 +121,17 @@
             transform: scale(1.1) rotate(5deg);
         }
         .logo-media {
-            width: 12.5rem;
-            height: 4.375rem;
+            width: clamp(6rem, 12.5vw, 12.5rem);
+            height: clamp(2rem, 4.375vw, 4.375rem);
             object-fit: contain;
         }
         .cta-button {
             background: #F87171;
             color: #FFFFFF;
-            padding: 0.75rem 1.5rem;
+            padding: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
             border-radius: 1.875rem;
             font-weight: 600;
-            font-size: 1.2rem;
+            font-size: clamp(0.875rem, 1.2vw, 1.2rem);
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             display: inline-block;
             margin: 0.5rem;
@@ -152,8 +152,8 @@
         .nav-link {
             position: relative;
             font-weight: 500;
-            font-size: 1.1rem;
-            margin: 0 1rem;
+            font-size: clamp(0.875rem, 1.1vw, 1.1rem);
+            margin: 0 clamp(0.5rem, 1vw, 1rem);
         }
         .nav-link::after {
             content: '';
@@ -219,7 +219,7 @@
         .intro-container {
             position: relative;
             background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
+            padding: clamp(1rem, 2vw, 2rem);
             border-radius: 1rem;
             box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.05);
             max-width: 56rem;
@@ -237,7 +237,7 @@
             border-radius: 0.125rem;
         }
         .intro-heading {
-            font-size: 2rem;
+            font-size: clamp(1.25rem, 2vw, 2rem);
             font-weight: 700;
             color: #1D1D1F;
             margin-bottom: 1.5rem;
@@ -264,7 +264,7 @@
             text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
         }
         .apple-text {
-            font-size: 1.125rem;
+            font-size: clamp(0.75rem, 1.125vw, 1.125rem);
             font-weight: 400;
             line-height: 1.75;
             color: #1F2937;
@@ -285,112 +285,75 @@
         /* Responsive Adjustments */
         @media (max-width: 1024px) {
             .hero-content h1 {
-                font-size: 3.5rem;
+                font-size: clamp(3rem, 3.5vw, 3.5rem);
             }
             .hero-content p {
-                font-size: 1.5rem;
-            }
-            .product-grid, .legacy-grid {
-                grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-            }
-            .product-media, .legacy-media {
-                height: 8rem;
-            }
-            .logo-media {
-                width: 10rem;
-                height: 3.5rem;
+                font-size: clamp(1.25rem, 1.5vw, 1.5rem);
             }
             .intro-heading {
-                font-size: 1.75rem;
+                font-size: clamp(1.5rem, 1.75vw, 1.75rem);
             }
             .intro-container p {
-                font-size: 1.125rem;
+                font-size: clamp(1rem, 1.125vw, 1.125rem);
             }
             .cta-content h2 {
-                font-size: 3rem;
+                font-size: clamp(2.5rem, 3vw, 3rem);
             }
             .cta-content p {
-                font-size: 1.5rem;
+                font-size: clamp(1.25rem, 1.5vw, 1.5rem);
             }
             .apple-text {
-                font-size: 1rem;
+                font-size: clamp(0.875rem, 1vw, 1rem);
             }
         }
         @media (max-width: 768px) {
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
             }
             .hero-content p {
-                font-size: 1.25rem;
-            }
-            .product-grid, .legacy-grid {
-                grid-template-columns: 1fr;
-            }
-            .product-media, .legacy-media {
-                height: 7rem;
-            }
-            .logo-media {
-                width: 8rem;
-                height: 2.75rem;
-            }
-            .cta-button {
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
+                font-size: clamp(1rem, 1.25vw, 1.25rem);
             }
             .intro-heading {
-                font-size: 1.5rem;
+                font-size: clamp(1.25rem, 1.5vw, 1.5rem);
             }
             .intro-container p {
-                font-size: 1rem;
-            }
-            .intro-container {
-                padding: 1.5rem;
+                font-size: clamp(0.875rem, 1vw, 1rem);
             }
             .nav-link {
-                font-size: 1rem;
-                margin: 0 0.5rem;
+                font-size: clamp(0.75rem, 1vw, 1rem);
+                margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
             }
             .cta-content h2 {
-                font-size: 2.5rem;
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
             }
             .cta-content p {
-                font-size: 1.25rem;
+                font-size: clamp(1rem, 1.25vw, 1.25rem);
             }
             .apple-text {
-                font-size: 0.875rem;
+                font-size: clamp(0.75rem, 0.875vw, 0.875rem);
             }
         }
         @media (max-width: 480px) {
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: clamp(1.5rem, 2vw, 2rem);
             }
             .hero-content p {
-                font-size: 1rem;
-            }
-            .product-media, .legacy-media {
-                height: 6rem;
-            }
-            .logo-media {
-                width: 6rem;
-                height: 2rem;
+                font-size: clamp(0.875rem, 1vw, 1rem);
             }
             .intro-heading {
-                font-size: 1.25rem;
+                font-size: clamp(1rem, 1.25vw, 1.25rem);
             }
             .intro-container p {
-                font-size: 0.875rem;
-            }
-            .intro-container {
-                padding: 1rem;
+                font-size: clamp(0.75rem, 0.875vw, 0.875rem);
             }
             .cta-content h2 {
-                font-size: 2rem;
+                font-size: clamp(1.5rem, 2vw, 2rem);
             }
             .cta-content p {
-                font-size: 1rem;
+                font-size: clamp(0.875rem, 1vw, 1rem);
             }
             .apple-text {
-                font-size: 0.75rem;
+                font-size: clamp(0.625rem, 0.75vw, 0.75rem);
             }
         }
     </style>
@@ -400,7 +363,7 @@
     <header class="bg-white shadow-lg fixed top-0 w-full z-50">
         <nav class="container mx-auto px-8 py-6 flex justify-between items-center">
             <a href="/website">
-                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media">
+                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media" loading="lazy">
             </a>
             <div class="hidden md:flex space-x-12">
                 <div class="relative">
@@ -442,7 +405,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white">
+    <section class="hero-section text-white py-24 mb-24">
         <div class="hero-bg">
             <lottie-player src="/website/static/animations/hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
         </div>
@@ -461,7 +424,7 @@
     </section>
 
     <!-- Introduction Section -->
-    <section class="py-40 bg-white section-parallax mb-16">
+    <section class="py-24 bg-white section-parallax mb-24">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <div class="intro-container">
@@ -474,7 +437,7 @@
     </section>
 
     <!-- AI Products Section -->
-    <section id="products" class="py-40 bg-gray-100 section-parallax mb-16">
+    <section id="products" class="py-24 bg-gray-100 section-parallax mb-24">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="text-5xl font-bold text-center mb-20 text-gradient">Our AI Solutions</h2>
@@ -482,7 +445,7 @@
                 <!-- Corpusio -->
                 <div class="product-card animate-float">
                     <div class="product-media">
-                        <img src="/website/static/images/corpusio-updated.png" alt="Corpusio AI document discovery logo">
+                        <img src="/website/static/images/corpusio-updated.png" alt="Corpusio AI document discovery logo" loading="lazy">
                     </div>
                     <div class="p-12 text-center">
                         <h3 class="text-2xl font-bold mb-8">Corpusio: AI-Powered Enterprise Knowledge Hub</h3>
@@ -512,7 +475,7 @@
                 <!-- Libanga -->
                 <div class="product-card animate-float" style="animation-delay: 0.4s;">
                     <div class="product-media">
-                        <img src="/website/static/images/Libanga.png" alt="Libanga personalized celebrity video logo">
+                        <img src="/website/static/images/Libanga.png" alt="Libanga personalized celebrity video logo" loading="lazy">
                     </div>
                     <div class="p-12 text-center">
                         <h3 class="text-2xl font-bold mb-8">Libanga – Your Favorite Stars, On-Demand</h3>
@@ -525,7 +488,7 @@
                 <!-- hAIppy Fit -->
                 <div class="product-card animate-float" style="animation-delay: 0.6s;">
                     <div class="product-media">
-                        <img src="/website/static/images/happyfit.png" alt="hAIppy Fit Fitness logo">
+                        <img src="/website/static/images/happyfit.png" alt="hAIppy Fit Fitness logo" loading="lazy">
                     </div>
                     <div class="p-12 text-center">
                         <h3 class="text-2xl font-bold mb-8">hAIppy Fit – AI Fitness & Wellness Coach</h3>
@@ -540,7 +503,7 @@
     </section>
 
     <!-- Legacy Products Section -->
-    <section id="legacy" class="py-40 bg-white section-parallax mb-16">
+    <section id="legacy" class="py-24 bg-white section-parallax mb-24">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="text-5xl font-bold text-center mb-20 text-gradient">Our Connectivity Roots</h2>
@@ -566,7 +529,7 @@
                 <!-- InstaVoice -->
                 <div class="legacy-card animate-float" style="animation-delay: 0.2s;">
                     <div class="legacy-media">
-                        <img src="/website/static/images/InstaVoice-01.svg" alt="InstaVoice call completion logo">
+                        <img src="/website/static/images/InstaVoice-01.svg" alt="InstaVoice call completion logo" loading="lazy">
                     </div>
                     <div class="p-12 text-center">
                         <h3 class="text-2xl font-bold mb-8">InstaVoice</h3>
@@ -579,7 +542,7 @@
                 <!-- Kirusa Channels -->
                 <div class="legacy-card animate-float" style="animation-delay: 0.4s;">
                     <div class="legacy-media">
-                        <img src="/website/static/images/Channels-01.svg" alt="Kirusa Channels celebrity engagement logo">
+                        <img src="/website/static/images/Channels-01.svg" alt="Kirusa Channels celebrity engagement logo" loading="lazy">
                     </div>
                     <div class="p-12 text-center">
                         <h3 class="text-2xl font-bold mb-8">Kirusa Channels</h3>
@@ -594,7 +557,7 @@
     </section>
 
     <!-- About Kirusa Section -->
-    <section id="about" class="py-40 bg-gray-100 section-parallax mb-16">
+    <section id="about" class="py-24 bg-gray-100 section-parallax mb-24">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="text-5xl font-bold text-center mb-20 text-gradient">About Kirusa</h2>
@@ -622,7 +585,7 @@
     </section>
 
     <!-- Why Kirusa Section -->
-    <section id="why-kirusa" class="py-40 bg-white section-parallax mb-16">
+    <section id="why-kirusa" class="py-24 bg-white section-parallax mb-24">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="text-5xl font-bold text-center mb-20 text-gradient">Why Kirusa?</h2>
@@ -653,7 +616,7 @@
     </section>
 
     <!-- Call-to-Action Banner -->
-    <section class="py-48 bg-gradient-to-r from-6B46C1 to-2DD4BF text-white section-parallax cta-section mb-16">
+    <section class="py-24 bg-gradient-to-r from-6B46C1 to-2DD4BF text-white section-parallax cta-section mb-24">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 text-center relative cta-content">
             <h2 class="text-5xl font-bold mb-16">Ready to See Kirusa’s AI in Action?</h2>
@@ -665,7 +628,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16 mt-16">
+    <footer class="bg-gray-900 text-white py-16 mt-24">
         <div class="container mx-auto px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
@@ -695,6 +658,8 @@
                     <h3 class="text-xl font-bold mb-6 text-gradient">Connect</h3>
                     <ul class="space-y-4">
                         <li><a href="/website/contact.html" class="text-gray-400 hover:text-gradient">Contact Us</a></li>
+                        <li><a href="mailto:info@kirusa.com" class="text-gray-400 hover:text-gradient">info@kirusa.com</a></li>
+                        <li><a href="mailto:support@kirusa.com" class="text-gray-400 hover:text-gradient">support@kirusa.com</a></li>
                         <li><a href="https://www.linkedin.com/company/kirusa" class="text-gray-400 hover:text-gradient">LinkedIn</a></li>
                         <li><a href="https://www.kirusa.com/privacy-policy" class="text-gray-400 hover:text-gradient">Privacy Policy</a></li>
                         <li><a href="https://www.kirusa.com/support" class="text-gray-400 hover:text-gradient">Support</a></li>
@@ -719,6 +684,7 @@
     </footer>
 
     <!-- JavaScript for Dropdown and Parallax -->
+    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
