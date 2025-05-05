@@ -32,7 +32,7 @@
             letter-spacing: -0.03em;
             line-height: 1.1;
             text-align: center;
-            color: #FFFFFF; /* High contrast on hero section */
+            color: #FFFFFF;
         }
         h2 {
             font-size: clamp(2rem, 4vw, 3.75rem);
@@ -40,21 +40,21 @@
             letter-spacing: -0.02em;
             text-align: center;
             margin-bottom: 2rem;
-            color: #1A2526; /* Solid dark color for readability */
+            color: #1A2526;
         }
         h3 {
             font-size: clamp(1rem, 2vw, 1.25rem);
             font-weight: 600;
             letter-spacing: -0.01em;
             text-align: center;
-            color: #1A2526; /* Solid dark color for readability */
+            color: #1A2526;
         }
         p {
             font-size: 1.1rem;
             font-weight: 400;
             line-height: 1.8;
             text-align: center;
-            color: #1D1D1F; /* High contrast on light backgrounds */
+            color: #1D1D1F;
             letter-spacing: 0.01em;
         }
         a {
@@ -62,11 +62,11 @@
             font-weight: 500;
             text-align: center;
             text-decoration: none;
-            color: #0055A4; /* Deep blue for links, high contrast */
+            color: #0055A4;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #003366; /* Darker blue on hover */
+            color: #003366;
         }
         /* Header Styling */
         header {
@@ -84,12 +84,12 @@
             position: relative;
             font-weight: 500;
             font-size: 1rem;
-            color: #FFFFFF; /* High contrast on dark header */
+            color: #FFFFFF;
             margin: 0 clamp(0.5rem, 1vw, 1rem);
             transition: color 0.3s ease, transform 0.3s ease;
         }
         .nav-link:hover {
-            color: #E6E6E6; /* Slightly dimmed white for hover */
+            color: #E6E6E6;
             transform: translateY(-2px);
         }
         .nav-link::after {
@@ -99,15 +99,14 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background: #FFFFFF; /* Solid white underline for contrast */
+            background: #FFFFFF;
             transition: width 0.3s ease;
         }
         .nav-link:hover::after {
             width: 100%;
         }
-        /* Dropdown Styling */
         .dropdown-button {
-            color: #FFFFFF; /* High contrast on dark header */
+            color: #FFFFFF;
             font-weight: 500;
             font-size: 1rem;
             transition: color 0.3s ease, transform 0.3s ease;
@@ -137,7 +136,7 @@
         }
         .dropdown-content a {
             display: block;
-            color: #FFFFFF; /* High contrast on dark dropdown */
+            color: #FFFFFF;
             font-size: 0.95rem;
             font-weight: 500;
             padding: 0.75rem 1.5rem;
@@ -152,13 +151,12 @@
             color: #E6E6E6;
             transform: translateX(5px);
         }
-        /* Mobile Menu Styling */
         #mobile-menu {
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
         }
         #mobile-menu a {
-            color: #FFFFFF; /* High contrast on dark mobile menu */
+            color: #FFFFFF;
             font-weight: 500;
             font-size: 1.1rem;
             transition: color 0.3s ease, transform 0.3s ease;
@@ -168,7 +166,7 @@
             transform: translateX(5px);
         }
         .mobile-dropdown a {
-            color: #FFFFFF; /* High contrast on dark mobile dropdown */
+            color: #FFFFFF;
             font-size: 0.95rem;
             font-weight: 400;
             padding: 0.5rem 1rem;
@@ -183,16 +181,15 @@
             transform: translateX(5px);
         }
         .menu-icon {
-            color: #FFFFFF; /* High contrast on dark header */
+            color: #FFFFFF;
             transition: transform 0.3s ease;
         }
         .menu-icon:hover {
             transform: scale(1.1);
         }
-        /* CTA Button Styling */
         .cta-button {
             background: linear-gradient(135deg, #007aff, #00c6ff);
-            color: #FFFFFF; /* High contrast on button */
+            color: #FFFFFF;
             padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
             border-radius: 50px;
             font-weight: 600;
@@ -212,7 +209,7 @@
         .cta-button.secondary {
             background: transparent;
             border: 2px solid rgba(255, 255, 255, 0.8);
-            color: #FFFFFF; /* High contrast on transparent button */
+            color: #FFFFFF;
             box-shadow: none;
         }
         .cta-button.secondary:hover {
@@ -221,7 +218,6 @@
             color: #FFFFFF;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        /* Hero Section */
         .hero-section {
             position: relative;
             min-height: 100vh;
@@ -246,9 +242,30 @@
         }
         .hero-content h1, .hero-content p {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            color: #FFFFFF; /* High contrast on hero section */
+            color: #FFFFFF;
         }
-        /* Product and Legacy Cards */
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-1.5rem) rotateX(-5deg) rotateY(-5deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(1.5rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0.5rem rgba(0, 122, 255, 0.3); }
+            50% { box-shadow: 0 0 1.25rem rgba(0, 122, 255, 0.6); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+        .animate-glow {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
         .product-grid, .legacy-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(clamp(14rem, 18vw, 18rem), 1fr));
@@ -286,13 +303,13 @@
         }
         .product-media i, .legacy-media i {
             font-size: clamp(2rem, 2.5vw, 2.5rem);
-            color: #1A2526; /* Solid color for icons */
+            color: #1A2526;
             transition: transform 0.3s ease;
         }
         .legacy-media svg {
             width: clamp(4rem, 6vw, 6rem);
             height: clamp(4rem, 6vw, 6rem);
-            fill: #1A2526; /* Solid color for SVGs */
+            fill: #1A2526;
             transition: transform 0.5s ease;
         }
         .product-card:hover .product-media img,
@@ -307,7 +324,71 @@
             object-fit: contain;
             filter: brightness(1.5);
         }
-        /* Section Parallax */
+        /* Updated Product Card Text Styling */
+        .product-text-container {
+            position: relative;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 1.5rem;
+            border-radius: 0 0 1.5rem 1.5rem;
+        }
+        .product-text-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2rem;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
+            pointer-events: none;
+        }
+        .product-description {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #1D1D1F;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .product-description .highlight {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1A2526;
+        }
+        .product-card a {
+            display: inline-block;
+            position: relative;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .product-card a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: #0055A4;
+            transition: width 0.3s ease;
+        }
+        .product-card a:hover::after {
+            width: 100%;
+        }
+        /* Scrollbar Styling for Product Text */
+        .product-text-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .product-text-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+        }
+        .product-text-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+        .product-text-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
         .section-parallax {
             position: relative;
             overflow: hidden;
@@ -324,7 +405,7 @@
             transition: transform 0.1s linear;
         }
         #why-kirusa .text-gray-600 {
-            color: #1D1D1F; /* High contrast */
+            color: #1D1D1F;
         }
         .intro-container {
             position: relative;
@@ -343,7 +424,7 @@
             transform: translateX(-50%);
             width: 10rem;
             height: 0.25rem;
-            background: #1A2526; /* Solid color for divider */
+            background: #1A2526;
             border-radius: 0.125rem;
         }
         .cta-section {
@@ -365,17 +446,8 @@
         }
         .cta-content h2, .cta-content p {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            color: #FFFFFF; /* High contrast on CTA section */
+            color: #FFFFFF;
         }
-        .product-description {
-            font-size: 1.1rem;
-            font-weight: 400;
-            line-height: 1.8;
-            color: #1D1D1F; /* High contrast on light background */
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        /* About Section Styling */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -396,31 +468,29 @@
         .about-item h3 {
             margin-bottom: 1rem;
             font-size: 1.3rem;
-            color: #1A2526; /* High contrast */
+            color: #1A2526;
         }
         .about-item p {
             font-size: 1rem;
             line-height: 1.6;
             margin: 0;
-            color: #1D1D1F; /* High contrast */
+            color: #1D1D1F;
         }
-        /* Footer Styling */
         footer {
-            background: #212529; /* Slightly lighter dark background for better contrast */
+            background: #212529;
         }
         footer h3 {
-            color: #FFFFFF; /* High contrast on dark footer */
+            color: #FFFFFF;
         }
         footer p, footer ul li, footer .text-gray-400 {
-            color: #F8F9FA; /* High contrast on dark footer */
+            color: #F8F9FA;
         }
         footer a {
-            color: #F8F9FA; /* High contrast on dark footer */
+            color: #F8F9FA;
         }
         footer a:hover {
-            color: #D3D4D5; /* Slightly dimmed for hover */
+            color: #D3D4D5;
         }
-        /* Connect Section Subpoints */
         .contact-methods {
             list-style-type: disc;
             padding-left: 1.5rem;
@@ -430,7 +500,6 @@
         .contact-methods li {
             margin-bottom: 0.5rem;
         }
-        /* New spacing and padding utilities */
         .section-spacing {
             margin-bottom: clamp(4rem, 8vw, 8rem);
         }
@@ -438,7 +507,6 @@
             padding-top: clamp(4rem, 6vw, 8rem);
             padding-bottom: clamp(4rem, 6vw, 8rem);
         }
-        /* Responsive Adjustments */
         @media (max-width: 1024px) {
             .hero-content h1 {
                 font-size: clamp(3rem, 3.5vw, 3.5rem);
@@ -613,10 +681,10 @@
                     <div class="product-media">
                         <img src="/website/static/images/corpusio-updated.png" alt="Corpusio AI document discovery logo" loading="lazy">
                     </div>
-                    <div class="p-12 text-center">
-                        <h3 class="mb-8">Corpusio: AI-Powered Enterprise Knowledge Hub</h3>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Corpusio: AI-Powered Enterprise Knowledge Hub</h3>
                         <p class="product-description">
-                            Unlock instant access to your enterprise's documents, images, audio, and video with cutting-edge AI technology. Corpusio reduces search time by up to 80%, delivering precise, actionable answers tailored to your role. With robust role-based access control (RBAC), it ensures sensitive information is securely restricted to authorized users only. Seamlessly accessible via WhatsApp and our intuitive website, starting at just $150/month, Corpusio transforms the way your team works: smarter, faster, and more connected.
+                            <span class="highlight">Access enterprise knowledge instantly.</span> Corpusio leverages cutting-edge AI to unlock documents, images, audio, and video with precision. Reduce search time by up to 80% with role-tailored answers. Featuring robust role-based access control (RBAC), it keeps sensitive data secure. Available via WhatsApp and our intuitive website for just $150/month, Corpusio empowers your team to work smarter and faster.
                         </p>
                         <a href="/website/corpusio.html" class="hover:underline">Learn More →</a>
                     </div>
@@ -626,10 +694,10 @@
                     <div class="product-media">
                         <i class="fas fa-microphone"></i>
                     </div>
-                    <div class="p-12 text-center">
-                        <h3 class="mb-8">KirusaAssist: Your AI-Powered Virtual Companion</h3>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">KirusaAssist: Your AI-Powered Virtual Companion</h3>
                         <p class="product-description">
-                            Transform your meetings with KirusaAssist, an AI-powered virtual assistant that captures insights, coordinates across teams, and delivers instant, role-based answers. It joins your calls, takes real-time notes, syncs updates across simultaneous meetings, and integrates seamlessly with Corpusio for secure knowledge access. Ask KirusaAssist a question during meetings, and it provides answers via text-to-speech, reading them aloud, while displaying the response in the chat, restricted to your authorized role for a fluid, hands-free, and private experience.
+                            <span class="highlight">Elevate your meetings with AI.</span> KirusaAssist captures insights, coordinates teams, and delivers role-based answers in real time. It joins calls, takes notes, syncs updates across meetings, and integrates with Corpusio for secure knowledge access. Ask questions during meetings, and get answers via text-to-speech—seamlessly and privately, tailored to your role.
                         </p>
                         <a href="/website/kirusaassist.html" class="hover:underline">Learn More →</a>
                     </div>
@@ -639,10 +707,10 @@
                     <div class="product-media">
                         <img driveId="1X6b2pF5l0u1qWqC5s5rW5rY5rW5rW5r" src="/website/static/images/Libanga.png" alt="Libanga personalized celebrity video logo" loading="lazy">
                     </div>
-                    <div class="p-12 text-center">
-                        <h3 class="mb-8">Libanga: Your Favorite Stars, On-Demand</h3>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">Libanga: Your Favorite Stars, On-Demand</h3>
                         <p class="product-description">
-                            Personalized video shoutouts powered by Kirusa. Libanga connects you with celebrities for customized video messages for any occasion. Surprise your loved ones with a greeting from a beloved star.
+                            <span class="highlight">Celebrity moments, personalized for you.</span> Libanga, powered by Kirusa, connects you with stars for custom video messages. Perfect for any occasion, delight your loved ones with a heartfelt greeting from their favorite celebrity.
                         </p>
                         <a href="/website/libanga.html" class="hover:underline">Learn More →</a>
                     </div>
@@ -652,10 +720,10 @@
                     <div class="product-media">
                         <img driveId="1X6b2pF5l0u1qWqC5s5rW5rY5rW5rW5r" src="/website/static/images/happyfit.png" alt="hAIppy Fit Fitness logo" loading="lazy">
                     </div>
-                    <div class="p-12 text-center">
-                        <h3 class="mb-8">hAIppy Fit: AI Fitness & Wellness Coach</h3>
+                    <div class="product-text-container">
+                        <h3 class="mb-4">hAIppy Fit: AI Fitness & Wellness Coach</h3>
                         <p class="product-description">
-                            Achieve your fitness goals with hAIppy Fit, your personal AI coach. It offers tailored workout plans, mindfulness exercises, and mood tracking to support holistic wellness. Stay motivated with daily guidance and adaptive routines designed for your lifestyle.
+                            <span class="highlight">Your personal path to wellness.</span> hAIppy Fit crafts tailored workout plans, mindfulness exercises, and mood tracking for holistic health. Stay motivated with daily guidance and adaptive routines designed to fit your lifestyle, helping you achieve fitness goals with ease.
                         </p>
                         <a href="/website/haippyfit.html" class="hover:underline">Learn More →</a>
                     </div>
@@ -673,7 +741,6 @@
                 Since 2001, Kirusa has connected over 100 million monthly users across 50 countries with innovative voice and messaging solutions, partnering with more than 50 mobile carriers worldwide.
             </p>
             <div class="legacy-grid">
-                <!-- Voice SMS -->
                 <div class="legacy-card animate-float">
                     <div class="legacy-media">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -688,7 +755,6 @@
                         <a href="/website/voicesms.html" class="hover:underline">Learn More →</a>
                     </div>
                 </div>
-                <!-- InstaVoice -->
                 <div class="legacy-card animate-float" style="animation-delay: 0.2s;">
                     <div class="legacy-media">
                         <img src="/website/static/images/InstaVoice-01.svg" alt="InstaVoice call completion logo" loading="lazy">
@@ -701,7 +767,6 @@
                         <a href="/website/instavoice.html" class="hover:underline">Learn More →</a>
                     </div>
                 </div>
-                <!-- Kirusa Channels -->
                 <div class="legacy-card animate-float" style="animation-delay: 0.4s;">
                     <div class="legacy-media">
                         <img src="/website/static/images/Channels-01.svg" alt="Kirusa Channels celebrity engagement logo" loading="lazy">
