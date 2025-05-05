@@ -420,6 +420,16 @@
         footer a:hover {
             color: #D3D4D5; /* Slightly dimmed for hover */
         }
+        /* Connect Section Subpoints */
+        .contact-methods {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            color: #F8F9FA;
+        }
+        .contact-methods li {
+            margin-bottom: 0.5rem;
+        }
         /* New spacing and padding utilities */
         .section-spacing {
             margin-bottom: clamp(4rem, 8vw, 8rem);
@@ -809,9 +819,13 @@
                 <div>
                     <h3 class="mb-6">Connect</h3>
                     <ul class="space-y-4">
-                        <li><a href="/website/contact.html">Contact Us</a></li>
-                        <li><a href="mailto:info@kirusa.com">info@kirusa.com</a></li>
-                        <li><a href="mailto:support@kirusa.com">support@kirusa.com</a></li>
+                        <li>
+                            Contact Us Through
+                            <ul class="contact-methods">
+                                <li>Write to us at <a href="mailto:info@kirusa.com">info@kirusa.com</a></li>
+                                <li>For support, email <a href="mailto:support@kirusa.com">support@kirusa.com</a></li>
+                            </ul>
+                        </li>
                         <li><a href="https://www.linkedin.com/company/kirusa">LinkedIn</a></li>
                         <li><a href="https://www.kirusa.com/privacy-policy">Privacy Policy</a></li>
                         <li><a href="https://www.kirusa.com/support">Support</a></li>
