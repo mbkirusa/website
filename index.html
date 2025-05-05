@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kirusa delivers innovative AI solutions for enterprise productivity, personal connections, and wellness with Corpusio, KirusaAssist, Libanga, and hAIppy Fit, alongside over 20 years of expertise in voice and messaging solutions.">
-    <meta name="keywords" content="AI solutions, enterprise AI, AI meeting assistant, personalized celebrity videos, AI fitness app, document discovery, voice SMS">
+    <meta name="description" content="Kirusa brings cutting-edge AI to work, life, and play – from enterprise knowledge discovery to smarter meetings, capturing life’s moments, and reaching fitness goals.">
+    <meta name="keywords" content="AI solutions, enterprise knowledge hub, AI meeting assistant, personalized celebrity videos, AI fitness app, document discovery">
     <meta name="author" content="Kirusa">
-    <title>Kirusa - Innovate with AI and Connectivity</title>
+    <title>Kirusa - AI for Every Endeavor</title>
     <link rel="stylesheet" href="/website/static/css/output.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #F9FAFB;
+            color: #1F2937;
         }
         html {
             scroll-behavior: smooth;
         }
         .hero-section {
-            background: linear-gradient(to bottom, #1E3A8A, #2DD4BF);
+            background: linear-gradient(135deg, #1E3A8A, #6B46C1, #2DD4BF);
             position: relative;
             overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
         }
         .lottie-container {
             position: absolute;
@@ -28,65 +33,58 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
+            opacity: 0.2;
             z-index: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%232DD4BF" fill-opacity="0.3" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
         .animate-fade-in {
             animation: fadeIn 1s ease-out forwards;
         }
-        .product-card, .legacy-card {
+        .animate-pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        .product-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            background-color: #FFFFFF;
-            border-radius: 0.5rem;
+            background: linear-gradient(145deg, #FFFFFF, #F3F4F6);
+            border-radius: 1rem;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
-        .product-card:hover, .legacy-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-            background-color: #F3F4F6;
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 32px rgba(107, 70, 193, 0.2);
+            background: #F3F4F6;
         }
-        .product-media, .legacy-media {
+        .product-media {
             object-fit: contain;
             width: 100%;
-            height: 150px;
-            background-color: #FFFFFF;
+            height: 120px;
+            background: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .legacy-media svg {
-            width: 96px; /* Matches text-6xl equivalent for consistency */
-            height: 96px;
-            fill: #14B8A6; /* Matches text-teal-500 */
-        }
-        .legacy-card-content {
-            min-height: 150px; /* Ensures consistent height for content area */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .legacy-card-content p {
-            flex-grow: 1;
-            margin-bottom: 1rem;
-        }
-        .legacy-card-content a {
-            display: inline-block;
+        .product-media i {
+            font-size: 3rem;
         }
         @media (min-width: 768px) {
-            .product-media, .legacy-media {
-                height: 200px;
-            }
-            .legacy-card-content {
-                min-height: 180px;
+            .product-media {
+                height: 140px;
             }
         }
         .logo-media {
             object-fit: contain;
-            width: 150px;
+            width: 160px;
             height: 50px;
         }
         @media (min-width: 768px) {
@@ -96,316 +94,233 @@
             }
         }
         .cta-button {
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            background: #F87171;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
         .cta-button:hover {
-            background-color: #F87171;
+            background: #6B46C1;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.4);
         }
-        /* Dynamic animation for tiles */
-        .legacy-card {
-            opacity: 0;
-            animation: slideIn 0.5s ease-out forwards;
+        .text-gradient {
+            background: linear-gradient(to right, #2DD4BF, #6B46C1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .legacy-card:nth-child(1) { animation-delay: 0.1s; }
-        .legacy-card:nth-child(2) { animation-delay: 0.2s; }
-        .legacy-card:nth-child(3) { animation-delay: 0.3s; }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
     <!-- Navigation -->
-    <header class="bg-white shadow-sm fixed top-0 w-full z-50">
-        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <header class="bg-white shadow-lg fixed top-0 w-full z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/website">
-                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media">
+                <img src="/website/static/images/kirusa-logo.png" alt="Kirusa Logo" class="logo-media animate-pulse">
             </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#ai-products" class="text-gray-600 hover:text-teal-500 transition">AI Products</a>
-                <a href="#legacy" class="text-gray-600 hover:text-teal-500 transition">Legacy Products</a>
-                <a href="#about" class="text-gray-600 hover:text-teal-500 transition">About</a>
-                <a href="#why-kirusa" class="text-gray-600 hover:text-teal-500 transition">Why Kirusa</a>
-                <a href="/website/contact.html" class="text-gray-600 hover:text-teal-500 transition">Contact</a>
+            <div class="hidden md:flex space-x-10">
+                <a href="#products" class="text-gray-700 hover:text-gradient font-medium transition">Products</a>
+                <div class="relative group">
+                    <button class="text-gray-700 hover:text-gradient font-medium transition flex items-center">
+                        Solutions
+                        <i class="fas fa-chevron-down ml-2"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2">
+                        <a href="#enterprise" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Enterprise</a>
+                        <a href="#wellness" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Wellness</a>
+                        <a href="#entertainment" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Entertainment</a>
+                    </div>
+                </div>
+                <a href="#about" class="text-gray-700 hover:text-gradient font-medium transition">About</a>
+                <a href="#why-kirusa" class="text-gray-700 hover:text-gradient font-medium transition">Why Kirusa</a>
+                <a href="/website/contact.html" class="text-gray-700 hover:text-gradient font-medium transition">Contact</a>
             </div>
             <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
-                <i class="fas fa-bars text-xl text-gray-600"></i>
+                <i class="fas fa-bars text-2xl text-gray-700"></i>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden bg-white shadow-md md:hidden">
-            <ul class="flex flex-col items-center py-4">
-                <li class="py-2"><a href="#ai-products" class="text-gray-600 hover:text-teal-500">AI Products</a></li>
-                <li class="py-2"><a href="#legacy" class="text-gray-600 hover:text-teal-500">Legacy Products</a></li>
-                <li class="py-2"><a href="#about" class="text-gray-600 hover:text-teal-500">About</a></li>
-                <li class="py-2"><a href="#why-kirusa" class="text-gray-600 hover:text-teal-500">Why Kirusa</a></li>
-                <li class="py-2"><a href="/website/contact.html" class="text-gray-600 hover:text-teal-500">Contact</a></li>
+        <div id="mobile-menu" class="hidden bg-white shadow-lg md:hidden">
+            <ul class="flex flex-col items-center py-6 space-y-4">
+                <li><a href="#products" class="text-gray-700 hover:text-gradient font-medium">Products</a></li>
+                <li>
+                    <a href="#enterprise" class="text-gray-700 hover:text-gradient font-medium">Solutions</a>
+                    <ul class="pl-4 mt-2 space-y-2">
+                        <li><a href="#enterprise" class="text-gray-600 hover:text-gradient">Enterprise</a></li>
+                        <li><a href="#wellness" class="text-gray-600 hover:text-gradient">Wellness</a></li>
+                        <li><a href="#entertainment" class="text-gray-600 hover:text-gradient">Entertainment</a></li>
+                    </ul>
+                </li>
+                <li><a href="#about" class="text-gray-700 hover:text-gradient font-medium">About</a></li>
+                <li><a href="#why-kirusa" class="text-gray-700 hover:text-gradient font-medium">Why Kirusa</a></li>
+                <li><a href="/website/contact.html" class="text-gray-700 hover:text-gradient font-medium">Contact</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white pt-24 pb-20">
+    <section class="hero-section text-white">
         <div class="lottie-container">
             <lottie-player src="/website/static/animations/hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
         </div>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 animate-fade-in">Kirusa: Innovate with AI & Connectivity</h1>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 animate-fade-in text-gradient">AI for Every Endeavor</h1>
             <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-8 animate-fade-in" style="animation-delay: 0.2s;">
-                Over 20 years of connecting the world, now reimagined with AI to empower enterprises, create personal connections, and enhance wellness.
+                Kirusa brings cutting-edge AI to your work, life, and play – from unlocking enterprise knowledge to smarter meetings, capturing life’s moments, and reaching fitness goals.
             </p>
             <div class="flex justify-center space-x-4 animate-fade-in" style="animation-delay: 0.4s;">
-                <a href="#ai-products" class="bg-teal-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Explore AI Solutions</a>
-                <a href="/website/contact.html" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-teal-500 cta-button font-semibold">Contact Us</a>
+                <a href="#products" class="cta-button">Explore Kirusa’s Solutions</a>
+                <a href="/website/contact.html" class="cta-button bg-transparent border-2 border-white hover:bg-white hover:text-gray-900">Contact Us</a>
             </div>
         </div>
     </section>
 
-    <!-- AI Products Section -->
-    <section id="ai-products" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Our AI-Powered Innovations</h2>
-            <p class="text-lg max-w-3xl mx-auto text-center mb-8">
-                Kirusa’s AI solutions are designed to transform how businesses operate and individuals thrive, delivering powerful, user-focused technology for today’s challenges.
+    <!-- Introduction Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <p class="text-lg max-w-3xl mx-auto text-center text-gray-600 mb-12">
+                Welcome to Kirusa – where AI meets everyday innovation. We build AI-first solutions that are redefining how people work, communicate, and stay healthy. Our mission is simple: leverage artificial intelligence to enrich every aspect of life – empowering businesses with instant knowledge, enhancing meetings with real-time insights, helping individuals connect in new ways, and coaching people to wellness. Kirusa’s diverse products share a common DNA: user-focused AI that is powerful yet easy to use, ambitious yet trustworthy.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="product-card bg-gray-50 rounded-lg overflow-hidden">
+        </div>
+    </section>
+
+    <!-- Products Overview Section -->
+    <section id="products" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Our AI Solutions</h2>
+            <div class="product-grid">
+                <!-- Corpusio -->
+                <div class="product-card">
                     <img src="/website/static/images/corpusio-updated.png" alt="Corpusio AI document discovery logo" class="product-media">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Corpusio</h3>
+                        <h3 class="text-xl font-bold mb-2">Corpusio: AI-Powered Enterprise Knowledge Hub</h3>
                         <p class="text-gray-600 mb-4">
-                            Unlock enterprise knowledge with AI-driven document discovery. Powered by RAG and Llama 2, Corpusio analyzes text, audio, and video, delivering answers in seconds and reducing search time by up to 80%. Ideal for legal, HR, and IT teams.
+                            Unlock instant access to your enterprise's documents, images, audio, and video with cutting-edge AI technology. Corpusio reduces search time by up to 80%, delivering precise, actionable answers tailored to your role. With robust role-based access control (RBAC), sensitive information is securely restricted to authorized users only, ensuring privacy and compliance. Seamlessly accessible via WhatsApp and our intuitive website, starting at just $150/month. Transform the way your team works—smarter, faster, and more connected.
                         </p>
-                        <a href="/website/corpusio.html" class="text-teal-500 hover:underline font-medium">Explore Corpusio</a>
+                        <a href="/website/corpusio.html" class="text-gradient hover:underline font-medium">Learn more →</a>
                     </div>
                 </div>
-                <div class="product-card bg-gray-50 rounded-lg overflow-hidden">
-                    <i class="fas fa-microphone text-6xl text-teal-500 mx-auto mt-6 mb-4 product-media flex items-center justify-center"></i>
+                <!-- KirusaAssist -->
+                <div class="product-card">
+                    <i class="fas fa-microphone text-gradient product-media flex items-center justify-center"></i>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">KirusaAssist</h3>
+                        <h3 class="text-xl font-bold mb-2">KirusaAssist – Your AI-Powered Virtual Companion</h3>
                         <p class="text-gray-600 mb-4">
-                            Your AI meeting companion. KirusaAssist joins Zoom, Teams, or in-person meetings, providing real-time transcription, intelligent summaries, and action items. Integrates with Slack and CRM, saving hours for sales and product teams.
+                            Transform your meetings with KirusaAssist, an AI-powered virtual assistant that captures insights, coordinates across teams, and delivers instant, role-based answers. It joins your calls, takes real-time notes, syncs updates across simultaneous meetings, and integrates seamlessly with Corpusio for secure knowledge access. Ask KirusaAssist a question during meetings, and it provides answers via text-to-speech, reading them aloud, while displaying the response in the chat, restricted to your authorized role for a fluid, hands-free, and private experience.
                         </p>
-                        <a href="/website/kirusaassist.html" class="text-teal-500 hover:underline font-medium">Start Free Trial</a>
+                        <a href="/website/kirusaassist.html" class="text-gradient hover:underline font-medium">Learn more →</a>
                     </div>
                 </div>
-                <div class="product-card bg-gray-50 rounded-lg overflow-hidden">
+                <!-- Libanga -->
+                <div class="product-card">
                     <img src="/website/static/images/Libanga.png" alt="Libanga personalized celebrity video logo" class="product-media">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Libanga</h3>
+                        <h3 class="text-xl font-bold mb-2">Libanga – Your Favorite Stars, On-Demand</h3>
                         <p class="text-gray-600 mb-4">
-                            Create unforgettable moments with personalized celebrity video shoutouts. Libanga connects you with global stars for birthdays, anniversaries, or pep talks, enhanced by AI-driven talent recommendations. Prices start at $20.
+                            Personalized video shoutouts powered by Kirusa. Libanga connects you with celebrities for customized video messages for any occasion. Surprise your loved ones with a greeting from a beloved star.
                         </p>
-                        <a href="/website/libanga.html" class="text-teal-500 hover:underline font-medium">Explore Libanga</a>
+                        <a href="/website/libanga.html" class="text-gradient hover:underline font-medium">Learn more →</a>
                     </div>
                 </div>
-                <div class="product-card bg-gray-50 rounded-lg overflow-hidden">
+                <!-- hAIppy Fit -->
+                <div class="product-card">
                     <img src="/website/static/images/happyfit.png" alt="hAIppy Fit Fitness logo" class="product-media">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">hAIppy Fit</h3>
+                        <h3 class="text-xl font-bold mb-2">hAIppy Fit – AI Fitness & Wellness Coach</h3>
                         <p class="text-gray-600 mb-4">
-                            Your AI fitness and wellness coach. hAIppy Fit delivers personalized workout plans, nutrition guidance, and mood tracking, adapting to your progress. Syncs with wearables, starting at $2/month for beginners and enthusiasts.
+                            Get fit, get happy – your AI coach’s got you. hAIppy Fit offers interactive workout plans tailored to you, plus mindfulness and mood tracking to keep you holistically healthy. Stay motivated with daily guidance and adaptive routines.
                         </p>
-                        <a href="/website/haippyfit.html" class="text-lime-600 hover:underline font-medium">Explore hAIppy Fit</a>
+                        <a href="/website/haippyfit.html" class="text-gradient hover:underline font-medium">Learn more →</a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Legacy Products Section -->
-    <section id="legacy" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Our Communication Heritage</h2>
-            <p class="text-lg max-w-3xl mx-auto text-center mb-12 text-gray-600">
-                Since 2001, Kirusa has connected over 100 million monthly users across 50 countries with innovative voice and messaging solutions, partnering with 50+ mobile carriers worldwide.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="legacy-card">
-                    <div class="legacy-media">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H352c17.7 0 32-14.3 32-32s-14.3-32-32-32H282.7L272 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM192 320h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H192c-8.8 0-16-7.2-16-16s7.2-16 16-16zm-96 0H160c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zM352 320h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H352c-8.8 0-16-7.2-16-16s7.2-16 16-16zM256 64c-8.8 0-16 7.2-16 16V272c0 8.8 7.2 16 16 16s16-7.2 16-16V80c0-8.8-7.2-16-16-16z"/>
-                        </svg>
-                    </div>
-                    <div class="p-6 legacy-card-content">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Voice SMS</h3>
-                            <p class="text-gray-600 text-base leading-relaxed">
-                                Send voice messages via SMS, ideal for multilingual regions. Simplifies communication for personal and enterprise use, reaching millions daily.
-                            </p>
-                        </div>
-                        <a href="/website/voicesms.html" class="text-teal-500 hover:underline font-medium">Learn More</a>
-                    </div>
-                </div>
-                <div class="legacy-card">
-                    <div class="legacy-media">
-                        <img src="/website/static/images/InstaVoice-01.svg" alt="InstaVoice call completion logo" class="legacy-media">
-                    </div>
-                    <div class="p-6 legacy-card-content">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">InstaVoice</h3>
-                            <p class="text-gray-600 text-base leading-relaxed">
-                                Cloud-based call completion service offering visual voicemail, missed call alerts, and reachability notifications. Ensures seamless connectivity for millions globally.
-                            </p>
-                        </div>
-                        <a href="/website/instavoice.html" class="text-teal-500 hover:underline font-medium">Learn More</a>
-                    </div>
-                </div>
-                <div class="legacy-card">
-                    <div class="legacy-media">
-                        <img src="/website/static/images/Channels-01.svg" alt="Kirusa Channels celebrity engagement logo" class="legacy-media">
-                    </div>
-                    <div class="p-6 legacy-card-content">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Kirusa Channels</h3>
-                            <p class="text-gray-600 text-base leading-relaxed">
-                                Celebrity-fan engagement platform delivering daily voice and video updates via SMS, RCS, or app. Connects stars with fans worldwide.
-                            </p>
-                        </div>
-                        <a href="/website/kirusachannels.html" class="text-teal-500 hover:underline font-medium">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Kirusa Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Kirusa</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Our Journey</h3>
-                    <p class="text-gray-600 mb-4">
-                        Founded in 2001 by technocrats from AT&T Bell Labs, Kirusa has evolved from a pioneer in voice and messaging to a leader in AI innovation. Headquartered in New Providence, NJ, with offices in Africa, India, and Europe, we serve over 100 million monthly users across 50 countries, partnering with 50+ mobile carriers.
-                    </p>
-                    <p class="text-gray-600">
-                        Our legacy in mobile social media and enterprise messaging laid the foundation for our AI-driven future, addressing enterprise productivity, personal connections, and wellness with solutions like Corpusio, KirusaAssist, Libanga, and hAIppy Fit.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Our Mission</h3>
-                    <p class="text-gray-600 mb-4">
-                        At Kirusa, we leverage artificial intelligence and connectivity to enrich every aspect of life. Our mission is to deliver powerful, user-focused solutions that empower businesses to unlock knowledge, help individuals connect in meaningful ways, and coach people to healthier lives.
-                    </p>
-                    <p class="text-gray-600">
-                        With a global presence in 18 countries and a commitment to trust and innovation, Kirusa is redefining how technology enhances human experiences.
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Kirusa Section -->
-    <section id="why-kirusa" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why Choose Kirusa?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <i class="fas fa-brain text-4xl text-teal-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Innovative AI</h3>
-                    <p class="text-gray-600">
-                        Advanced NLP, RAG, and multimodal AI deliver intuitive solutions for enterprises and consumers, from document analysis to fitness coaching.
-                    </p>
-                </div>
-                <div class="text-center">
-                    <i class="fas fa-shield-alt text-4xl text-teal-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Trusted Security</h3>
-                    <p class="text-gray-600">
-                        GDPR and SOC 2 compliant, with end-to-end encryption and on-prem options, ensuring data privacy for global enterprises.
-                    </p>
-                </div>
-                <div class="text-center">
-                    <i class="fas fa-plug text-4xl text-teal-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Seamless Integration</h3>
-                    <p class="text-gray-600">
-                        Connects with Zoom, Slack, Teams, Salesforce, and wearables, embedding AI and connectivity into your workflows.
-                    </p>
-                </div>
-                <div class="text-center">
-                    <i class="fas fa-trophy text-4xl text-lime-600 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Proven Impact</h3>
-                    <p class="text-gray-600">
-                        Reduced research time by 70% with Corpusio, improved meeting follow-through with KirusaAssist, and enhanced wellness with hAIppy Fit.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">What Our Users Say</h2>
+    <section id="why-kirusa" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gradient">Why Kirusa?</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-lg shadow">
-                    <p class="text-gray-600 mb-4">
-                        “Corpusio cut our document search time by 70%. It’s like having a super-smart librarian for our legal team!”
+                <div class="text-center">
+                    <i class="fas fa-brain text-4xl text-gradient mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">AI Expertise with a Human Touch</h3>
+                    <p class="text-gray-600">
+                        Our advanced AI delivers intuitive, human-centric solutions with natural interactions and meaningful outcomes.
                     </p>
-                    <p class="text-teal-500 font-semibold">— CTO, Healthcare Firm</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow">
-                    <p class="text-gray-600 mb-4">
-                        “Libanga made my dad’s 60th birthday unforgettable with a video from his favorite soccer star. Best gift ever!”
+                <div class="text-center">
+                    <i class="fas fa-shield-alt text-4xl text-gradient mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Enterprise-Grade Trust</h3>
+                    <p class="text-gray-600">
+                        Secure by design with GDPR, SOC 2, and ISO 27001 compliance. Corpusio and KirusaAssist offer cloud-based and on-premise options with customer-managed keys.
                     </p>
-                    <p class="text-teal-500 font-semibold">— Jane D., Consumer</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow">
-                    <p class="text-gray-600 mb-4">
-                        “hAIppy Fit adapts to my busy schedule and keeps me motivated. I’ve lost 15 pounds and feel happier!”
+                <div class="text-center">
+                    <i class="fas fa-trophy text-4xl text-gradient mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Proven Results</h3>
+                    <p class="text-gray-600">
+                        Corpusio cuts search times by 80%. KirusaAssist reduces meeting times by 20%. Libanga creates unforgettable moments, and hAIppy Fit boosts workout consistency.
                     </p>
-                    <p class="text-lime-600 font-semibold">— Cynthia L., Beta User</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-16 bg-teal-500 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform with Kirusa?</h2>
+    <!-- Call-to-Action Banner -->
+    <section class="py-20 bg-gradient-to-r from-6B46C1 to-2DD4BF text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to See Kirusa’s AI in Action?</h2>
             <p class="text-lg max-w-2xl mx-auto mb-8">
-                Join enterprises, fans, and wellness enthusiasts worldwide leveraging Kirusa’s AI and connectivity solutions. Start your journey today.
+                Whether you’re an enterprise leader seeking a competitive edge or an individual exploring AI innovation, experience our products. Schedule a demo or try our apps today – and discover how Kirusa can transform your world.
             </p>
-            <a href="#ai-products" class="bg-coral-500 text-white px-6 py-3 rounded-full cta-button font-semibold">Get Started Now</a>
+            <a href="#products" class="cta-button">Get Started Now</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Kirusa</h3>
+                    <h3 class="text-lg font-bold mb-4 text-gradient">Kirusa</h3>
                     <p class="text-gray-400">
-                        Innovating at the intersection of AI and connectivity since 2001, serving 100M+ users across 50 countries.
+                        Reborn in 2025 as an AI innovator, building on 20+ years of connectivity for 100M+ users in 50 countries.
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">AI Products</h3>
+                    <h3 class="text-lg font-bold mb-4 text-gradient">Products</h3>
                     <ul class="space-y-2">
-                        <li><a href="/website/corpusio.html" class="text-gray-400 hover:text-teal-500">Corpusio</a></li>
-                        <li><a href="/website/kirusaassist.html" class="text-gray-400 hover:text-teal-500">KirusaAssist</a></li>
-                        <li><a href="/website/libanga.html" class="text-gray-400 hover:text-teal-500">Libanga</a></li>
-                        <li><a href="/website/haippyfit.html" class="text-gray-400 hover:text-teal-500">hAIppy Fit</a></li>
+                        <li><a href="/website/corpusio.html" class="text-gray-400 hover:text-gradient">Corpusio</a></li>
+                        <li><a href="/website/kirusaassist.html" class="text-gray-400 hover:text-gradient">KirusaAssist</a></li>
+                        <li><a href="/website/libanga.html" class="text-gray-400 hover:text-gradient">Libanga</a></li>
+                        <li><a href="/website/haippyfit.html" class="text-gray-400 hover:text-gradient">hAIppy Fit</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Legacy Products</h3>
+                    <h3 class="text-lg font-bold mb-4 text-gradient">Connect</h3>
                     <ul class="space-y-2">
-                        <li><a href="/website/voicesms.html" class="text-gray-400 hover:text-teal-500">Voice SMS</a></li>
-                        <li><a href="/website/instavoice.html" class="text-gray-400 hover:text-teal-500">InstaVoice</a></li>
-                        <li><a href="/website/kirusachannels.html" class="text-gray-400 hover:text-teal-500">Kirusa Channels</a></li>
+                        <li><a href="/website/contact.html" class="text-gray-400 hover:text-gradient">Contact Us</a></li>
+                        <li><a href="https://www.linkedin.com/company/kirusa" class="text-gray-400 hover:text-gradient">LinkedIn</a></li>
+                        <li><a href="https://www.kirusa.com/privacy-policy" class="text-gray-400 hover:text-gradient">Privacy Policy</a></li>
+                        <li><a href="https://www.kirusa.com/support" class="text-gray-400 hover:text-gradient">Support</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                    <h3 class="text-lg font-bold mb-4 text-gradient">Locations</h3>
                     <ul class="space-y-2">
-                        <li><a href="/website/contact.html" class="text-gray-400 hover:text-teal-500">Contact Us</a></li>
-                        <li><a href="https://www.linkedin.com/company/kirusa" class="text-gray-400 hover:text-teal-500">LinkedIn</a></li>
-                        <li><a href="https://www.kirusa.com/privacy-policy" class="text-gray-400 hover:text-teal-500">Privacy Policy</a></li>
-                        <li><a href="https://www.kirusa.com/support" class="text-gray-400 hover:text-teal-500">Support</a></li>
+                        <li class="text-gray-400">USA: 85 Swenson Circle, Berkeley Heights, NJ, USA-07922</li>
+                        <li class="text-gray-400">Rwanda: UmuJyi wa Kigali, Gasabo, Remera, PO Box: 7208, Kigali</li>
+                        <li class="text-gray-400">DRC: Crown Tower, 3098, 30th June Boulevard, Kinshasa</li>
+                        <li class="text-gray-400">Cote D'Ivoire: 25 BP, 182 ABJ 25</li>
+                        <li class="text-gray-400">Malawi: PO Box 3038, Blantyre, Malawi</li>
+                        <li class="text-gray-400">Ghana: Meridian Heights Building, Tema, Ghana</li>
                     </ul>
                 </div>
             </div>
