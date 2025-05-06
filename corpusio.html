@@ -13,69 +13,66 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" defer>
     <style>
         body {
-            font-family: 'Georgia', 'Times New Roman', Times, serif;
-            background: linear-gradient(135deg, #0A0A23 0%, #1E3A8A 100%);
-            color: #E6E6E6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #F5F7FA 0%, #E6ECF5 100%);
+            color: #1D2526;
             margin: 0;
             overflow-x: hidden;
-            font-size: 1.2rem;
+            font-size: 1.125rem;
             font-weight: 400;
             padding-top: 4rem;
-            line-height: 1.9;
+            line-height: 1.8;
+            position: relative;
         }
         html {
             scroll-behavior: smooth;
         }
         h1 {
-            font-size: clamp(3rem, 5vw, 5.5rem);
-            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1.1;
             text-align: center;
-            color: #FFD700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            color: #FFFFFF;
         }
         h2 {
-            font-size: clamp(2.5rem, 4vw, 4rem);
-            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
             letter-spacing: -0.02em;
             text-align: center;
             margin-bottom: 2.5rem;
-            color: #FFD700;
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+            color: #1D2526;
         }
         h3 {
-            font-size: clamp(1.5rem, 2.5vw, 1.75rem);
-            font-weight: 700;
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-weight: 600;
             letter-spacing: -0.01em;
             text-align: center;
-            color: #FFFFFF;
+            color: #1D2526;
         }
         p {
-            font-size: 1.3rem;
+            font-size: 1.125rem;
             font-weight: 400;
-            line-height: 1.9;
+            line-height: 1.8;
             text-align: center;
-            color: #E6E6E6;
-            letter-spacing: 0.02em;
+            color: #1D2526;
+            letter-spacing: 0.01em;
         }
         a {
-            font-size: 1.2rem;
+            font-size: 1.125rem;
             font-weight: 600;
             text-align: center;
             text-decoration: none;
-            color: #FFD700;
+            color: #0055A4;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #FFFFFF;
+            color: #003366;
         }
         header {
-            background: linear-gradient(90deg, rgba(10, 10, 35, 0.95), rgba(30, 58, 138, 0.95));
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: #000000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             position: fixed;
             top: 0;
             width: 100%;
@@ -83,15 +80,14 @@
         }
         .nav-link {
             position: relative;
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: #FFD700;
+            font-weight: 500;
+            font-size: 1.125rem;
+            color: #FFFFFF;
             margin: 0 clamp(0.75rem, 1.5vw, 1.5rem);
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s ease;
         }
         .nav-link:hover {
-            color: #FFFFFF;
-            transform: translateY(-2px);
+            color: #0055A4;
         }
         .nav-link::after {
             content: '';
@@ -100,29 +96,27 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background: #FFD700;
+            background: #0055A4;
             transition: width 0.3s ease;
         }
         .nav-link:hover::after {
             width: 100%;
         }
         .dropdown-button {
-            color: #FFD700;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1.125rem;
+            transition: color 0.3s ease;
         }
         .dropdown-button:hover {
-            color: #FFFFFF;
-            transform: translateY(-2px);
+            color: #0055A4;
         }
         .dropdown-content {
             display: none;
             position: absolute;
-            background: rgba(30, 58, 138, 0.98);
-            backdrop-filter: blur(12px);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             z-index: 10;
             min-width: 16rem;
             padding: 0.75rem 0;
@@ -137,87 +131,133 @@
         }
         .dropdown-content a {
             display: block;
-            color: #FFD700;
-            font-size: 1.1rem;
+            color: #1D2526;
+            font-size: 1rem;
             font-weight: 500;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
             margin: 0.25rem 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            background: transparent;
+            transition: background 0.3s ease, color 0.3s ease;
         }
         .dropdown-content a:hover {
-            background: rgba(255, 215, 0, 0.15);
-            color: #FFFFFF;
-            transform: translateX(5px);
+            background: rgba(0, 85, 164, 0.05);
+            color: #0055A4;
         }
         #mobile-menu {
-            background: rgba(10, 10, 35, 0.98);
-            backdrop-filter: blur(12px);
+            background: #000000;
         }
         #mobile-menu a {
-            color: #FFD700;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1.125rem;
+            transition: color 0.3s ease;
         }
         #mobile-menu a:hover {
-            color: #FFFFFF;
-            transform: translateX(5px);
+            color: #0055A4;
         }
         .mobile-dropdown a {
-            color: #FFD700;
-            font-size: 1.1rem;
-            font-weight: 500;
+            color: #1D2526;
+            font-size: 1rem;
+            font-weight: 400;
             padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             margin: 0.25rem 0;
-            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease;
         }
         .mobile-dropdown a:hover {
-            background: rgba(255, 215, 0, 0.15);
-            color: #FFFFFF;
-            transform: translateX(5px);
+            background: rgba(0, 85, 164, 0.05);
+            color: #0055A4;
         }
         .menu-icon {
-            color: #FFD700;
+            color: #FFFFFF;
             transition: transform 0.3s ease;
         }
         .menu-icon:hover {
             transform: scale(1.1);
         }
         .cta-button {
-            background: linear-gradient(135deg, #FFD700, #1E3A8A);
-            color: #0A0A23;
+            background: #FFFFFF;
+            color: #1D2526;
             padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
             border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2rem;
+            font-weight: 600;
+            font-size: 1.125rem;
             letter-spacing: 0.02em;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
             display: inline-block;
             margin: 0.5rem;
+            position: relative;
         }
         .cta-button:hover {
-            background: linear-gradient(135deg, #1E3A8A, #FFD700);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            background-size: 400%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .cta-button:hover::before {
+            opacity: 1;
+            animation: rainbow 8s linear infinite;
+        }
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
         }
         .cta-button.secondary {
-            background: transparent;
-            border: 2px solid #FFD700;
-            color: #FFD700;
+            background: #FFFFFF;
+            border: 2px solid #1D2526;
+            color: #1D2526;
             box-shadow: none;
         }
         .cta-button.secondary:hover {
-            background: rgba(255, 215, 0, 0.2);
-            border-color: #FFFFFF;
-            color: #FFFFFF;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button.secondary::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            background-size: 400%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .cta-button.secondary:hover::before {
+            opacity: 1;
+            animation: rainbow 8s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(1.5rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0.5rem rgba(0, 85, 164, 0.3); }
+            50% { box-shadow: 0 0 1.25rem rgba(0, 85, 164, 0.6); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+        .animate-glow {
+            animation: glowPulse 3s ease-in-out infinite;
         }
         .hero-section {
             position: relative;
@@ -225,7 +265,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #0A0A23 0%, #1E3A8A 100%);
+            background: linear-gradient(135deg, #003087 0%, #1E3A8A 100%);
             overflow: hidden;
         }
         .hero-bg {
@@ -234,37 +274,26 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.2;
+            opacity: 0.4;
             z-index: 0;
+        }
+        .kirusa-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FFFFFF" fill-opacity="0.3" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: 1;
         }
         .hero-content {
             text-align: center;
-            z-index: 1;
+            z-index: 2;
         }
         .hero-content h1, .hero-content p {
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             color: #FFFFFF;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
-            50% { transform: translateY(-1.5rem) rotateX(-5deg) rotateY(-5deg); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(1.5rem); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 0.5rem rgba(255, 215, 0, 0.3); }
-            50% { box-shadow: 0 0 1.25rem rgba(255, 215, 0, 0.6); }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        .animate-fade-in {
-            animation: fadeIn 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-        }
-        .animate-glow {
-            animation: glowPulse 3s ease-in-out infinite;
         }
         .product-grid {
             display: flex;
@@ -290,17 +319,15 @@
             margin: 0 auto;
         }
         .product-card {
-            background: linear-gradient(135deg, #1E3A8A 0%, #0A0A23 100%);
-            border: 2px solid #FFD700;
-            border-radius: 1.5rem;
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
-            transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
         .product-card:hover {
-            transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
         }
         .product-media {
             width: 100%;
@@ -312,23 +339,19 @@
             padding: clamp(0.5rem, 1vw, 1rem);
         }
         .product-media i {
-            font-size: clamp(2.5rem, 3vw, 3rem);
-            color: #FFD700;
-            transition: transform 0.3s ease;
-        }
-        .product-card:hover .product-media i {
-            transform: scale(1.1) rotate(5deg);
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            color: #003087;
         }
         .product-text-container {
             position: relative;
             padding: 2rem;
-            border-radius: 0 0 1.5rem 1.5rem;
+            border-radius: 0 0 1rem 1rem;
         }
         .product-description {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 400;
-            line-height: 1.9;
-            color: #E6E6E6;
+            line-height: 1.6;
+            color: #1D2526;
             margin-bottom: 1.5rem;
             text-align: left;
         }
@@ -365,7 +388,7 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background: #FFD700;
+            background: #0055A4;
             transition: width 0.3s ease;
         }
         .product-card a:hover::after {
@@ -374,7 +397,7 @@
         .section-parallax {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #0A0A23 0%, #1E3A8A 100%);
+            background: #FFFFFF;
         }
         .parallax-bg {
             position: absolute;
@@ -382,20 +405,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FFD700" fill-opacity="0.1" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230055A4" fill-opacity="0.05" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
             background-size: cover;
             transform: translateY(0);
             transition: transform 0.1s linear;
         }
         .intro-container {
             position: relative;
-            background: rgba(255, 255, 255, 0.1);
+            background: #FFFFFF;
             padding: clamp(2rem, 4vw, 4rem);
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             max-width: 60rem;
             margin: 0 auto;
-            border: 1px solid #FFD700;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         .intro-container::before {
             content: '';
@@ -405,12 +428,12 @@
             transform: translateX(-50%);
             width: 12rem;
             height: 0.25rem;
-            background: #FFD700;
+            background: #003087;
             border-radius: 0.125rem;
         }
         .cta-section {
             position: relative;
-            background: linear-gradient(135deg, #0A0A23 0%, #1E3A8A 100%);
+            background: #FFFFFF;
         }
         .cta-section::before {
             content: '';
@@ -419,7 +442,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.05);
             z-index: 0;
         }
         .cta-content {
@@ -427,8 +450,7 @@
             z-index: 1;
         }
         .cta-content h2, .cta-content p {
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            color: #FFFFFF;
+            color: #1D2526;
         }
         .pricing-section {
             display: flex;
@@ -451,28 +473,23 @@
             margin: 0 auto;
         }
         .pricing-card {
-            background: linear-gradient(135deg, #1E3A8A 0%, #0A0A23 100%);
-            border: 2px solid #FFD700;
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
-            transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
         .pricing-card:hover {
-            transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
         }
         .pricing-card-header {
-            background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
-            color: #0A0A23;
+            background: #E6ECF5;
+            color: #1D2526;
             padding: 1.5rem;
-            border-top-left-radius: 1.5rem;
-            border-top-right-radius: 1.5rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
             position: relative;
             text-align: center;
-        }
-        .pricing-card:hover .pricing-card-header {
-            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
         }
         .pricing-card:hover .underline-effect::after {
             width: 100%;
@@ -482,7 +499,7 @@
             display: block;
             width: 0;
             height: 3px;
-            background: #0A0A23;
+            background: #1D2526;
             transition: width 0.3s ease;
             margin: 0.5rem auto 0;
         }
@@ -490,28 +507,34 @@
             position: absolute;
             top: -0.75rem;
             right: 1rem;
-            background-color: #1E3A8A;
-            color: #FFD700;
+            background-color: #E6ECF5;
+            color: #1D2526;
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: bold;
             transform: translateY(-50%);
-            border: 1px solid #FFD700;
+            border: 2px solid transparent;
+        }
+        .recommended-badge.rainbow-border {
+            border: 2px solid transparent;
+            border-image: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            border-image-slice: 1;
+            border-image-width: 2px;
         }
         .pricing-card-content {
             padding: 2rem;
             background: transparent;
-            border-bottom-left-radius: 1.5rem;
-            border-bottom-right-radius: 1.5rem;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
             text-align: left;
         }
         .pricing-card-content ul {
             list-style: none;
             padding: 0;
             margin: 0 0 1.5rem 0;
-            color: #E6E6E6;
-            font-size: 1.1rem;
+            color: #1D2526;
+            font-size: 1rem;
         }
         .pricing-card-content ul li {
             display: flex;
@@ -520,21 +543,24 @@
         }
         .pricing-card-content ul li i {
             margin-right: 0.5rem;
-            color: #FFD700;
-            font-size: 1.2rem;
+            color: #003087;
+            font-size: 1.125rem;
             margin-top: 0.2rem;
         }
+        .pricing-card-content p {
+            color: #1D2526;
+        }
         footer {
-            background: linear-gradient(90deg, #0A0A23 0%, #1E3A8A 100%);
+            background: #000000;
         }
         footer h3 {
-            color: #FFD700;
+            color: #FFFFFF;
         }
         footer p, footer ul li, footer .text-gray-400 {
-            color: #E6E6E6;
+            color: #FFFFFF;
         }
         footer a {
-            color: #FFD700;
+            color: #0055A4;
         }
         footer a:hover {
             color: #FFFFFF;
@@ -543,7 +569,7 @@
             list-style-type: disc;
             padding-left: 1.5rem;
             margin-top: 0.5rem;
-            color: #E6E6E6;
+            color: #FFFFFF;
         }
         .contact-methods li {
             margin-bottom: 0.5rem;
@@ -557,16 +583,16 @@
         }
         @media (max-width: 1024px) {
             .hero-content h1 {
-                font-size: clamp(3rem, 3.5vw, 3.5rem);
+                font-size: clamp(2.5rem, 3.5vw, 3.5rem);
             }
             .hero-content p {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             h2 {
-                font-size: clamp(2.5rem, 3vw, 3rem);
+                font-size: clamp(2rem, 3vw, 2.5rem);
             }
             h3 {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
             .section-spacing {
                 margin-bottom: clamp(4rem, 8vw, 8rem);
@@ -597,23 +623,23 @@
                 font-size: clamp(2rem, 2.5vw, 2.5rem);
             }
             .hero-content p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             h2 {
-                font-size: clamp(2rem, 2.5vw, 2.5rem);
+                font-size: clamp(1.75rem, 2.5vw, 2rem);
             }
             h3 {
-                font-size: 1.3rem;
+                font-size: 1.125rem;
             }
             .nav-link {
-                font-size: 1.1rem;
+                font-size: 1rem;
                 margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
             }
             .cta-content h2 {
-                font-size: clamp(2rem, 2.5vw, 2.5rem);
+                font-size: clamp(1.75rem, 2.5vw, 2rem);
             }
             .cta-content p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             .section-spacing {
                 margin-bottom: clamp(3rem, 6vw, 6rem);
@@ -638,19 +664,19 @@
                 font-size: clamp(1.5rem, 2vw, 2rem);
             }
             .hero-content p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             h2 {
-                font-size: clamp(1.5rem, 2vw, 2rem);
+                font-size: clamp(1.5rem, 2vw, 1.75rem);
             }
             h3 {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             .cta-content h2 {
-                font-size: clamp(1.5rem, 2vw, 2rem);
+                font-size: clamp(1.5rem, 2vw, 1.75rem);
             }
             .cta-content p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             .section-spacing {
                 margin-bottom: clamp(2rem, 4vw, 4rem);
@@ -709,10 +735,11 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white section-padding section-spacing">
+    <section class="hero-section section-padding section-spacing">
         <div class="hero-bg">
             <lottie-player src="/website/static/animations/corpusio-hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
         </div>
+        <div class="kirusa-wave"></div>
         <div class="hero-content">
             <img src="/website/static/images/corpusio-with-tagline-updated.png" alt="Corpusio Logo with Tagline" class="corpusio-logo mx-auto mb-6 animate-fade-in">
             <h1 class="mb-8 animate-fade-in" style="animation-delay: 0s;">
@@ -729,7 +756,7 @@
     </section>
 
     <!-- Pain Point Intro Section -->
-    <section class="section-padding bg-white section-parallax section-spacing">
+    <section class="section-padding section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <div class="intro-container">
@@ -742,14 +769,14 @@
     </section>
 
     <!-- Key Features Section -->
-    <section class="section-padding bg-gray-100 section-parallax section-spacing">
+    <section class="section-padding section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Key Features & Benefits</h2>
             <div class="product-grid">
                 <!-- Top Row: Role-Based Access Control, Real-Time Chat Retrieval, Multimodal Document Processing -->
                 <div class="product-row top-row">
-                    <div class="product-card animate-float">
+                    <div class="product-card">
                         <div class="product-media">
                             <i class="fas fa-lock"></i>
                         </div>
@@ -760,7 +787,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="product-card animate-float" style="animation-delay: 0.2s;">
+                    <div class="product-card">
                         <div class="product-media">
                             <i class="fas fa-comments"></i>
                         </div>
@@ -771,7 +798,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="product-card animate-float" style="animation-delay: 0.4s;">
+                    <div class="product-card">
                         <div class="product-media">
                             <i class="fas fa-file-alt"></i>
                         </div>
@@ -785,7 +812,7 @@
                 </div>
                 <!-- Bottom Row: Secure & Scalable, WhatsApp Accessibility -->
                 <div class="product-row bottom-row">
-                    <div class="product-card animate-float" style="animation-delay: 0.6s;">
+                    <div class="product-card">
                         <div class="product-media">
                             <i class="fas fa-shield-alt"></i>
                         </div>
@@ -796,7 +823,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="product-card animate-float" style="animation-delay: 0.8s;">
+                    <div class="product-card">
                         <div class="product-media">
                             <i class="fab fa-whatsapp"></i>
                         </div>
@@ -813,11 +840,11 @@
     </section>
 
     <!-- Use Case Section -->
-    <section class="section-padding bg-white section-parallax section-spacing">
+    <section class="section-padding section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Secure AI Document Retrieval in Action</h2>
-            <div class="product-card animate-float">
+            <div class="product-card">
                 <div class="product-text-container">
                     <h3 class="mb-4">📄 Case Study: Streamlining HR Compliance</h3>
                     <p class="product-description long-text">
@@ -829,12 +856,12 @@
     </section>
 
     <!-- Competitive Edge Section -->
-    <section class="section-padding bg-gray-100 section-parallax section-spacing">
+    <section class="section-padding section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Why Corpusio Over Competitors?</h2>
             <div class="product-grid">
-                <div class="product-card animate-float">
+                <div class="product-card">
                     <div class="product-text-container">
                         <h3 class="mb-4">Outperforms Competitors</h3>
                         <p class="product-description long-text">
@@ -842,7 +869,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="product-card animate-float" style="animation-delay: 0.2s;">
+                <div class="product-card">
                     <div class="product-text-container">
                         <h3 class="mb-4">Context-Aware Answers</h3>
                         <p class="product-description">
@@ -850,7 +877,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="product-card animate-float" style="animation-delay: 0.4s;">
+                <div class="product-card">
                     <div class="product-text-container">
                         <h3 class="mb-4">Affordable Pricing</h3>
                         <p class="product-description long-text">
@@ -858,7 +885,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="product-card animate-float" style="animation-delay: 0.6s;">
+                <div class="product-card">
                     <div class="product-text-container">
                         <h3 class="mb-4">Enhanced Governance</h3>
                         <p class="product-description">
@@ -871,7 +898,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="section-padding bg-white section-parallax section-spacing">
+    <section id="pricing" class="section-padding section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Choose Your Corpusio Plan</h2>
@@ -879,13 +906,13 @@
                 <!-- Top Row: Standard, Pro, Enterprise -->
                 <div class="pricing-row top-row">
                     <!-- Standard Plan -->
-                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.1s;">
+                    <div class="pricing-card">
                         <div class="pricing-card-header">
                             <h3 class="text-xl font-bold underline-effect">Standard</h3>
                         </div>
                         <div class="pricing-card-content">
-                            <p class="text-2xl font-bold text-gray-900 mb-4">$150<span class="text-sm font-normal">/month</span></p>
-                            <ul class="text-gray-600 mb-6">
+                            <p class="text-2xl font-bold mb-4">$150<span class="text-sm font-normal">/month</span></p>
+                            <ul class="mb-6">
                                 <li><i class="fas fa-check"></i>Initial Setup Fee: $2,500</li>
                                 <li><i class="fas fa-check"></i>10 Users, 1 Administrator</li>
                                 <li><i class="fas fa-check"></i>12-Hour Support SLA</li>
@@ -900,14 +927,14 @@
                         </div>
                     </div>
                     <!-- Pro Plan -->
-                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="pricing-card">
                         <div class="pricing-card-header">
                             <h3 class="text-xl font-bold underline-effect">Pro</h3>
-                            <span class="recommended-badge">Recommended</span>
+                            <span class="recommended-badge rainbow-border">Recommended</span>
                         </div>
                         <div class="pricing-card-content">
-                            <p class="text-2xl font-bold text-gray-900 mb-4">$350<span class="text-sm font-normal">/month</span></p>
-                            <ul class="text-gray-600 mb-6">
+                            <p class="text-2xl font-bold mb-4">$350<span class="text-sm font-normal">/month</span></p>
+                            <ul class="mb-6">
                                 <li><i class="fas fa-check"></i>Initial Setup Fee: $5,000</li>
                                 <li><i class="fas fa-check"></i>25 Users, 3 Administrators</li>
                                 <li><i class="fas fa-check"></i>6-Hour Support SLA</li>
@@ -923,13 +950,13 @@
                         </div>
                     </div>
                     <!-- Enterprise Plan -->
-                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="pricing-card">
                         <div class="pricing-card-header">
                             <h3 class="text-xl font-bold underline-effect">Enterprise</h3>
                         </div>
                         <div class="pricing-card-content">
-                            <p class="text-2xl font-bold text-gray-900 mb-4">$1,500<span class="text-sm font-normal">/month</span></p>
-                            <ul class="text-gray-600 mb-6">
+                            <p class="text-2xl font-bold mb-4">$1,500<span class="text-sm font-normal">/month</span></p>
+                            <ul class="mb-6">
                                 <li><i class="fas fa-check"></i>Initial Setup Fee: $10,000</li>
                                 <li><i class="fas fa-check"></i>75 Users, 10 Administrators</li>
                                 <li><i class="fas fa-check"></i>4-Hour Support SLA</li>
@@ -948,13 +975,13 @@
                 <!-- Bottom Row: VPC & On-Premise, Custom Solution -->
                 <div class="pricing-row bottom-row">
                     <!-- VPC and On-Premise Plan -->
-                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="pricing-card">
                         <div class="pricing-card-header">
                             <h3 class="text-xl font-bold underline-effect">VPC & On-Premise</h3>
                         </div>
                         <div class="pricing-card-content">
-                            <p class="text-2xl font-bold text-gray-900 mb-4">$3,500<span class="text-sm font-normal">/month</span></p>
-                            <ul class="text-gray-600 mb-6">
+                            <p class="text-2xl font-bold mb-4">$3,500<span class="text-sm font-normal">/month</span></p>
+                            <ul class="mb-6">
                                 <li><i class="fas fa-check"></i>Initial Setup Fee: $15,000</li>
                                 <li><i class="fas fa-check"></i>Customizable Users & Admins</li>
                                 <li><i class="fas fa-check"></i>Custom Support SLA</li>
@@ -970,13 +997,13 @@
                         </div>
                     </div>
                     <!-- Custom Solution Placeholder -->
-                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.5s;">
+                    <div class="pricing-card">
                         <div class="pricing-card-header">
                             <h3 class="text-xl font-bold underline-effect">Custom Solutions</h3>
                         </div>
                         <div class="pricing-card-content">
-                            <p class="text-2xl font-bold text-gray-900 mb-4">Tailored for You</p>
-                            <p class="text-gray-600 mb-6">
+                            <p class="text-2xl font-bold mb-4">Tailored for You</p>
+                            <p class="mb-6">
                                 Need a plan tailored to your specific needs? Our team can design a custom solution that fits your organization's requirements, ensuring secure, role-based access and optimal performance.
                             </p>
                             <a href="/website/contact.html" class="block cta-button text-center font-semibold">Contact Sales</a>
@@ -991,7 +1018,7 @@
     </section>
 
     <!-- Trust and Security Section -->
-    <section class="section-padding bg-gray-100 section-parallax section-spacing">
+    <section class="section-padding section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 text-center relative">
             <h2 class="mb-8 animate-fade-in">Your Data, Secured</h2>
@@ -1002,32 +1029,32 @@
     </section>
 
     <!-- FAQ Section (SEO-aware) -->
-    <section class="section-padding bg-white section-parallax section-spacing">
+    <section class="section-padding section-parallax section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Frequently Asked Questions</h2>
             <div class="space-y-6 max-w-3xl mx-auto">
                 <div class="animate-fade-in">
                     <h3 class="text-xl font-semibold mb-2">How does Corpusio ensure data privacy for different user roles?</h3>
-                    <p class="text-gray-600">
+                    <p>
                         Corpusio uses Role-Based Access Control (RBAC) with secure authentication to restrict data access to authorized roles only, ensuring privacy and compliance.
                     </p>
                 </div>
                 <div class="animate-fade-in" style="animation-delay: 0.2s;">
                     <h3 class="text-xl font-semibold mb-2">What types of files can Corpusio process?</h3>
-                    <p class="text-gray-600">
+                    <p>
                         Corpusio processes PDF, Excel, and DOCX files in all plans, with image, audio, and video support in Pro and Enterprise plans, accessible based on user roles.
                     </p>
                 </div>
                 <div class="animate-fade-in" style="animation-delay: 0.4s;">
                     <h3 class="text-xl font-semibold mb-2">Can I access Corpusio on the go?</h3>
-                    <p class="text-gray-600">
+                    <p>
                         Yes, Corpusio is accessible via WhatsApp and our website, with role-based authentication ensuring secure access to authorized data.
                     </p>
                 </div>
                 <div class="animate-fade-in" style="animation-delay: 0.6s;">
                     <h3 class="text-xl font-semibold mb-2">What is the authentication process for accessing documents?</h3>
-                    <p class="text-gray-600">
+                    <p>
                         Users undergo a secure authentication process to verify their role, ensuring only authorized individuals can access assigned documents and data.
                     </p>
                 </div>
@@ -1036,7 +1063,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="section-padding bg-gradient-to-r from-1E3A8A to-2DD4BF text-white section-parallax cta-section section-spacing">
+    <section class="section-padding section-parallax cta-section section-spacing">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 text-center relative cta-content">
             <h2 class="mb-16">Ready to Transform Your Enterprise Knowledge?</h2>
@@ -1048,7 +1075,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
+    <footer class="py-16">
         <div class="container mx-auto px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
