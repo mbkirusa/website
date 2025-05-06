@@ -14,7 +14,7 @@ Handler = http.server.SimpleHTTPRequestHandler
 # Create the server
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print(f"Serving at http://localhost:{PORT}")
-    print(f"Access the homepage at: http://localhost:{PORT}/html/homepage.html")
+    print(f"Access the homepage at: http://localhost:{PORT}/index.html")
     print("Press Ctrl+C to stop the server.")
     
     # Start the server and keep it running until interrupted
