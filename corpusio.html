@@ -22,6 +22,7 @@
             font-weight: 400;
             padding-top: 3.5rem;
             line-height: 1.8;
+            position: relative;
         }
         html {
             scroll-behavior: smooth;
@@ -191,6 +192,7 @@
             display: inline-block;
             margin: 0.5rem;
             position: relative;
+            z-index: 10;
         }
         .cta-button:hover {
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 255, 255, 0.7);
@@ -260,23 +262,33 @@
         .animate-glow {
             animation: glowPulse 3s ease-in-out infinite;
         }
+        .fixed-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+        .fixed-background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            z-index: 1;
+            pointer-events: none;
+        }
         .hero-section {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #FFECF7 0%, #E6F0FA 100%);
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.4;
-            z-index: 0;
+            z-index: 10;
         }
         .kirusa-wave {
             position: absolute;
@@ -287,11 +299,11 @@
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23A3BFFA" fill-opacity="0.3" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
             background-size: cover;
             opacity: 0.3;
-            z-index: 1;
+            z-index: 2;
         }
         .hero-content {
             text-align: center;
-            z-index: 2;
+            z-index: 10;
         }
         .hero-content h1, .hero-content p {
             color: #2D3748;
@@ -305,6 +317,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 10;
         }
         .feature-belt {
             display: flex;
@@ -345,13 +358,11 @@
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
         }
         .arrow-button:hover {
             background: linear-gradient(90deg, #4263EB, #4C6EF5);
             transform: translateY(-50%) scale(1.1);
-        }
-        .arrow-button.left {
-            left: 0;
         }
         .arrow-button.right {
             right: 0;
@@ -392,6 +403,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), 0 0 10px rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
             transition: transform 0.3s ease;
+            z-index: 10;
         }
         .product-card:hover {
             transform: translateY(-5px);
@@ -463,6 +475,7 @@
             position: relative;
             overflow: hidden;
             background: #FFF1F9;
+            z-index: 10;
         }
         .parallax-bg {
             position: absolute;
@@ -483,6 +496,7 @@
             max-width: 60rem;
             margin: 0 auto;
             border: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 10;
         }
         .intro-container::before {
             content: '';
@@ -498,6 +512,7 @@
         .cta-section {
             position: relative;
             background: #FFF1F9;
+            z-index: 10;
         }
         .cta-section::before {
             content: '';
@@ -511,7 +526,7 @@
         }
         .cta-content {
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
         .cta-content h2, .cta-content p {
             color: #2D3748;
@@ -520,6 +535,7 @@
             display: flex;
             flex-direction: column;
             gap: clamp(1.5rem, 3vw, 3rem);
+            z-index: 10;
         }
         .pricing-row {
             display: grid;
@@ -545,6 +561,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), 0 0 10px rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
             transition: transform 0.3s ease;
+            z-index: 10;
         }
         .pricing-card:hover {
             transform: translateY(-5px);
@@ -581,6 +598,7 @@
             font-size: 0.875rem;
             font-weight: bold;
             border: 2px solid transparent;
+            z-index: 10;
         }
         .recommended-badge.rainbow-border {
             border-image: linear-gradient(90deg, #4C6EF5, #4263EB);
@@ -615,6 +633,7 @@
         }
         footer {
             background: #FFF1F9;
+            z-index: 10;
         }
         footer h3 {
             color: #2D3748;
@@ -742,6 +761,12 @@
     </style>
 </head>
 <body>
+    <!-- Fixed Background Animation -->
+    <div class="fixed-background">
+        <lottie-player src="/website/static/animations/corpusio-hero-animation.json" background="transparent" speed="1" style="width: 200%; height: 200%;" loop autoplay></lottie-player>
+    </div>
+    <div class="fixed-background-overlay"></div>
+
     <!-- Navigation -->
     <header>
         <nav class="container mx-auto px-8 py-4 flex justify-between items-center">
@@ -789,9 +814,6 @@
 
     <!-- Hero Section -->
     <section class="hero-section section-padding section-spacing">
-        <div class="hero-bg">
-            <lottie-player src="/website/static/animations/corpusio-hero-animation.json" background="transparent" speed="1" style="width: 100%; height: 120%;" loop autoplay></lottie-player>
-        </div>
         <div class="kirusa-wave"></div>
         <div class="hero-content">
             <img src="/website/static/images/corpusio-with-tagline-updated.png" alt="Corpusio Logo with Tagline" class="corpusio-logo mx-auto mb-6 animate-fade-in">
@@ -827,9 +849,6 @@
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Key Features & Benefits</h2>
             <div class="feature-belt-container">
-                <button class="arrow-button left" onclick="scrollBelt('left', 'featureBelt')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
                 <div class="feature-belt" id="featureBelt">
                     <div class="product-card">
                         <div class="product-media">
@@ -916,9 +935,6 @@
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Why Corpusio Over Competitors?</h2>
             <div class="feature-belt-container">
-                <button class="arrow-button left" onclick="scrollBelt('left', 'competitiveBelt')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
                 <div class="feature-belt" id="competitiveBelt">
                     <div class="product-card">
                         <div class="product-text-container">
@@ -1027,7 +1043,7 @@
                                 <li><i class="fas fa-check"></i>Business Associate Agreement</li>
                                 <li><i class="fas fa-check"></i>Customer-Managed Keys</li>
                                 <li><i class="fas fa-check"></i>Corpus Updates: Contact Sales</li>
-                                <li><i class="fas fa-check"></i>File Upload: Up to 100 MB</li>
+                                <li><i class="fas fa-check"></i>File Upload: Up to(lbl) 100 MB</li>
                                 <li><i class="fas fa-check"></i>File Types: PDF, Excel, Docx, Image, Audio, Video</li>
                                 <li><i class="fas fa-check"></i>Storage: 20 GB</li>
                             </ul>
@@ -1241,9 +1257,7 @@
             const cards = belt.children;
             let currentIndex = Math.round(belt.scrollLeft / cards[0].offsetWidth);
             
-            if (direction === 'left') {
-                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-            } else if (direction === 'right') {
+            if (direction === 'right') {
                 currentIndex = (currentIndex + 1) % cards.length;
             }
             
