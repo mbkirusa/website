@@ -188,7 +188,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
             border: 2px solid transparent;
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
             display: inline-block;
             margin: 0.5rem;
             position: relative;
@@ -206,7 +206,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50px;
-            background: linear-gradient(90deg, #4C6EF5, #4263EB);
+            background: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
             background-size: 400%;
             z-index: -1;
             opacity: 0;
@@ -214,9 +214,9 @@
         }
         .cta-button:hover::before {
             opacity: 1;
-            animation: gradientShift 8s linear infinite;
+            animation: rainbow 8s linear infinite;
         }
-        @keyframes gradientShift {
+        @keyframes rainbow {
             0% { background-position: 0% 50%; }
             100% { background-position: 400% 50%; }
         }
@@ -238,7 +238,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50px;
-            background: linear-gradient(90deg, #4C6EF5, #4263EB);
+            background: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
             background-size: 400%;
             z-index: -1;
             opacity: 0;
@@ -246,7 +246,7 @@
         }
         .cta-button.secondary:hover::before {
             opacity: 1;
-            animation: gradientShift 8s linear infinite;
+            animation: rainbow 8s linear infinite;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(1.5rem); }
@@ -656,29 +656,38 @@
             color: #4C6EF5;
         }
         footer {
-            background: #3e3c3d;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 10;
+            padding: 2rem 0;
         }
         footer h3 {
-            color: #fafbfc;
+            color: #2D3748;
+            font-weight: 600;
         }
         footer p, footer ul li, footer .text-gray-400 {
-            color: #f7fafe;
+            color: #2D3748;
         }
         footer a {
             color: #4C6EF5;
+            transition: color 0.3s ease;
         }
         footer a:hover {
             color: #4263EB;
         }
-        .contact-methods {
+        footer .contact-methods {
             list-style-type: disc;
             padding-left: 1.5rem;
             margin-top: 0.5rem;
             color: #2D3748;
         }
-        .contact-methods li {
+        footer .contact-methods li {
             margin-bottom: 0.5rem;
+        }
+        footer .text-center {
+            color: #2D3748;
+            font-weight: 500;
         }
         .section-spacing {
             margin-bottom: clamp(4rem, 8vw, 8rem);
