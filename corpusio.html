@@ -265,10 +265,24 @@
             animation: glowPulse 3s ease-in-out infinite;
         }
         .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(14rem, 18vw, 18rem), 1fr));
+            display: flex;
+            flex-direction: column;
             gap: clamp(1rem, 2vw, 2rem);
-            padding: clamp(1rem, 2vw, 2rem) 0;
+        }
+        .product-row {
+            display: grid;
+            gap: clamp(1rem, 2vw, 2rem);
+            justify-content: center;
+        }
+        .product-row.top-row {
+            grid-template-columns: repeat(3, minmax(clamp(14rem, 18vw, 22rem), 1fr));
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+        .product-row.bottom-row {
+            grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
+            max-width: 48rem;
+            margin: 0 auto;
         }
         .product-card {
             background: rgba(255, 255, 255, 0.95);
@@ -278,7 +292,6 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
             transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
-            margin: 0.5rem 0;
         }
         .product-card:hover {
             transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
@@ -572,6 +585,14 @@
                 grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
                 max-width: 48rem;
             }
+            .product-row.top-row {
+                grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
+                max-width: 48rem;
+            }
+            .product-row.bottom-row {
+                grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
+                max-width: 48rem;
+            }
         }
         @media (max-width: 768px) {
             .hero-content h1 {
@@ -605,6 +626,11 @@
             }
             .pricing-row.top-row,
             .pricing-row.bottom-row {
+                grid-template-columns: 1fr;
+                max-width: 24rem;
+            }
+            .product-row.top-row,
+            .product-row.bottom-row {
                 grid-template-columns: 1fr;
                 max-width: 24rem;
             }
@@ -723,59 +749,65 @@
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Key Features & Benefits</h2>
             <div class="product-grid">
-                <div class="product-card animate-float">
-                    <div class="product-media">
-                        <i class="fas fa-lock"></i>
+                <!-- Top Row: Role-Based Access Control, Real-Time Chat Retrieval, Multimodal Document Processing -->
+                <div class="product-row top-row">
+                    <div class="product-card animate-float">
+                        <div class="product-media">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="product-text-container">
+                            <h3 class="mb-4">Role-Based Access Control (RBAC)</h3>
+                            <p class="product-description">
+                                Access to information is strictly limited to user roles, ensuring privacy and compliance. Employees can only view documents and data assigned to their role, verified through a secure authentication process, safeguarding sensitive information.
+                            </p>
+                        </div>
                     </div>
-                    <div class="product-text-container">
-                        <h3 class="mb-4">Role-Based Access Control (RBAC)</h3>
-                        <p class="product-description">
-                            Access to information is strictly limited to user roles, ensuring privacy and compliance. Employees can only view documents and data assigned to their role, verified through a secure authentication process, safeguarding sensitive information.
-                        </p>
+                    <div class="product-card animate-float" style="animation-delay: 0.2s;">
+                        <div class="product-media">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="product-text-container">
+                            <h3 class="mb-4">Real-Time Chat Retrieval</h3>
+                            <p class="product-description">
+                                Query in plain language and receive immediate, context-aware answers from documents (PDF, Excel, DOCX), with image, audio, and video support in higher plans. Advanced AI ensures high accuracy and relevance within your authorized access.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="product-card animate-float" style="animation-delay: 0.2s;">
-                    <div class="product-media">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="product-text-container">
-                        <h3 class="mb-4">Real-Time Chat Retrieval</h3>
-                        <p class="product-description">
-                            Query in plain language and receive immediate, context-aware answers from documents (PDF, Excel, DOCX), with image, audio, and video support in higher plans. Advanced AI ensures high accuracy and relevance within your authorized access.
-                        </p>
-                    </div>
-                </div>
-                <div class="product-card animate-float" style="animation-delay: 0.4s;">
-                    <div class="product-media">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <div class="product-text-container">
-                        <h3 class="mb-4">Multimodal Document Processing</h3>
-                        <p class="product-description">
-                            Processes PDF, Excel, and DOCX files, with image, audio, and video support in Pro and Enterprise plans. Auto-summarizes reports, extracts metrics, and flags inconsistencies, acting as an AI analyst within your access scope.
-                        </p>
-                    </div>
-                </div>
-                <div class="product-card animate-float" style="animation-delay: 0.6s;">
-                    <div class="product-media">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="product-text-container">
-                        <h3 class="mb-4">Secure & Scalable</h3>
-                        <p class="product-description">
-                            Cloud-based infrastructure with seamless system integration. Offers enterprise-grade scalability, customer-managed keys, and Virtual Private Cloud (VPC) options for maximum control, with role-based authentication ensuring secure data storage.
-                        </p>
+                    <div class="product-card animate-float" style="animation-delay: 0.4s;">
+                        <div class="product-media">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="product-text-container">
+                            <h3 class="mb-4">Multimodal Document Processing</h3>
+                            <p class="product-description">
+                                Processes PDF, Excel, and DOCX files, with image, audio, and video support in Pro and Enterprise plans. Auto-summarizes reports, extracts metrics, and flags inconsistencies, acting as an AI analyst within your access scope.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card animate-float" style="animation-delay: 0.8s;">
-                    <div class="product-media">
-                        <i class="fab fa-whatsapp"></i>
+                <!-- Bottom Row: Secure & Scalable, WhatsApp Accessibility -->
+                <div class="product-row bottom-row">
+                    <div class="product-card animate-float" style="animation-delay: 0.6s;">
+                        <div class="product-media">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="product-text-container">
+                            <h3 class="mb-4">Secure & Scalable</h3>
+                            <p class="product-description">
+                                Cloud-based infrastructure with seamless system integration. Offers enterprise-grade scalability, customer-managed keys, and Virtual Private Cloud (VPC) options for maximum control, with role-based authentication ensuring secure data storage.
+                            </p>
+                        </div>
                     </div>
-                    <div class="product-text-container">
-                        <h3 class="mb-4">WhatsApp Accessibility</h3>
-                        <p class="product-description">
-                            Access Corpusio’s AI-powered search directly through WhatsApp for quick, on-the-go answers, with role-based authentication ensuring only authorized data is accessible.
-                        </p>
+                    <div class="product-card animate-float" style="animation-delay: 0.8s;">
+                        <div class="product-media">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="product-text-container">
+                            <h3 class="mb-4">WhatsApp Accessibility</h3>
+                            <p class="product-description">
+                                Access Corpusio’s AI-powered search directly through WhatsApp for quick, on-the-go answers, with role-based authentication ensuring only authorized data is accessible.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1048,7 +1080,6 @@
                     <h3 class="mb-6">Connect</h3>
                     <ul class="space-y-4">
                         <li>
-                            Contact Us Through
                             <ul class="contact-methods">
                                 <li>Write to us at <a href="mailto:info@kirusa.com">info@kirusa.com</a></li>
                                 <li>For support, email <a href="mailto:support@kirusa.com">support@kirusa.com</a></li>
@@ -1079,7 +1110,6 @@
     </footer>
 
     <!-- JavaScript for Dropdown and Parallax -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
         function toggleMenu() {
@@ -1127,6 +1157,5 @@
             });
         });
     </script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b0eabc7c6312e3',t:'MTc0NjQ1NTIyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
