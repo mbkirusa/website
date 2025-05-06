@@ -13,66 +13,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" defer>
     <style>
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #F5F7FA 0%, #E6ECF5 100%);
-            color: #1D2526;
+            font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #FCE7F3 0%, #E6F0FA 100%);
+            color: #2D3748;
             margin: 0;
             overflow-x: hidden;
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 400;
-            padding-top: 4rem;
+            padding-top: 3.5rem;
             line-height: 1.8;
-            position: relative;
         }
         html {
             scroll-behavior: smooth;
         }
         h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 5rem);
             font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1.1;
             text-align: center;
-            color: #FFFFFF;
+            color: #2D3748;
         }
         h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 4vw, 3.75rem);
             font-weight: 700;
             letter-spacing: -0.02em;
             text-align: center;
-            margin-bottom: 2.5rem;
-            color: #1D2526;
+            margin-bottom: 2rem;
+            color: #2D3748;
         }
         h3 {
-            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-size: clamp(1rem, 2vw, 1.25rem);
             font-weight: 600;
             letter-spacing: -0.01em;
             text-align: center;
-            color: #1D2526;
+            color: #2D3748;
         }
         p {
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             font-weight: 400;
             line-height: 1.8;
             text-align: center;
-            color: #1D2526;
+            color: #2D3748;
             letter-spacing: 0.01em;
         }
         a {
-            font-size: 1.125rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 500;
             text-align: center;
             text-decoration: none;
-            color: #0055A4;
+            color: #4C6EF5;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #003366;
+            color: #4263EB;
         }
         header {
-            background: #000000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background: #FFF1F9;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             width: 100%;
@@ -81,13 +80,13 @@
         .nav-link {
             position: relative;
             font-weight: 500;
-            font-size: 1.125rem;
-            color: #FFFFFF;
-            margin: 0 clamp(0.75rem, 1.5vw, 1.5rem);
+            font-size: 1rem;
+            color: #2D3748;
+            margin: 0 clamp(0.5rem, 1vw, 1rem);
             transition: color 0.3s ease;
         }
         .nav-link:hover {
-            color: #0055A4;
+            color: #4C6EF5;
         }
         .nav-link::after {
             content: '';
@@ -96,30 +95,30 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background: #0055A4;
+            background: #4C6EF5;
             transition: width 0.3s ease;
         }
         .nav-link:hover::after {
             width: 100%;
         }
         .dropdown-button {
-            color: #FFFFFF;
+            color: #2D3748;
             font-weight: 500;
-            font-size: 1.125rem;
+            font-size: 1rem;
             transition: color 0.3s ease;
         }
         .dropdown-button:hover {
-            color: #0055A4;
+            color: #4C6EF5;
         }
         .dropdown-content {
             display: none;
             position: absolute;
-            background: #FFFFFF;
+            background: #FFF1F9;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             z-index: 10;
             min-width: 16rem;
-            padding: 0.75rem 0;
+            padding: 0.5rem 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 0;
             transform: translateY(0.5rem);
@@ -131,8 +130,8 @@
         }
         .dropdown-content a {
             display: block;
-            color: #1D2526;
-            font-size: 1rem;
+            color: #2D3748;
+            font-size: 0.95rem;
             font-weight: 500;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
@@ -141,24 +140,24 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
         .dropdown-content a:hover {
-            background: rgba(0, 85, 164, 0.05);
-            color: #0055A4;
+            background: rgba(76, 110, 245, 0.1);
+            color: #4C6EF5;
         }
         #mobile-menu {
-            background: #000000;
+            background: #FFF1F9;
         }
         #mobile-menu a {
-            color: #FFFFFF;
+            color: #2D3748;
             font-weight: 500;
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             transition: color 0.3s ease;
         }
         #mobile-menu a:hover {
-            color: #0055A4;
+            color: #4C6EF5;
         }
         .mobile-dropdown a {
-            color: #1D2526;
-            font-size: 1rem;
+            color: #2D3748;
+            font-size: 0.95rem;
             font-weight: 400;
             padding: 0.5rem 1rem;
             border-radius: 8px;
@@ -166,34 +165,36 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
         .mobile-dropdown a:hover {
-            background: rgba(0, 85, 164, 0.05);
-            color: #0055A4;
+            background: rgba(76, 110, 245, 0.1);
+            color: #4C6EF5;
         }
         .menu-icon {
-            color: #FFFFFF;
+            color: #2D3748;
             transition: transform 0.3s ease;
         }
         .menu-icon:hover {
             transform: scale(1.1);
         }
         .cta-button {
-            background: #FFFFFF;
-            color: #1D2526;
+            background: #E6F0FA;
+            color: #2D3748;
             padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             letter-spacing: 0.02em;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
             border: 2px solid transparent;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
             display: inline-block;
             margin: 0.5rem;
             position: relative;
         }
         .cta-button:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 255, 255, 0.7);
+            transform: translateY(-3px);
         }
         .cta-button::before {
             content: '';
@@ -203,7 +204,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50px;
-            background: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            background: linear-gradient(90deg, #4C6EF5, #4263EB);
             background-size: 400%;
             z-index: -1;
             opacity: 0;
@@ -211,21 +212,21 @@
         }
         .cta-button:hover::before {
             opacity: 1;
-            animation: rainbow 8s linear infinite;
+            animation: gradientShift 8s linear infinite;
         }
-        @keyframes rainbow {
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             100% { background-position: 400% 50%; }
         }
         .cta-button.secondary {
-            background: #FFFFFF;
-            border: 2px solid #1D2526;
-            color: #1D2526;
+            background: transparent;
+            border: 2px solid #2D3748;
+            color: #2D3748;
             box-shadow: none;
         }
         .cta-button.secondary:hover {
             border: 2px solid transparent;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 0.5);
         }
         .cta-button.secondary::before {
             content: '';
@@ -235,7 +236,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50px;
-            background: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            background: linear-gradient(90deg, #4C6EF5, #4263EB);
             background-size: 400%;
             z-index: -1;
             opacity: 0;
@@ -243,15 +244,15 @@
         }
         .cta-button.secondary:hover::before {
             opacity: 1;
-            animation: rainbow 8s linear infinite;
+            animation: gradientShift 8s linear infinite;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(1.5rem); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 0.5rem rgba(0, 85, 164, 0.3); }
-            50% { box-shadow: 0 0 1.25rem rgba(0, 85, 164, 0.6); }
+            0%, 100% { box-shadow: 0 0 0.5rem rgba(163, 191, 250, 0.3); }
+            50% { box-shadow: 0 0 1.25rem rgba(163, 191, 250, 0.6); }
         }
         .animate-fade-in {
             animation: fadeIn 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
@@ -265,7 +266,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #003087 0%, #1E3A8A 100%);
+            background: linear-gradient(135deg, #FFECF7 0%, #E6F0FA 100%);
             overflow: hidden;
         }
         .hero-bg {
@@ -283,7 +284,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FFFFFF" fill-opacity="0.3" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23A3BFFA" fill-opacity="0.3" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
             background-size: cover;
             opacity: 0.3;
             z-index: 1;
@@ -293,37 +294,103 @@
             z-index: 2;
         }
         .hero-content h1, .hero-content p {
-            color: #FFFFFF;
+            color: #2D3748;
         }
-        .product-grid {
-            display: flex;
-            flex-direction: column;
-            gap: clamp(1.5rem, 3vw, 3rem);
-            justify-content: center;
-            align-items: center;
-        }
-        .product-row {
-            display: grid;
-            gap: clamp(1.5rem, 3vw, 3rem);
-            justify-content: center;
+        /* Feature Belt Styles */
+        .feature-belt-container {
+            position: relative;
             width: 100%;
-        }
-        .product-row.top-row {
-            grid-template-columns: repeat(3, minmax(clamp(16rem, 20vw, 24rem), 1fr));
             max-width: 80rem;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .product-row.bottom-row {
-            grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
-            max-width: 54rem;
-            margin: 0 auto;
+        .feature-belt {
+            display: flex;
+            flex-direction: row;
+            gap: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            width: 100%;
+            height: 400px;
+            padding: 0;
+            scroll-snap-type: x mandatory;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .feature-belt::-webkit-scrollbar {
+            display: none;
+        }
+        .feature-belt .product-card {
+            width: 100%;
+            max-width: 24rem;
+            height: 400px;
+            scroll-snap-align: center;
+            flex-shrink: 0;
+        }
+        .arrow-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, #4C6EF5, #4263EB);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .arrow-button:hover {
+            background: linear-gradient(90deg, #4263EB, #4C6EF5);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .arrow-button.left {
+            left: 0;
+        }
+        .arrow-button.right {
+            right: 0;
+        }
+        @media (max-width: 768px) {
+            .feature-belt {
+                height: 350px;
+            }
+            .feature-belt .product-card {
+                max-width: 20rem;
+                height: 350px;
+            }
+            .arrow-button {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        @media (max-width: 480px) {
+            .feature-belt {
+                height: 300px;
+            }
+            .feature-belt .product-card {
+                max-width: 16rem;
+                height: 300px;
+            }
+            .arrow-button {
+                width: 30px;
+                height: 30px;
+            }
         }
         .product-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 1rem;
+            background: #E6F0FA;
+            border: 2px solid transparent;
+            border-image: linear-gradient(90deg, #4C6EF5, #4263EB);
+            border-image-slice: 1;
+            border-radius: 1.5rem;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), 0 0 10px rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
             transition: transform 0.3s ease;
         }
         .product-card:hover {
@@ -331,7 +398,7 @@
         }
         .product-media {
             width: 100%;
-            height: clamp(8rem, 12vw, 12rem);
+            height: clamp(8rem, 10vw, 10rem);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -339,30 +406,17 @@
             padding: clamp(0.5rem, 1vw, 1rem);
         }
         .product-media i {
-            font-size: clamp(2rem, 3vw, 2.5rem);
-            color: #003087;
+            font-size: clamp(2rem, 2.5vw, 2.5rem);
+            color: #4C6EF5;
+            transition: transform 0.3s ease;
         }
-        .product-text-container {
-            position: relative;
-            padding: 2rem;
-            border-radius: 0 0 1rem 1rem;
-        }
-        .product-description {
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: #1D2526;
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-        .product-description.long-text {
-            text-align: center;
+        .product-card:hover .product-media i {
+            transform: scale(1.1) rotate(5deg);
         }
         .logo-media {
             width: clamp(6rem, 12.5vw, 12.5rem);
             height: clamp(2rem, 4.375vw, 4.375rem);
             object-fit: contain;
-            filter: brightness(1.5);
         }
         .corpusio-logo {
             object-fit: contain;
@@ -370,10 +424,21 @@
             max-width: 300px;
             height: auto;
         }
-        @media (max-width: 768px) {
-            .corpusio-logo {
-                max-width: 250px;
-            }
+        .product-text-container {
+            position: relative;
+            padding: 1.5rem;
+            border-radius: 0 0 1.5rem 1.5rem;
+        }
+        .product-description {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #2D3748;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .product-description.long-text {
+            text-align: center;
         }
         .product-card a {
             display: inline-block;
@@ -388,7 +453,7 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background: #0055A4;
+            background: #4C6EF5;
             transition: width 0.3s ease;
         }
         .product-card a:hover::after {
@@ -397,7 +462,7 @@
         .section-parallax {
             position: relative;
             overflow: hidden;
-            background: #FFFFFF;
+            background: #FFF1F9;
         }
         .parallax-bg {
             position: absolute;
@@ -405,20 +470,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230055A4" fill-opacity="0.05" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23A3BFFA" fill-opacity="0.05" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
             background-size: cover;
-            transform: translateY(0);
-            transition: transform 0.1s linear;
         }
         .intro-container {
             position: relative;
-            background: #f1eeee;
-            padding: clamp(2rem, 4vw, 4rem);
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background: #FCE7F3;
+            padding: clamp(1.5rem, 3vw, 3rem);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), 0 0 10px rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
             max-width: 60rem;
             margin: 0 auto;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         .intro-container::before {
             content: '';
@@ -426,14 +490,14 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 12rem;
+            width: 10rem;
             height: 0.25rem;
-            background: #003087;
+            background: linear-gradient(90deg, #4C6EF5, #4263EB);
             border-radius: 0.125rem;
         }
         .cta-section {
             position: relative;
-            background: #e1dede;
+            background: #FFF1F9;
         }
         .cta-section::before {
             content: '';
@@ -442,7 +506,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(0, 0, 0, 0.03);
             z-index: 0;
         }
         .cta-content {
@@ -450,7 +514,7 @@
             z-index: 1;
         }
         .cta-content h2, .cta-content p {
-            color: #1D2526;
+            color: #2D3748;
         }
         .pricing-section {
             display: flex;
@@ -473,21 +537,24 @@
             margin: 0 auto;
         }
         .pricing-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background: #E6F0FA;
+            border: 2px solid transparent;
+            border-image: linear-gradient(90deg, #4C6EF5, #4263EB);
+            border-image-slice: 1;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), 0 0 10px rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
             transition: transform 0.3s ease;
         }
         .pricing-card:hover {
             transform: translateY(-5px);
         }
         .pricing-card-header {
-            background: #5de3f2;
-            color: #1D2526;
+            background: #C3E8F7;
+            color: #2D3748;
             padding: 1.5rem;
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
             position: relative;
             text-align: center;
         }
@@ -499,41 +566,37 @@
             display: block;
             width: 0;
             height: 3px;
-            background: #1D2526;
+            background: #2D3748;
             transition: width 0.3s ease;
             margin: 0.5rem auto 0;
         }
         .recommended-badge {
             position: absolute;
-            top: -0.75rem;
+            top: -1rem;
             right: 1rem;
-            background-color: #E6ECF5;
-            color: #1D2526;
+            background-color: #FEC89A;
+            color: #2D3748;
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: bold;
-            transform: translateY(-50%);
             border: 2px solid transparent;
         }
         .recommended-badge.rainbow-border {
-            border: 2px solid transparent;
-            border-image: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            border-image: linear-gradient(90deg, #4C6EF5, #4263EB);
             border-image-slice: 1;
-            border-image-width: 2px;
         }
         .pricing-card-content {
-            padding: 2rem;
-            background: transparent;
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
+            padding: 1.5rem;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
             text-align: left;
         }
         .pricing-card-content ul {
             list-style: none;
             padding: 0;
             margin: 0 0 1.5rem 0;
-            color: #1D2526;
+            color: #2D3748;
             font-size: 1rem;
         }
         .pricing-card-content ul li {
@@ -543,77 +606,69 @@
         }
         .pricing-card-content ul li i {
             margin-right: 0.5rem;
-            color: #003087;
+            color: #4C6EF5;
             font-size: 1.125rem;
             margin-top: 0.2rem;
         }
         .pricing-card-content p {
-            color: #1D2526;
+            color: #2D3748;
         }
         footer {
-            background: #000000;
+            background: #FFF1F9;
         }
         footer h3 {
-            color: #FFFFFF;
+            color: #2D3748;
         }
         footer p, footer ul li, footer .text-gray-400 {
-            color: #FFFFFF;
+            color: #2D3748;
         }
         footer a {
-            color: #0055A4;
+            color: #4C6EF5;
         }
         footer a:hover {
-            color: #FFFFFF;
+            color: #4263EB;
         }
         .contact-methods {
             list-style-type: disc;
             padding-left: 1.5rem;
             margin-top: 0.5rem;
-            color: #FFFFFF;
+            color: #2D3748;
         }
         .contact-methods li {
             margin-bottom: 0.5rem;
         }
         .section-spacing {
-            margin-bottom: clamp(5rem, 10vw, 10rem);
+            margin-bottom: clamp(4rem, 8vw, 8rem);
         }
         .section-padding {
-            padding-top: clamp(5rem, 8vw, 10rem);
-            padding-bottom: clamp(5rem, 8vw, 10rem);
+            padding-top: clamp(4rem, 6vw, 8rem);
+            padding-bottom: clamp(4rem, 6vw, 8rem);
         }
         @media (max-width: 1024px) {
             .hero-content h1 {
-                font-size: clamp(2.5rem, 3.5vw, 3.5rem);
+                font-size: clamp(3rem, 3.5vw, 3.5rem);
             }
             .hero-content p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             h2 {
-                font-size: clamp(2rem, 3vw, 2.5rem);
+                font-size: clamp(2.5rem, 3vw, 3rem);
             }
             h3 {
-                font-size: 1.25rem;
+                font-size: 1.125rem;
             }
             .section-spacing {
-                margin-bottom: clamp(4rem, 8vw, 8rem);
+                margin-bottom: clamp(3rem, 6vw, 6rem);
             }
             .section-padding {
-                padding-top: clamp(4rem, 6vw, 8rem);
-                padding-bottom: clamp(4rem, 6vw, 8rem);
+                padding-top: clamp(3rem, 5vw, 6rem);
+                padding-bottom: clamp(3rem, 5vw, 6rem);
             }
             .pricing-row.top-row {
                 grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
                 max-width: 54rem;
             }
             .pricing-row.bottom-row {
-                grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
-                max-width: 54rem;
-            }
-            .product-row.top-row {
-                grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
-                max-width: 54rem;
-            }
-            .product-row.bottom-row {
                 grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
                 max-width: 54rem;
             }
@@ -626,35 +681,30 @@
                 font-size: 1rem;
             }
             h2 {
-                font-size: clamp(1.75rem, 2.5vw, 2rem);
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
             }
             h3 {
-                font-size: 1.125rem;
+                font-size: 1rem;
             }
             .nav-link {
                 font-size: 1rem;
                 margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
             }
             .cta-content h2 {
-                font-size: clamp(1.75rem, 2.5vw, 2rem);
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
             }
             .cta-content p {
                 font-size: 1rem;
             }
             .section-spacing {
-                margin-bottom: clamp(3rem, 6vw, 6rem);
+                margin-bottom: clamp(2rem, 4vw, 4rem);
             }
             .section-padding {
-                padding-top: clamp(3rem, 5vw, 6rem);
-                padding-bottom: clamp(3rem, 5vw, 6rem);
+                padding-top: clamp(2rem, 4vw, 4rem);
+                padding-bottom: clamp(2rem, 4vw, 4rem);
             }
             .pricing-row.top-row,
             .pricing-row.bottom-row {
-                grid-template-columns: 1fr;
-                max-width: 28rem;
-            }
-            .product-row.top-row,
-            .product-row.bottom-row {
                 grid-template-columns: 1fr;
                 max-width: 28rem;
             }
@@ -667,23 +717,26 @@
                 font-size: 0.95rem;
             }
             h2 {
-                font-size: clamp(1.5rem, 2vw, 1.75rem);
+                font-size: clamp(1.5rem, 2vw, 2rem);
             }
             h3 {
-                font-size: 1rem;
-            }
-            .cta-content h2 {
-                font-size: clamp(1.5rem, 2vw, 1.75rem);
-            }
-            .cta-content p {
                 font-size: 0.95rem;
             }
+            .cta-content h2 {
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+            .cta-content p {
+                font-size: 0.9rem;
+            }
             .section-spacing {
-                margin-bottom: clamp(2rem, 4vw, 4rem);
+                margin-bottom: clamp(1.5rem, 3vw, 3rem);
             }
             .section-padding {
-                padding-top: clamp(2rem, 4vw, 4rem);
-                padding-bottom: clamp(2rem, 4vw, 4rem);
+                padding-top: clamp(1.5rem, 3vw, 3rem);
+                padding-bottom: clamp(1.5rem, 3vw, 3rem);
+            }
+            .corpusio-logo {
+                max-width: 250px;
             }
         }
     </style>
@@ -773,9 +826,11 @@
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Key Features & Benefits</h2>
-            <div class="product-grid">
-                <!-- Top Row: Role-Based Access Control, Real-Time Chat Retrieval, Multimodal Document Processing -->
-                <div class="product-row top-row">
+            <div class="feature-belt-container">
+                <button class="arrow-button left" onclick="scrollBelt('left', 'featureBelt')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="feature-belt" id="featureBelt">
                     <div class="product-card">
                         <div class="product-media">
                             <i class="fas fa-lock"></i>
@@ -809,9 +864,6 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <!-- Bottom Row: Secure & Scalable, WhatsApp Accessibility -->
-                <div class="product-row bottom-row">
                     <div class="product-card">
                         <div class="product-media">
                             <i class="fas fa-shield-alt"></i>
@@ -829,12 +881,15 @@
                         </div>
                         <div class="product-text-container">
                             <h3 class="mb-4">WhatsApp Accessibility</h3>
-                            <p class="product-description">
+                            <p class="product-description long-text">
                                 Access Corpusio’s AI-powered search directly through WhatsApp for quick, on-the-go answers, with role-based authentication ensuring only authorized data is accessible.
                             </p>
                         </div>
                     </div>
                 </div>
+                <button class="arrow-button right" onclick="scrollBelt('right', 'featureBelt')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -860,39 +915,47 @@
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Why Corpusio Over Competitors?</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-text-container">
-                        <h3 class="mb-4">Outperforms Competitors</h3>
-                        <p class="product-description long-text">
-                            Outperforms competitors like Qatalog and Glean with top ratings for pricing, ease of use, file format support, and robust role-based access control.
-                        </p>
+            <div class="feature-belt-container">
+                <button class="arrow-button left" onclick="scrollBelt('left', 'competitiveBelt')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="feature-belt" id="competitiveBelt">
+                    <div class="product-card">
+                        <div class="product-text-container">
+                            <h3 class="mb-4">Outperforms Competitors</h3>
+                            <p class="product-description long-text">
+                                Outperforms competitors like Qatalog and Glean with top ratings for pricing, ease of use, file format support, and robust role-based access control.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-text-container">
+                            <h3 class="mb-4">Context-Aware Answers</h3>
+                            <p class="product-description long-text">
+                                Unlike traditional search, Corpusio’s AI delivers context-aware answers across documents, images, audio, and video, restricted to authorized users only.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-text-container">
+                            <h3 class="mb-4">Affordable Pricing</h3>
+                            <p class="product-description long-text">
+                                Affordable pricing ($150-$3,500/month) versus costlier competitors like Kofax TotalAgility ($500-$10,000/month), with flexible plans for SMBs to enterprises.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-text-container">
+                            <h3 class="mb-4">Enhanced Governance</h3>
+                            <p class="product-description long-text">
+                                Smart classification, WhatsApp accessibility, and integrations with SharePoint and Dropbox enhance governance and accessibility.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-text-container">
-                        <h3 class="mb-4">Context-Aware Answers</h3>
-                        <p class="product-description">
-                            Unlike traditional search, Corpusio’s AI delivers context-aware answers across documents, images, audio, and video, restricted to authorized users only.
-                        </p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-text-container">
-                        <h3 class="mb-4">Affordable Pricing</h3>
-                        <p class="product-description long-text">
-                            Affordable pricing ($150-$3,500/month) versus costlier competitors like Kofax TotalAgility ($500-$10,000/month), with flexible plans for SMBs to enterprises.
-                        </p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-text-container">
-                        <h3 class="mb-4">Enhanced Governance</h3>
-                        <p class="product-description">
-                            Smart classification, WhatsApp accessibility, and integrations with SharePoint and Dropbox enhance governance and accessibility.
-                        </p>
-                    </div>
-                </div>
+                <button class="arrow-button right" onclick="scrollBelt('right', 'competitiveBelt')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -1134,7 +1197,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Dropdown and Parallax -->
+    <!-- JavaScript for Dropdown and Belt Scrolling -->
     <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
         function toggleMenu() {
@@ -1173,12 +1236,67 @@
             });
         });
 
-        window.addEventListener('scroll', function() {
-            const parallaxElements = document.querySelectorAll('.parallax-bg');
-            parallaxElements.forEach(element => {
-                const speed = 0.3;
-                const yPos = -(window.pageYOffset * speed);
-                element.style.transform = `translateY(${yPos}px)`;
+        function scrollBelt(direction, beltId) {
+            const belt = document.getElementById(beltId);
+            const cards = belt.children;
+            let currentIndex = Math.round(belt.scrollLeft / cards[0].offsetWidth);
+            
+            if (direction === 'left') {
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            } else if (direction === 'right') {
+                currentIndex = (currentIndex + 1) % cards.length;
+            }
+            
+            belt.scrollTo({
+                left: currentIndex * cards[0].offsetWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Automatic scrolling every 10 seconds for featureBelt
+        let featureAutoScrollInterval;
+        function startFeatureAutoScroll() {
+            featureAutoScrollInterval = setInterval(() => {
+                scrollBelt('right', 'featureBelt');
+            }, 10000); // 10 seconds
+        }
+
+        // Automatic scrolling every 10 seconds for competitiveBelt
+        let competitiveAutoScrollInterval;
+        function startCompetitiveAutoScroll() {
+            competitiveAutoScrollInterval = setInterval(() => {
+                scrollBelt('right', 'competitiveBelt');
+            }, 10000); // 10 seconds
+        }
+
+        // Start auto-scroll when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            startFeatureAutoScroll();
+            startCompetitiveAutoScroll();
+        });
+
+        // Stop auto-scroll when user interacts with the belts
+        const featureBelt = document.getElementById('featureBelt');
+        const competitiveBelt = document.getElementById('competitiveBelt');
+
+        featureBelt.addEventListener('scroll', () => {
+            clearInterval(featureAutoScrollInterval);
+        });
+        competitiveBelt.addEventListener('scroll', () => {
+            clearInterval(competitiveAutoScrollInterval);
+        });
+
+        // Restart auto-scroll after manual interaction
+        featureBelt.addEventListener('scrollend', startFeatureAutoScroll);
+        competitiveBelt.addEventListener('scrollend', startCompetitiveAutoScroll);
+
+        // Stop auto-scroll when clicking arrow buttons
+        document.querySelectorAll('.arrow-button').forEach(button => {
+            button.addEventListener('click', () => {
+                clearInterval(featureAutoScrollInterval);
+                clearInterval(competitiveAutoScrollInterval);
+                startFeatureAutoScroll();
+                startCompetitiveAutoScroll();
             });
         });
     </script>
