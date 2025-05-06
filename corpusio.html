@@ -424,10 +424,21 @@
             gap: clamp(1rem, 2vw, 2rem);
         }
         .pricing-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
             gap: clamp(1rem, 2vw, 2rem);
+            justify-content: center;
+        }
+        /* Top row with 3 tiles */
+        .pricing-row.top-row {
+            grid-template-columns: repeat(3, minmax(clamp(14rem, 18vw, 22rem), 1fr));
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+        /* Bottom row with 2 tiles */
+        .pricing-row.bottom-row {
+            grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
+            max-width: 48rem;
+            margin: 0 auto;
         }
         .pricing-card {
             background: rgba(255, 255, 255, 0.95);
@@ -436,10 +447,6 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
             transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
-            margin: 0.5rem 0;
-            flex: 1;
-            min-width: clamp(14rem, 18vw, 18rem);
-            max-width: 22rem;
         }
         .pricing-card:hover {
             transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
@@ -557,6 +564,14 @@
                 padding-top: clamp(3rem, 5vw, 6rem);
                 padding-bottom: clamp(3rem, 5vw, 6rem);
             }
+            .pricing-row.top-row {
+                grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
+                max-width: 48rem;
+            }
+            .pricing-row.bottom-row {
+                grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
+                max-width: 48rem;
+            }
         }
         @media (max-width: 768px) {
             .hero-content h1 {
@@ -588,12 +603,10 @@
                 padding-top: clamp(2rem, 4vw, 4rem);
                 padding-bottom: clamp(2rem, 4vw, 4rem);
             }
-            .pricing-row {
-                flex-direction: column;
-                align-items: center;
-            }
-            .pricing-card {
-                max-width: 100%;
+            .pricing-row.top-row,
+            .pricing-row.bottom-row {
+                grid-template-columns: 1fr;
+                max-width: 24rem;
             }
         }
         @media (max-width: 480px) {
@@ -834,7 +847,7 @@
             <h2 class="mb-20">Choose Your Corpusio Plan</h2>
             <div class="pricing-section">
                 <!-- Top Row: Standard, Pro, Enterprise -->
-                <div class="pricing-row">
+                <div class="pricing-row top-row">
                     <!-- Standard Plan -->
                     <div class="pricing-card animate-fade-in" style="animation-delay: 0.1s;">
                         <div class="pricing-card-header">
@@ -903,7 +916,7 @@
                     </div>
                 </div>
                 <!-- Bottom Row: VPC & On-Premise, Custom Solution -->
-                <div class="pricing-row">
+                <div class="pricing-row bottom-row">
                     <!-- VPC and On-Premise Plan -->
                     <div class="pricing-card animate-fade-in" style="animation-delay: 0.4s;">
                         <div class="pricing-card-header">
@@ -1037,8 +1050,8 @@
                         <li>
                             Contact Us Through
                             <ul class="contact-methods">
-                                <li>Write to us at <a href="/cdn-cgi/l/email-protection#741d1a121b341f1d060107115c111d1f"><span class="__cf_email__" data-cfemail="a5cccbc3cae5eeecf7f0f6e48be6ea">[email protected]</span></a></li>
-                                <li>For support, email <a href="/cdn-cgi/l/email-protection#b7c4c2c7c7d8c5c3f7dcdfc4c3c5d799d5d9db"><span class="__cf_email__" data-cfemail="a5d6d0d5d5cad7d1e5cecdc6c1c7d58bc7cb">[email protected]</span></a></li>
+                                <li>Write to us at <a href="/cdn-cgi/l/email-protection#e3898e868fa3888a91969082cd808c8e"><span class="__cf_email__" data-cfemail="e3898e868fa3888a91969082cd808c8e">[email protected]</span></a></li>
+                                <li>For support, email <a href="/cdn-cgi/l/email-protection#e0b3b5b0b0afb2b4a08b88b3b4b2a0ce828e8c"><span class="__cf_email__" data-cfemail="a0b3b5b0b0afb2b4a08b88b3b4b2a0ce828e8c">[email protected]</span></a></li>
                             </ul>
                         </li>
                         <li><a href="https://www.linkedin.com/company/kirusa">LinkedIn</a></li>
