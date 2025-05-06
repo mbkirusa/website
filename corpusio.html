@@ -327,20 +327,8 @@
         }
         .product-text-container {
             position: relative;
-            max-height: 200px;
-            overflow-y: auto;
             padding: 1.5rem;
             border-radius: 0 0 1.5rem 1.5rem;
-        }
-        .product-text-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2rem;
-            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
-            pointer-events: none;
         }
         .product-description {
             font-size: 1rem;
@@ -373,20 +361,6 @@
         }
         .product-card a:hover::after {
             width: 100%;
-        }
-        .product-text-container::-webkit-scrollbar {
-            width: 6px;
-        }
-        .product-text-container::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 3px;
-        }
-        .product-text-container::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
-        }
-        .product-text-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.3);
         }
         .section-parallax {
             position: relative;
@@ -444,21 +418,28 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             color: #FFFFFF;
         }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(14rem, 18vw, 18rem), 1fr));
+        .pricing-section {
+            display: flex;
+            flex-direction: column;
             gap: clamp(1rem, 2vw, 2rem);
-            padding: clamp(1rem, 2vw, 2rem) 0;
+        }
+        .pricing-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(1rem, 2vw, 2rem);
         }
         .pricing-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 1.5rem;
-            overflow: hidden;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
             transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
             margin: 0.5rem 0;
+            flex: 1;
+            min-width: clamp(14rem, 18vw, 18rem);
+            max-width: 22rem;
         }
         .pricing-card:hover {
             transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
@@ -468,9 +449,10 @@
             background: linear-gradient(135deg, #1E3A8A, #2DD4BF);
             color: white;
             padding: 1.5rem;
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
             position: relative;
+            text-align: center;
         }
         .pricing-card:hover .pricing-card-header {
             background: linear-gradient(135deg, #2D4A9C, #3BE6CF);
@@ -485,11 +467,11 @@
             height: 3px;
             background: #F87171;
             transition: width 0.3s ease;
-            margin-top: 0.5rem;
+            margin: 0.5rem auto 0;
         }
         .recommended-badge {
             position: absolute;
-            top: -1rem;
+            top: -0.75rem;
             right: 1rem;
             background-color: #FBBF24;
             color: #1E3A8A;
@@ -497,21 +479,32 @@
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: bold;
+            transform: translateY(-50%);
         }
         .pricing-card-content {
             padding: 1.5rem;
             background-color: white;
-            border-bottom-left-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+            text-align: left;
+        }
+        .pricing-card-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            color: #1D1D1F;
+            font-size: 0.9rem;
         }
         .pricing-card-content ul li {
             display: flex;
-            align-items: center;
-            margin-bottom: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
         }
         .pricing-card-content ul li i {
             margin-right: 0.5rem;
             color: #2DD4BF;
+            font-size: 1rem;
+            margin-top: 0.2rem;
         }
         footer {
             background: #212529;
@@ -594,6 +587,13 @@
             .section-padding {
                 padding-top: clamp(2rem, 4vw, 4rem);
                 padding-bottom: clamp(2rem, 4vw, 4rem);
+            }
+            .pricing-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pricing-card {
+                max-width: 100%;
             }
         }
         @media (max-width: 480px) {
@@ -832,93 +832,112 @@
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Choose Your Corpusio Plan</h2>
-            <div class="pricing-grid">
-                <!-- Standard Plan -->
-                <div class="pricing-card animate-fade-in" style="animation-delay: 0.1s;">
-                    <div class="pricing-card-header">
-                        <h3 class="text-xl font-bold underline-effect">Standard</h3>
+            <div class="pricing-section">
+                <!-- Top Row: Standard, Pro, Enterprise -->
+                <div class="pricing-row">
+                    <!-- Standard Plan -->
+                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.1s;">
+                        <div class="pricing-card-header">
+                            <h3 class="text-xl font-bold underline-effect">Standard</h3>
+                        </div>
+                        <div class="pricing-card-content">
+                            <p class="text-2xl font-bold text-gray-900 mb-4">$150<span class="text-sm font-normal">/month</span></p>
+                            <ul class="text-gray-600 mb-6">
+                                <li><i class="fas fa-check"></i>Initial Setup Fee: $2,500</li>
+                                <li><i class="fas fa-check"></i>10 Users, 1 Administrator</li>
+                                <li><i class="fas fa-check"></i>12-Hour Support SLA</li>
+                                <li><i class="fas fa-check"></i>99% Uptime Guarantee</li>
+                                <li><i class="fas fa-check"></i>Business Associate Agreement</li>
+                                <li><i class="fas fa-check"></i>Corpus Updates: $100/500 pages</li>
+                                <li><i class="fas fa-check"></i>File Upload: Up to 50 MB</li>
+                                <li><i class="fas fa-check"></i>File Types: PDF, Excel, Docx</li>
+                                <li><i class="fas fa-check"></i>Storage: 1 GB</li>
+                            </ul>
+                            <a href="/website/contact.html" class="block cta-button text-center font-semibold">Get Started</a>
+                        </div>
                     </div>
-                    <div class="pricing-card-content">
-                        <p class="text-2xl font-bold text-gray-900 mb-4">$150<span class="text-sm font-normal">/month</span></p>
-                        <ul class="text-gray-600 mb-6">
-                            <li><i class="fas fa-check"></i>Initial Setup Fee: $2,500</li>
-                            <li><i class="fas fa-check"></i>10 Users, 1 Administrator</li>
-                            <li><i class="fas fa-check"></i>12-Hour Support SLA</li>
-                            <li><i class="fas fa-check"></i>99% Uptime Guarantee</li>
-                            <li><i class="fas fa-check"></i>Business Associate Agreement</li>
-                            <li><i class="fas fa-check"></i>Corpus Updates: $100/500 pages</li>
-                            <li><i class="fas fa-check"></i>File Upload: Up to 50 MB</li>
-                            <li><i class="fas fa-check"></i>File Types: PDF, Excel, Docx</li>
-                            <li><i class="fas fa-check"></i>Storage: 1 GB</li>
-                        </ul>
-                        <a href="/website/contact.html" class="block cta-button text-center font-semibold">Get Started</a>
+                    <!-- Pro Plan -->
+                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.2s;">
+                        <div class="pricing-card-header">
+                            <h3 class="text-xl font-bold underline-effect">Pro</h3>
+                            <span class="recommended-badge">Recommended</span>
+                        </div>
+                        <div class="pricing-card-content">
+                            <p class="text-2xl font-bold text-gray-900 mb-4">$350<span class="text-sm font-normal">/month</span></p>
+                            <ul class="text-gray-600 mb-6">
+                                <li><i class="fas fa-check"></i>Initial Setup Fee: $5,000</li>
+                                <li><i class="fas fa-check"></i>25 Users, 3 Administrators</li>
+                                <li><i class="fas fa-check"></i>6-Hour Support SLA</li>
+                                <li><i class="fas fa-check"></i>99.5% Uptime Guarantee</li>
+                                <li><i class="fas fa-check"></i>Business Associate Agreement</li>
+                                <li><i class="fas fa-check"></i>Customer-Managed Keys</li>
+                                <li><i class="fas fa-check"></i>Corpus Updates: First 50 pages free, then $200/500 pages</li>
+                                <li><i class="fas fa-check"></i>File Upload: Up to 75 MB</li>
+                                <li><i class="fas fa-check"></i>File Types: PDF, Excel, Docx, Image, Audio</li>
+                                <li><i class="fas fa-check"></i>Storage: 5 GB</li>
+                            </ul>
+                            <a href="/website/contact.html" class="block cta-button text-center font-semibold">Get Started</a>
+                        </div>
+                    </div>
+                    <!-- Enterprise Plan -->
+                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.3s;">
+                        <div class="pricing-card-header">
+                            <h3 class="text-xl font-bold underline-effect">Enterprise</h3>
+                        </div>
+                        <div class="pricing-card-content">
+                            <p class="text-2xl font-bold text-gray-900 mb-4">$1,500<span class="text-sm font-normal">/month</span></p>
+                            <ul class="text-gray-600 mb-6">
+                                <li><i class="fas fa-check"></i>Initial Setup Fee: $10,000</li>
+                                <li><i class="fas fa-check"></i>75 Users, 10 Administrators</li>
+                                <li><i class="fas fa-check"></i>4-Hour Support SLA</li>
+                                <li><i class="fas fa-check"></i>99.9% Uptime Guarantee</li>
+                                <li><i class="fas fa-check"></i>Business Associate Agreement</li>
+                                <li><i class="fas fa-check"></i>Customer-Managed Keys</li>
+                                <li><i class="fas fa-check"></i>Corpus Updates: Contact Sales</li>
+                                <li><i class="fas fa-check"></i>File Upload: Up to 100 MB</li>
+                                <li><i class="fas fa-check"></i>File Types: PDF, Excel, Docx, Image, Audio, Video</li>
+                                <li><i class="fas fa-check"></i>Storage: 20 GB</li>
+                            </ul>
+                            <a href="/website/contact.html" class="block cta-button text-center font-semibold">Contact Sales</a>
+                        </div>
                     </div>
                 </div>
-                <!-- Pro Plan -->
-                <div class="pricing-card animate-fade-in" style="animation-delay: 0.2s;">
-                    <div class="pricing-card-header">
-                        <h3 class="text-xl font-bold underline-effect">Pro</h3>
-                        <span class="recommended-badge">Recommended</span>
+                <!-- Bottom Row: VPC & On-Premise, Custom Solution -->
+                <div class="pricing-row">
+                    <!-- VPC and On-Premise Plan -->
+                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.4s;">
+                        <div class="pricing-card-header">
+                            <h3 class="text-xl font-bold underline-effect">VPC & On-Premise</h3>
+                        </div>
+                        <div class="pricing-card-content">
+                            <p class="text-2xl font-bold text-gray-900 mb-4">$3,500<span class="text-sm font-normal">/month</span></p>
+                            <ul class="text-gray-600 mb-6">
+                                <li><i class="fas fa-check"></i>Initial Setup Fee: $15,000</li>
+                                <li><i class="fas fa-check"></i>Customizable Users & Admins</li>
+                                <li><i class="fas fa-check"></i>Custom Support SLA</li>
+                                <li><i class="fas fa-check"></i>99.99% Uptime Guarantee</li>
+                                <li><i class="fas fa-check"></i>Business Associate Agreement</li>
+                                <li><i class="fas fa-check"></i>Customer-Managed Keys</li>
+                                <li><i class="fas fa-check"></i>Corpus Updates: Contact Sales</li>
+                                <li><i class="fas fa-check"></i>File Upload: Contact Sales</li>
+                                <li><i class="fas fa-check"></i>File Types: Contact Sales</li>
+                                <li><i class="fas fa-check"></i>Storage: Contact Sales</li>
+                            </ul>
+                            <a href="/website/contact.html" class="block cta-button text-center font-semibold">Contact Sales</a>
+                        </div>
                     </div>
-                    <div class="pricing-card-content">
-                        <p class="text-2xl font-bold text-gray-900 mb-4">$350<span class="text-sm font-normal">/month</span></p>
-                        <ul class="text-gray-600 mb-6">
-                            <li><i class="fas fa-check"></i>Initial Setup Fee: $5,000</li>
-                            <li><i class="fas fa-check"></i>25 Users, 3 Administrators</li>
-                            <li><i class="fas fa-check"></i>6-Hour Support SLA</li>
-                            <li><i class="fas fa-check"></i>99.5% Uptime Guarantee</li>
-                            <li><i class="fas fa-check"></i>Business Associate Agreement</li>
-                            <li><i class="fas fa-check"></i>Customer-Managed Keys</li>
-                            <li><i class="fas fa-check"></i>Corpus Updates: First 50 pages free, then $200/500 pages</li>
-                            <li><i class="fas fa-check"></i>File Upload: Up to 75 MB</li>
-                            <li><i class="fas fa-check"></i>File Types: PDF, Excel, Docx, Image, Audio</li>
-                            <li><i class="fas fa-check"></i>Storage: 5 GB</li>
-                        </ul>
-                        <a href="/website/contact.html" class="block cta-button text-center font-semibold">Get Started</a>
-                    </div>
-                </div>
-                <!-- Enterprise Plan -->
-                <div class="pricing-card animate-fade-in" style="animation-delay: 0.3s;">
-                    <div class="pricing-card-header">
-                        <h3 class="text-xl font-bold underline-effect">Enterprise</h3>
-                    </div>
-                    <div class="pricing-card-content">
-                        <p class="text-2xl font-bold text-gray-900 mb-4">$1,500<span class="text-sm font-normal">/month</span></p>
-                        <ul class="text-gray-600 mb-6">
-                            <li><i class="fas fa-check"></i>Initial Setup Fee: $10,000</li>
-                            <li><i class="fas fa-check"></i>75 Users, 10 Administrators</li>
-                            <li><i class="fas fa-check"></i>4-Hour Support SLA</li>
-                            <li><i class="fas fa-check"></i>99.9% Uptime Guarantee</li>
-                            <li><i class="fas fa-check"></i>Business Associate Agreement</li>
-                            <li><i class="fas fa-check"></i>Customer-Managed Keys</li>
-                            <li><i class="fas fa-check"></i>Corpus Updates: Contact Sales</li>
-                            <li><i class="fas fa-check"></i>File Upload: Up to 100 MB</li>
-                            <li><i class="fas fa-check"></i>File Types: PDF, Excel, Docx, Image, Audio, Video</li>
-                            <li><i class="fas fa-check"></i>Storage: 20 GB</li>
-                        </ul>
-                        <a href="/website/contact.html" class="block cta-button text-center font-semibold">Contact Sales</a>
-                    </div>
-                </div>
-                <!-- VPC and On-Premise Plan -->
-                <div class="pricing-card animate-fade-in" style="animation-delay: 0.4s;">
-                    <div class="pricing-card-header">
-                        <h3 class="text-xl font-bold underline-effect">VPC & On-Premise</h3>
-                    </div>
-                    <div class="pricing-card-content">
-                        <p class="text-2xl font-bold text-gray-900 mb-4">$3,500<span class="text-sm font-normal">/month</span></p>
-                        <ul class="text-gray-600 mb-6">
-                            <li><i class="fas fa-check"></i>Initial Setup Fee: $15,000</li>
-                            <li><i class="fas fa-check"></i>Customizable Users & Admins</li>
-                            <li><i class="fas fa-check"></i>Custom Support SLA</li>
-                            <li><i class="fas fa-check"></i>99.99% Uptime Guarantee</li>
-                            <li><i class="fas fa-check"></i>Business Associate Agreement</li>
-                            <li><i class="fas fa-check"></i>Customer-Managed Keys</li>
-                            <li><i class="fas fa-check"></i>Corpus Updates: Contact Sales</li>
-                            <li><i class="fas fa-check"></i>File Upload: Contact Sales</li>
-                            <li><i class="fas fa-check"></i>File Types: Contact Sales</li>
-                            <li><i class="fas fa-check"></i>Storage: Contact Sales</li>
-                        </ul>
-                        <a href="/website/contact.html" class="block cta-button text-center font-semibold">Contact Sales</a>
+                    <!-- Custom Solution Placeholder -->
+                    <div class="pricing-card animate-fade-in" style="animation-delay: 0.5s;">
+                        <div class="pricing-card-header">
+                            <h3 class="text-xl font-bold underline-effect">Custom Solutions</h3>
+                        </div>
+                        <div class="pricing-card-content">
+                            <p class="text-2xl font-bold text-gray-900 mb-4">Tailored for You</p>
+                            <p class="text-gray-600 mb-6">
+                                Need a plan tailored to your specific needs? Our team can design a custom solution that fits your organization's requirements, ensuring secure, role-based access and optimal performance.
+                            </p>
+                            <a href="/website/contact.html" class="block cta-button text-center font-semibold">Contact Sales</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1018,8 +1037,8 @@
                         <li>
                             Contact Us Through
                             <ul class="contact-methods">
-                                <li>Write to us at <a href="/cdn-cgi/l/email-protection#e58c8b838aa58e8c97909486cb868a88"><span class="__cf_email__" data-cfemail="a58c8b838aa58e8c97909486cb868a88">[email protected]</span></a></li>
-                                <li>For support, email <a href="/cdn-cgi/l/email-protection#7e0d0b0e0e110c0a3e15170c0b0d1f501d1113"><span class="__cf_email__" data-cfemail="7e0d0b0e0e110c0a3e15170c0b0d1f501d1113">[email protected]</span></a></li>
+                                <li>Write to us at <a href="/cdn-cgi/l/email-protection#741d1a121b341f1d060107115c111d1f"><span class="__cf_email__" data-cfemail="a5cccbc3cae5eeecf7f0f6e48be6ea">[email protected]</span></a></li>
+                                <li>For support, email <a href="/cdn-cgi/l/email-protection#b7c4c2c7c7d8c5c3f7dcdfc4c3c5d799d5d9db"><span class="__cf_email__" data-cfemail="a5d6d0d5d5cad7d1e5cecdc6c1c7d58bc7cb">[email protected]</span></a></li>
                             </ul>
                         </li>
                         <li><a href="https://www.linkedin.com/company/kirusa">LinkedIn</a></li>
