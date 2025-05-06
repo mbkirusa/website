@@ -638,21 +638,45 @@
             color: #2D3748;
         }
         footer {
-            background: #000000;
-            z-index: 10;
-        }
-        footer h3 {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);  
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             color: #ffffff;
+            padding: 2rem;
+            margin: 2rem auto;
+            width: 95%;
+            max-width: 1200px;
+            overflow: hidden;
         }
-        footer p, footer ul li, footer .text-gray-400 {
-            color: #f7f7f7;
+
+        footer h3 {
+            color: #fff;
+            font-weight: 600;
         }
-        footer a {
-            color: #4C6EF5;
+
+        footer p, footer ul li, footer a {
+            color: #eaeaea;
+            transition: color 0.3s ease;
         }
+
         footer a:hover {
-            color: #4263EB;
+            color: #aad3ff;
         }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .contact-methods {
+            list-style-type: disc;
+            margin-left: 1rem;
+        }
+
         .contact-methods {
             list-style-type: disc;
             padding-left: 1.5rem;
