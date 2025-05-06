@@ -13,67 +13,70 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" defer>
     <style>
         body {
-            font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #F5F5F7;
-            color: #1D1D1F;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #121212 0%, #1E1E2F 100%);
+            color: #B0B0B0;
             margin: 0;
             overflow-x: hidden;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 400;
-            padding-top: 3.5rem;
-            line-height: 1.8;
+            padding-top: 4rem;
+            line-height: 1.9;
+            position: relative;
         }
         html {
             scroll-behavior: smooth;
         }
         h1 {
-            font-size: clamp(2.5rem, 5vw, 5rem);
-            font-weight: 800;
+            font-size: clamp(3rem, 5vw, 5.5rem);
+            font-weight: 900;
             letter-spacing: -0.03em;
             line-height: 1.1;
             text-align: center;
-            color: #FFFFFF;
+            color: #E0E0E0;
+            text-shadow: 0 0 10px rgba(42, 42, 64, 0.3);
         }
         h2 {
-            font-size: clamp(2rem, 4vw, 3.75rem);
-            font-weight: 700;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 800;
             letter-spacing: -0.02em;
             text-align: center;
-            margin-bottom: 2rem;
-            color: #1A2526;
+            margin-bottom: 2.5rem;
+            color: #E0E0E0;
+            text-shadow: 0 0 8px rgba(42, 42, 64, 0.2);
         }
         h3 {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            font-weight: 600;
+            font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+            font-weight: 700;
             letter-spacing: -0.01em;
             text-align: center;
-            color: #1A2526;
+            color: #D0D0D0;
         }
         p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 400;
-            line-height: 1.8;
+            line-height: 1.9;
             text-align: center;
-            color: #1D1D1F;
-            letter-spacing: 0.01em;
+            color: #B0B0B0;
+            letter-spacing: 0.02em;
         }
         a {
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 1.2rem;
+            font-weight: 600;
             text-align: center;
             text-decoration: none;
-            color: #0055A4;
+            color: #5C6BC0;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #003366;
+            color: #E0E0E0;
         }
         header {
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(90deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 47, 0.95));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(92, 107, 192, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             position: fixed;
             top: 0;
             width: 100%;
@@ -81,14 +84,14 @@
         }
         .nav-link {
             position: relative;
-            font-weight: 500;
-            font-size: 1rem;
-            color: #FFFFFF;
-            margin: 0 clamp(0.5rem, 1vw, 1rem);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #5C6BC0;
+            margin: 0 clamp(0.75rem, 1.5vw, 1.5rem);
             transition: color 0.3s ease, transform 0.3s ease;
         }
         .nav-link:hover {
-            color: #E6E6E6;
+            color: #E0E0E0;
             transform: translateY(-2px);
         }
         .nav-link::after {
@@ -98,32 +101,32 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background: #FFFFFF;
+            background: #5C6BC0;
             transition: width 0.3s ease;
         }
         .nav-link:hover::after {
             width: 100%;
         }
         .dropdown-button {
-            color: #FFFFFF;
-            font-weight: 500;
-            font-size: 1rem;
+            color: #5C6BC0;
+            font-weight: 600;
+            font-size: 1.2rem;
             transition: color 0.3s ease, transform 0.3s ease;
         }
         .dropdown-button:hover {
-            color: #E6E6E6;
+            color: #E0E0E0;
             transform: translateY(-2px);
         }
         .dropdown-content {
             display: none;
             position: absolute;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(30, 30, 47, 0.98);
+            backdrop-filter: blur(12px);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             z-index: 10;
             min-width: 16rem;
-            padding: 0.5rem 0;
+            padding: 0.75rem 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 0;
             transform: translateY(0.5rem);
@@ -135,8 +138,8 @@
         }
         .dropdown-content a {
             display: block;
-            color: #FFFFFF;
-            font-size: 0.95rem;
+            color: #5C6BC0;
+            font-size: 1.1rem;
             font-weight: 500;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
@@ -146,28 +149,28 @@
             transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
         .dropdown-content a:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #E6E6E6;
+            background: rgba(92, 107, 192, 0.15);
+            color: #E0E0E0;
             transform: translateX(5px);
         }
         #mobile-menu {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(18, 18, 18, 0.98);
+            backdrop-filter: blur(12px);
         }
         #mobile-menu a {
-            color: #FFFFFF;
-            font-weight: 500;
-            font-size: 1.1rem;
+            color: #5C6BC0;
+            font-weight: 600;
+            font-size: 1.2rem;
             transition: color 0.3s ease, transform 0.3s ease;
         }
         #mobile-menu a:hover {
-            color: #E6E6E6;
+            color: #E0E0E0;
             transform: translateX(5px);
         }
         .mobile-dropdown a {
-            color: #FFFFFF;
-            font-size: 0.95rem;
-            font-weight: 400;
+            color: #5C6BC0;
+            font-size: 1.1rem;
+            font-weight: 500;
             padding: 0.5rem 1rem;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
@@ -175,47 +178,47 @@
             transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
         .mobile-dropdown a:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #E6E6E6;
+            background: rgba(92, 107, 192, 0.15);
+            color: #E0E0E0;
             transform: translateX(5px);
         }
         .menu-icon {
-            color: #FFFFFF;
+            color: #5C6BC0;
             transition: transform 0.3s ease;
         }
         .menu-icon:hover {
             transform: scale(1.1);
         }
         .cta-button {
-            background: linear-gradient(135deg, #1E3A8A, #2DD4BF);
-            color: #FFFFFF;
+            background: linear-gradient(135deg, #2A2A40, #5C6BC0);
+            color: #E0E0E0;
             padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
             letter-spacing: 0.02em;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(92, 107, 192, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             display: inline-block;
             margin: 0.5rem;
         }
         .cta-button:hover {
-            background: linear-gradient(135deg, #2DD4BF, #1E3A8A);
+            background: linear-gradient(135deg, #5C6BC0, #2A2A40);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(92, 107, 192, 0.4);
         }
         .cta-button.secondary {
             background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            color: #FFFFFF;
+            border: 2px solid #5C6BC0;
+            color: #5C6BC0;
             box-shadow: none;
         }
         .cta-button.secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #FFFFFF;
-            color: #FFFFFF;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(92, 107, 192, 0.2);
+            border-color: #E0E0E0;
+            color: #E0E0E0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         .hero-section {
             position: relative;
@@ -223,7 +226,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #1E3A8A 0%, #2DD4BF 100%);
+            background: linear-gradient(135deg, #121212 0%, #1E1E2F 100%);
             overflow: hidden;
         }
         .hero-bg {
@@ -232,7 +235,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.3;
+            opacity: 0.2;
             z-index: 0;
         }
         .hero-content {
@@ -241,7 +244,7 @@
         }
         .hero-content h1, .hero-content p {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            color: #FFFFFF;
+            color: #E0E0E0;
         }
         @keyframes float {
             0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
@@ -252,8 +255,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 0.5rem rgba(45, 212, 191, 0.3); }
-            50% { box-shadow: 0 0 1.25rem rgba(45, 212, 191, 0.6); }
+            0%, 100% { box-shadow: 0 0 0.5rem rgba(92, 107, 192, 0.3); }
+            50% { box-shadow: 0 0 1.25rem rgba(92, 107, 192, 0.6); }
         }
         .animate-float {
             animation: float 6s ease-in-out infinite;
@@ -267,59 +270,72 @@
         .product-grid {
             display: flex;
             flex-direction: column;
-            gap: clamp(1rem, 2vw, 2rem);
+            gap: clamp(1.5rem, 3vw, 3rem);
+            justify-content: center;
+            align-items: center;
         }
         .product-row {
             display: grid;
-            gap: clamp(1rem, 2vw, 2rem);
+            gap: clamp(1.5rem, 3vw, 3rem);
             justify-content: center;
+            width: 100%;
         }
         .product-row.top-row {
-            grid-template-columns: repeat(3, minmax(clamp(14rem, 18vw, 22rem), 1fr));
-            max-width: 72rem;
+            grid-template-columns: repeat(3, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+            max-width: 80rem;
             margin: 0 auto;
         }
         .product-row.bottom-row {
-            grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
-            max-width: 48rem;
+            grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+            max-width: 54rem;
             margin: 0 auto;
         }
         .product-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #1E1E2F 0%, #2A2A40 100%);
+            border: 1px solid rgba(92, 107, 192, 0.3);
             border-radius: 1.5rem;
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(92, 107, 192, 0.1);
             transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
             transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
         }
         .product-card:hover {
             transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(92, 107, 192, 0.2);
         }
         .product-media {
             width: 100%;
-            height: clamp(8rem, 10vw, 10rem);
+            height: clamp(8rem, 12vw, 12rem);
             display: flex;
             align-items: center;
             justify-content: center;
             background: transparent;
             padding: clamp(0.5rem, 1vw, 1rem);
         }
-        .product-media img {
-            max-width: 80%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: transform 0.5s ease;
-        }
         .product-media i {
-            font-size: clamp(2rem, 2.5vw, 2.5rem);
-            color: #1E3A8A;
-            transition: transform 0.3s ease;
+            font-size: clamp(2.5rem, 3vw, 3rem);
+            color: #5C6BC0;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
-        .product-card:hover .product-media img,
         .product-card:hover .product-media i {
             transform: scale(1.1) rotate(5deg);
+            color: #E0E0E0;
+        }
+        .product-text-container {
+            position: relative;
+            padding: 2rem;
+            border-radius: 0 0 1.5rem 1.5rem;
+        }
+        .product-description {
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #B0B0B0;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .product-description.long-text {
+            text-align: center;
         }
         .logo-media {
             width: clamp(6rem, 12.5vw, 12.5rem);
@@ -338,24 +354,6 @@
                 max-width: 250px;
             }
         }
-        .product-text-container {
-            position: relative;
-            padding: 1.5rem;
-            border-radius: 0 0 1.5rem 1.5rem;
-        }
-        .product-description {
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: #1D1D1F;
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-        .product-description .highlight {
-            font-size: 1.05rem;
-            font-weight: 500;
-            color: #1A2526;
-        }
         .product-card a {
             display: inline-block;
             position: relative;
@@ -369,7 +367,7 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background: #0055A4;
+            background: #5C6BC0;
             transition: width 0.3s ease;
         }
         .product-card a:hover::after {
@@ -378,6 +376,7 @@
         .section-parallax {
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, #121212 0%, #1E1E2F 100%);
         }
         .parallax-bg {
             position: absolute;
@@ -385,19 +384,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%232DD4BF" fill-opacity="0.1" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%235C6BC0" fill-opacity="0.1" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,133.3C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>') no-repeat bottom;
             background-size: cover;
             transform: translateY(0);
             transition: transform 0.1s linear;
         }
         .intro-container {
             position: relative;
-            background: rgba(255, 255, 255, 0.98);
-            padding: clamp(1.5rem, 3vw, 3rem);
+            background: rgba(255, 255, 255, 0.05);
+            padding: clamp(2rem, 4vw, 4rem);
             border-radius: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(92, 107, 192, 0.1);
             max-width: 60rem;
             margin: 0 auto;
+            border: 1px solid rgba(92, 107, 192, 0.3);
         }
         .intro-container::before {
             content: '';
@@ -405,13 +405,14 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 10rem;
+            width: 12rem;
             height: 0.25rem;
-            background: #1A2526;
+            background: #5C6BC0;
             border-radius: 0.125rem;
         }
         .cta-section {
             position: relative;
+            background: linear-gradient(135deg, #121212 0%, #1E1E2F 100%);
         }
         .cta-section::before {
             content: '';
@@ -420,7 +421,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
         .cta-content {
@@ -429,45 +430,43 @@
         }
         .cta-content h2, .cta-content p {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            color: #FFFFFF;
+            color: #E0E0E0;
         }
         .pricing-section {
             display: flex;
             flex-direction: column;
-            gap: clamp(1rem, 2vw, 2rem);
+            gap: clamp(1.5rem, 3vw, 3rem);
         }
         .pricing-row {
             display: grid;
-            gap: clamp(1rem, 2vw, 2rem);
+            gap: clamp(1.5rem, 3vw, 3rem);
             justify-content: center;
         }
-        /* Top row with 3 tiles */
         .pricing-row.top-row {
-            grid-template-columns: repeat(3, minmax(clamp(14rem, 18vw, 22rem), 1fr));
-            max-width: 72rem;
+            grid-template-columns: repeat(3, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+            max-width: 80rem;
             margin: 0 auto;
         }
-        /* Bottom row with 2 tiles */
         .pricing-row.bottom-row {
-            grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
-            max-width: 48rem;
+            grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+            max-width: 54rem;
             margin: 0 auto;
         }
         .pricing-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #1E1E2F 0%, #2A2A40 100%);
+            border: 1px solid rgba(92, 107, 192, 0.3);
             border-radius: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(92, 107, 192, 0.1);
             transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s;
             transform: perspective(62.5rem) rotateX(0deg) rotateY(0deg);
         }
         .pricing-card:hover {
             transform: perspective(62.5rem) rotateX(3deg) rotateY(3deg) translateY(-0.9375rem);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(92, 107, 192, 0.2);
         }
         .pricing-card-header {
-            background: linear-gradient(135deg, #1E3A8A, #2DD4BF);
-            color: white;
+            background: linear-gradient(135deg, #2A2A40 0%, #5C6BC0 100%);
+            color: #E0E0E0;
             padding: 1.5rem;
             border-top-left-radius: 1.5rem;
             border-top-right-radius: 1.5rem;
@@ -475,7 +474,7 @@
             text-align: center;
         }
         .pricing-card:hover .pricing-card-header {
-            background: linear-gradient(135deg, #2D4A9C, #3BE6CF);
+            background: linear-gradient(135deg, #5C6BC0 0%, #2A2A40 100%);
         }
         .pricing-card:hover .underline-effect::after {
             width: 100%;
@@ -485,7 +484,7 @@
             display: block;
             width: 0;
             height: 3px;
-            background: #F87171;
+            background: #E0E0E0;
             transition: width 0.3s ease;
             margin: 0.5rem auto 0;
         }
@@ -493,17 +492,18 @@
             position: absolute;
             top: -0.75rem;
             right: 1rem;
-            background-color: #FBBF24;
-            color: #1E3A8A;
+            background-color: #2A2A40;
+            color: #5C6BC0;
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: bold;
             transform: translateY(-50%);
+            border: 1px solid rgba(92, 107, 192, 0.3);
         }
         .pricing-card-content {
-            padding: 1.5rem;
-            background-color: white;
+            padding: 2rem;
+            background: transparent;
             border-bottom-left-radius: 1.5rem;
             border-bottom-right-radius: 1.5rem;
             text-align: left;
@@ -512,63 +512,110 @@
             list-style: none;
             padding: 0;
             margin: 0 0 1.5rem 0;
-            color: #1D1D1F;
-            font-size: 0.9rem;
+            color: #B0B0B0;
+            font-size: 1.1rem;
         }
         .pricing-card-content ul li {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         .pricing-card-content ul li i {
             margin-right: 0.5rem;
-            color: #2DD4BF;
-            font-size: 1rem;
+            color: #5C6BC0;
+            font-size: 1.2rem;
             margin-top: 0.2rem;
         }
         footer {
-            background: #212529;
+            background: linear-gradient(90deg, #121212 0%, #1E1E2F 100%);
         }
         footer h3 {
-            color: #FFFFFF;
+            color: #5C6BC0;
         }
         footer p, footer ul li, footer .text-gray-400 {
-            color: #F8F9FA;
+            color: #B0B0B0;
         }
         footer a {
-            color: #F8F9FA;
+            color: #5C6BC0;
         }
         footer a:hover {
-            color: #D3D4D5;
+            color: #E0E0E0;
         }
         .contact-methods {
             list-style-type: disc;
             padding-left: 1.5rem;
             margin-top: 0.5rem;
-            color: #F8F9FA;
+            color: #B0B0B0;
         }
         .contact-methods li {
             margin-bottom: 0.5rem;
         }
         .section-spacing {
-            margin-bottom: clamp(4rem, 8vw, 8rem);
+            margin-bottom: clamp(5rem, 10vw, 10rem);
         }
         .section-padding {
-            padding-top: clamp(4rem, 6vw, 8rem);
-            padding-bottom: clamp(4rem, 6vw, 8rem);
+            padding-top: clamp(5rem, 8vw, 10rem);
+            padding-bottom: clamp(5rem, 8vw, 10rem);
         }
         @media (max-width: 1024px) {
             .hero-content h1 {
                 font-size: clamp(3rem, 3.5vw, 3.5rem);
             }
             .hero-content p {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             h2 {
                 font-size: clamp(2.5rem, 3vw, 3rem);
             }
             h3 {
-                font-size: 1.125rem;
+                font-size: 1.5rem;
+            }
+            .section-spacing {
+                margin-bottom: clamp(4rem, 8vw, 8rem);
+            }
+            .section-padding {
+                padding-top: clamp(4rem, 6vw, 8rem);
+                padding-bottom: clamp(4rem, 6vw, 8rem);
+            }
+            .pricing-row.top-row {
+                grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+                max-width: 54rem;
+            }
+            .pricing-row.bottom-row {
+                grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+                max-width: 54rem;
+            }
+            .product-row.top-row {
+                grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+                max-width: 54rem;
+            }
+            .product-row.bottom-row {
+                grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+                max-width: 54rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            h2 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .nav-link {
+                font-size: 1.1rem;
+                margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
+            }
+            .cta-content h2 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            .cta-content p {
+                font-size: 1.1rem;
             }
             .section-spacing {
                 margin-bottom: clamp(3rem, 6vw, 6rem);
@@ -577,42 +624,32 @@
                 padding-top: clamp(3rem, 5vw, 6rem);
                 padding-bottom: clamp(3rem, 5vw, 6rem);
             }
-            .pricing-row.top-row {
-                grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
-                max-width: 48rem;
-            }
+            .pricing-row.top-row,
             .pricing-row.bottom-row {
-                grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
-                max-width: 48rem;
+                grid-template-columns: 1fr;
+                max-width: 28rem;
             }
-            .product-row.top-row {
-                grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
-                max-width: 48rem;
-            }
+            .product-row.top-row,
             .product-row.bottom-row {
-                grid-template-columns: repeat(2, minmax(clamp(14rem, 18vw, 22rem), 1fr));
-                max-width: 48rem;
+                grid-template-columns: 1fr;
+                max-width: 28rem;
             }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 480px) {
             .hero-content h1 {
-                font-size: clamp(2rem, 2.5vw, 2.5rem);
+                font-size: clamp(1.5rem, 2vw, 2rem);
             }
             .hero-content p {
                 font-size: 1rem;
             }
             h2 {
-                font-size: clamp(2rem, 2.5vw, 2.5rem);
+                font-size: clamp(1.5rem, 2vw, 2rem);
             }
             h3 {
-                font-size: 1rem;
-            }
-            .nav-link {
-                font-size: 1rem;
-                margin: 0 clamp(0.25rem, 0.5vw, 0.5rem);
+                font-size: 1.2rem;
             }
             .cta-content h2 {
-                font-size: clamp(2rem, 2.5vw, 2.5rem);
+                font-size: clamp(1.5rem, 2vw, 2rem);
             }
             .cta-content p {
                 font-size: 1rem;
@@ -623,43 +660,6 @@
             .section-padding {
                 padding-top: clamp(2rem, 4vw, 4rem);
                 padding-bottom: clamp(2rem, 4vw, 4rem);
-            }
-            .pricing-row.top-row,
-            .pricing-row.bottom-row {
-                grid-template-columns: 1fr;
-                max-width: 24rem;
-            }
-            .product-row.top-row,
-            .product-row.bottom-row {
-                grid-template-columns: 1fr;
-                max-width: 24rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: clamp(1.5rem, 2vw, 2rem);
-            }
-            .hero-content p {
-                font-size: 0.95rem;
-            }
-            h2 {
-                font-size: clamp(1.5rem, 2vw, 2rem);
-            }
-            h3 {
-                font-size: 0.95rem;
-            }
-            .cta-content h2 {
-                font-size: clamp(1.5rem, 2vw, 2rem);
-            }
-            .cta-content p {
-                font-size: 0.9rem;
-            }
-            .section-spacing {
-                margin-bottom: clamp(1.5rem, 3vw, 3rem);
-            }
-            .section-padding {
-                padding-top: clamp(1.5rem, 3vw, 3rem);
-                padding-bottom: clamp(1.5rem, 3vw, 3rem);
             }
         }
     </style>
@@ -736,7 +736,7 @@
         <div class="container mx-auto px-8 relative">
             <div class="intro-container">
                 <h2 class="mb-8 animate-fade-in">Tired of Document Overload?</h2>
-                <p class="max-w-3xl mx-auto text-center animate-fade-in" style="animation-delay: 0.2s;">
+                <p class="max-w-3xl mx-auto text-center animate-fade-in product-description long-text" style="animation-delay: 0.2s;">
                     Organizations lose valuable time navigating scattered digital assets—documents, contracts, emails, audio, and videos. Traditional search tools struggle with diverse formats, causing delays and inefficiencies. Corpusio revolutionizes this with an AI-driven platform that delivers instant, context-aware answers tailored to your role. Ask questions like “What are our paid leave policies?” and get precise responses in seconds, slashing search time by up to 80%. Accessible via WhatsApp and our intuitive website, Corpusio ensures secure, restricted access to information, transforming how teams work—smarter, faster, and more connected.
                 </p>
             </div>
@@ -757,7 +757,7 @@
                         </div>
                         <div class="product-text-container">
                             <h3 class="mb-4">Role-Based Access Control (RBAC)</h3>
-                            <p class="product-description">
+                            <p class="product-description long-text">
                                 Access to information is strictly limited to user roles, ensuring privacy and compliance. Employees can only view documents and data assigned to their role, verified through a secure authentication process, safeguarding sensitive information.
                             </p>
                         </div>
@@ -768,7 +768,7 @@
                         </div>
                         <div class="product-text-container">
                             <h3 class="mb-4">Real-Time Chat Retrieval</h3>
-                            <p class="product-description">
+                            <p class="product-description long-text">
                                 Query in plain language and receive immediate, context-aware answers from documents (PDF, Excel, DOCX), with image, audio, and video support in higher plans. Advanced AI ensures high accuracy and relevance within your authorized access.
                             </p>
                         </div>
@@ -779,7 +779,7 @@
                         </div>
                         <div class="product-text-container">
                             <h3 class="mb-4">Multimodal Document Processing</h3>
-                            <p class="product-description">
+                            <p class="product-description long-text">
                                 Processes PDF, Excel, and DOCX files, with image, audio, and video support in Pro and Enterprise plans. Auto-summarizes reports, extracts metrics, and flags inconsistencies, acting as an AI analyst within your access scope.
                             </p>
                         </div>
@@ -793,7 +793,7 @@
                         </div>
                         <div class="product-text-container">
                             <h3 class="mb-4">Secure & Scalable</h3>
-                            <p class="product-description">
+                            <p class="product-description long-text">
                                 Cloud-based infrastructure with seamless system integration. Offers enterprise-grade scalability, customer-managed keys, and Virtual Private Cloud (VPC) options for maximum control, with role-based authentication ensuring secure data storage.
                             </p>
                         </div>
@@ -822,7 +822,7 @@
             <div class="product-card animate-float">
                 <div class="product-text-container">
                     <h3 class="mb-4">📄 Case Study: Streamlining HR Compliance</h3>
-                    <p class="product-description">
+                    <p class="product-description long-text">
                         A global firm used Corpusio to manage HR policies across departments. HR staff, authenticated via role-based access, asked “What are our paid leave policies?” via WhatsApp or the website, receiving instant, cited answers from PDFs and DOCX files within their access scope, reducing compliance research time by 80%. Automated classification and RBAC ensured sensitive documents remained private, boosting efficiency and governance.
                     </p>
                 </div>
@@ -839,7 +839,7 @@
                 <div class="product-card animate-float">
                     <div class="product-text-container">
                         <h3 class="mb-4">Outperforms Competitors</h3>
-                        <p class="product-description">
+                        <p class="product-description long-text">
                             Outperforms competitors like Qatalog and Glean with top ratings for pricing, ease of use, file format support, and robust role-based access control.
                         </p>
                     </div>
@@ -855,7 +855,7 @@
                 <div class="product-card animate-float" style="animation-delay: 0.4s;">
                     <div class="product-text-container">
                         <h3 class="mb-4">Affordable Pricing</h3>
-                        <p class="product-description">
+                        <p class="product-description long-text">
                             Affordable pricing ($150-$3,500/month) versus costlier competitors like Kofax TotalAgility ($500-$10,000/month), with flexible plans for SMBs to enterprises.
                         </p>
                     </div>
@@ -997,7 +997,7 @@
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 text-center relative">
             <h2 class="mb-8 animate-fade-in">Your Data, Secured</h2>
-            <p class="max-w-3xl mx-auto text-center animate-fade-in" style="animation-delay: 0.2s;">
+            <p class="max-w-3xl mx-auto text-center animate-fade-in product-description long-text" style="animation-delay: 0.2s;">
                 Your data security is our priority. Corpusio offers end-to-end encryption, GDPR, SOC 2, and ISO 27001 compliance, customer-managed keys, and optional VPC deployment. Role-based access control, backed by a secure authentication process, ensures that only authorized users access assigned information, while smart classification keeps public/private documents secure and compliant.
             </p>
         </div>
