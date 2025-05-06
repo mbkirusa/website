@@ -309,16 +309,6 @@
             justify-content: center;
             width: 100%;
         }
-        .product-row.top-row {
-            grid-template-columns: repeat(3, minmax(clamp(16rem, 20vw, 24rem), 1fr));
-            max-width: 80rem;
-            margin: 0 auto;
-        }
-        .product-row.bottom-row {
-            grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
-            max-width: 54rem;
-            margin: 0 auto;
-        }
         .product-row.comp-row {
             grid-template-columns: repeat(3, minmax(clamp(16rem, 20vw, 24rem), 1fr));
             max-width: 80rem;
@@ -371,10 +361,95 @@
             max-width: 300px;
             height: auto;
         }
+        /* Feature Belt Styles */
+        .feature-belt-container {
+            position: relative;
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-belt {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            overflow-y: auto;
+            max-height: 500px; /* Fixed height for vertical scrolling */
+            padding: 1rem;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+            scrollbar-width: none; /* Hide scrollbar in Firefox */
+        }
+        .feature-belt::-webkit-scrollbar {
+            display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+        }
+        .feature-belt .product-card {
+            width: 100%;
+            max-width: 24rem;
+            margin: 0 auto;
+        }
+        .arrow-button {
+            position: absolute;
+            background: #C3E8F7;
+            color: #2D3748;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .arrow-button:hover {
+            background: #A3BFFA;
+            transform: scale(1.1);
+        }
+        .arrow-button.left {
+            top: 10%;
+            left: 0;
+            transform: translateY(-50%) rotate(90deg);
+        }
+        .arrow-button.right {
+            bottom: 10%;
+            right: 0;
+            transform: translateY(50%) rotate(-90deg);
+        }
         @media (max-width: 768px) {
             .kirusaassist-logo {
                 max-width: 250px;
             }
+            .feature-belt {
+                max-height: 400px;
+            }
+            .feature-belt .product-card {
+                max-width: 20rem;
+            }
+            .arrow-button {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        @media (max-width: 480px) {
+            .feature-belt {
+                max-height: 350px;
+            }
+            .feature-belt .product-card {
+                max-width: 16rem;
+            }
+            .arrow-button {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        .product-row.comp-row {
+            grid-template-columns: repeat(3, minmax(clamp(16rem, 20vw, 24rem), 1fr));
+            max-width: 80rem;
+            margin: 0 auto;
         }
         .product-text-container {
             position: relative;
@@ -603,14 +678,6 @@
                 padding-top: clamp(3rem, 5vw, 6rem);
                 padding-bottom: clamp(3rem, 5vw, 6rem);
             }
-            .product-row.top-row {
-                grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
-                max-width: 54rem;
-            }
-            .product-row.bottom-row {
-                grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
-                max-width: 54rem;
-            }
             .product-row.comp-row {
                 grid-template-columns: repeat(2, minmax(clamp(16rem, 20vw, 24rem), 1fr));
                 max-width: 54rem;
@@ -654,8 +721,6 @@
                 padding-top: clamp(2rem, 4vw, 4rem);
                 padding-bottom: clamp(2rem, 4vw, 4rem);
             }
-            .product-row.top-row,
-            .product-row.bottom-row,
             .product-row.comp-row,
             .pricing-row.top-row,
             .pricing-row.bottom-row {
@@ -777,9 +842,11 @@
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Key Features & Benefits</h2>
-            <div class="product-grid">
-                <!-- Top Row: 3 Cards -->
-                <div class="product-row top-row">
+            <div class="feature-belt-container">
+                <button class="arrow-button left" onclick="scrollBelt('up')">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="feature-belt" id="featureBelt">
                     <div class="product-card">
                         <div class="product-media">
                             <i class="fas fa-lock"></i>
@@ -813,9 +880,6 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <!-- Bottom Row: 4 Cards -->
-                <div class="product-row bottom-row">
                     <div class="product-card">
                         <div class="product-media">
                             <i class="fas fa-comments"></i>
@@ -861,6 +925,9 @@
                         </div>
                     </div>
                 </div>
+                <button class="arrow-button right" onclick="scrollBelt('down')">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -1109,7 +1176,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Dropdown -->
+    <!-- JavaScript for Dropdown and Belt Scrolling -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
@@ -1148,6 +1215,16 @@
                 }
             });
         });
+
+        function scrollBelt(direction) {
+            const belt = document.getElementById('featureBelt');
+            const scrollAmount = 300; // Adjust scroll distance as needed
+            if (direction === 'up') {
+                belt.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+            } else if (direction === 'down') {
+                belt.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 </html>
