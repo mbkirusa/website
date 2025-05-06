@@ -204,7 +204,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50px;
-            background: linear-gradient(90deg, #FF9FF3, #FEC89A, #A3BFFA, #C3E8F7);
+            background: linear-gradient(90deg, #6B48FF, #00C4B4);
             background-size: 400%;
             z-index: -1;
             opacity: 0;
@@ -212,9 +212,9 @@
         }
         .cta-button:hover::before {
             opacity: 1;
-            animation: rainbow 8s linear infinite;
+            animation: gradientShift 8s linear infinite;
         }
-        @keyframes rainbow {
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             100% { background-position: 400% 50%; }
         }
@@ -236,7 +236,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50px;
-            background: linear-gradient(90deg, #FF9FF3, #FEC89A, #A3BFFA, #C3E8F7);
+            background: linear-gradient(90deg, #6B48FF, #00C4B4);
             background-size: 400%;
             z-index: -1;
             opacity: 0;
@@ -244,7 +244,7 @@
         }
         .cta-button.secondary:hover::before {
             opacity: 1;
-            animation: rainbow 8s linear infinite;
+            animation: gradientShift 8s linear infinite;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(1.5rem); }
@@ -316,12 +316,22 @@
         }
         .product-card {
             background: #E6F0FA;
-            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 1.5rem;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), 0 0 10px rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
             transition: transform 0.3s ease;
+            position: relative;
+        }
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(90deg, #6B48FF, #00C4B4);
+            z-index: -1;
         }
         .product-card:hover {
             transform: translateY(-5px);
@@ -373,27 +383,33 @@
         }
         .feature-belt {
             display: flex;
-            flex-direction: column;
-            gap: clamp(1.5rem, 3vw, 3rem);
-            overflow-y: auto;
-            max-height: 500px; /* Fixed height for vertical scrolling */
-            padding: 1rem;
-            scroll-behavior: smooth;
-            -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-            scrollbar-width: none; /* Hide scrollbar in Firefox */
+            flex-direction: row;
+            gap: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            width: 100%;
+            height: 400px;
+            padding: 0;
+            scroll-snap-type: x mandatory;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         .feature-belt::-webkit-scrollbar {
-            display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+            display: none;
         }
         .feature-belt .product-card {
             width: 100%;
             max-width: 24rem;
-            margin: 0 auto;
+            height: 400px;
+            scroll-snap-align: center;
+            flex-shrink: 0;
         }
         .arrow-button {
             position: absolute;
-            background: #C3E8F7;
-            color: #2D3748;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, #6B48FF, #00C4B4);
+            color: #FFFFFF;
             border: none;
             border-radius: 50%;
             width: 40px;
@@ -406,28 +422,25 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .arrow-button:hover {
-            background: #A3BFFA;
-            transform: scale(1.1);
+            background: linear-gradient(90deg, #00C4B4, #6B48FF);
+            transform: translateY(-50%) scale(1.1);
         }
         .arrow-button.left {
-            top: 10%;
             left: 0;
-            transform: translateY(-50%) rotate(90deg);
         }
         .arrow-button.right {
-            bottom: 10%;
             right: 0;
-            transform: translateY(50%) rotate(-90deg);
         }
         @media (max-width: 768px) {
             .kirusaassist-logo {
                 max-width: 250px;
             }
             .feature-belt {
-                max-height: 400px;
+                height: 350px;
             }
             .feature-belt .product-card {
                 max-width: 20rem;
+                height: 350px;
             }
             .arrow-button {
                 width: 35px;
@@ -436,10 +449,11 @@
         }
         @media (max-width: 480px) {
             .feature-belt {
-                max-height: 350px;
+                height: 300px;
             }
             .feature-belt .product-card {
                 max-width: 16rem;
+                height: 300px;
             }
             .arrow-button {
                 width: 30px;
@@ -519,7 +533,7 @@
             transform: translateX(-50%);
             width: 10rem;
             height: 0.25rem;
-            background: #A3BFFA;
+            background: linear-gradient(90deg, #6B48FF, #00C4B4);
             border-radius: 0.125rem;
         }
         .cta-section {
@@ -565,11 +579,21 @@
         }
         .pricing-card {
             background: #E6F0FA;
-            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 1.5rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), 0 0 10px rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
             transition: transform 0.3s ease;
+            position: relative;
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(90deg, #6548e3, #00C4B4);
+            z-index: -1;
         }
         .pricing-card:hover {
             transform: translateY(-5px);
@@ -605,13 +629,18 @@
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: bold;
-            border: 2px solid transparent;
+            position: relative;
+            z-index: 1;
         }
-        .recommended-badge.rainbow-border {
-            border: 2px solid transparent;
-            border-image: linear-gradient(90deg, #FF9FF3, #FEC89A, #A3BFFA, #C3E8F7);
-            border-image-slice: 1;
-            border-image-width: 2px;
+        .recommended-badge.rainbow-border::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(90deg, #6B48FF, #00C4B4);
+            z-index: -1;
         }
         .pricing-card-content {
             padding: 1.5rem;
@@ -625,7 +654,7 @@
         }
         .pricing-card-content ul li i {
             margin-right: 0.5rem;
-            color: #4C6EF5;
+            color: #60f7f5;
         }
         footer {
             background: #FFF1F9;
@@ -843,8 +872,8 @@
         <div class="container mx-auto px-8 relative">
             <h2 class="mb-20">Key Features & Benefits</h2>
             <div class="feature-belt-container">
-                <button class="arrow-button left" onclick="scrollBelt('up')">
-                    <i class="fas fa-chevron-down"></i>
+                <button class="arrow-button left" onclick="scrollBelt('left')">
+                    <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="feature-belt" id="featureBelt">
                     <div class="product-card">
@@ -876,7 +905,7 @@
                         <div class="product-text-container">
                             <h3 class="mb-4">Cross-Meeting Coordination</h3>
                             <p class="product-description long-text">
-                                Joins multiple meetings, syncing updates and ensuring team alignment. Shares insights limited to authorized users, reducing follow-up time.
+                                Joins multiple meetings, a syncing updates and ensuring team alignment. Shares insights limited to authorized users, reducing follow-up time.
                             </p>
                         </div>
                     </div>
@@ -925,8 +954,8 @@
                         </div>
                     </div>
                 </div>
-                <button class="arrow-button right" onclick="scrollBelt('down')">
-                    <i class="fas fa-chevron-down"></i>
+                <button class="arrow-button right" onclick="scrollBelt('right')">
+                    <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
         </div>
@@ -1218,13 +1247,48 @@
 
         function scrollBelt(direction) {
             const belt = document.getElementById('featureBelt');
-            const scrollAmount = 300; // Adjust scroll distance as needed
-            if (direction === 'up') {
-                belt.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
-            } else if (direction === 'down') {
-                belt.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+            const cards = belt.children;
+            let currentIndex = Math.round(belt.scrollLeft / cards[0].offsetWidth);
+            
+            if (direction === 'left') {
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            } else if (direction === 'right') {
+                currentIndex = (currentIndex + 1) % cards.length;
             }
+            
+            belt.scrollTo({
+                left: currentIndex * cards[0].offsetWidth,
+                behavior: 'smooth'
+            });
         }
+
+        // Automatic scrolling every 10 seconds
+        let autoScrollInterval;
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                scrollBelt('right');
+            }, 10000); // 10 seconds
+        }
+
+        // Start auto-scroll when the page loads
+        document.addEventListener('DOMContentLoaded', startAutoScroll);
+
+        // Stop auto-scroll when user interacts with the belt
+        const belt = document.getElementById('featureBelt');
+        belt.addEventListener('scroll', () => {
+            clearInterval(autoScrollInterval);
+        });
+
+        // Restart auto-scroll after manual interaction
+        belt.addEventListener('scrollend', startAutoScroll);
+
+        // Stop auto-scroll when clicking arrow buttons
+        document.querySelectorAll('.arrow-button').forEach(button => {
+            button.addEventListener('click', () => {
+                clearInterval(autoScrollInterval);
+                startAutoScroll();
+            });
+        });
     </script>
 </body>
 </html>
